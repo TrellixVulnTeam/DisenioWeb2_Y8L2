@@ -1,0 +1,142 @@
+<div class="jumbotron" style="height: 110%; background-color: white;">
+  <h1 class="display-4" style="text-align: center;">Quiz</h1>
+  <hr>
+  <table mat-table class="mat-elevation-z8" [dataSource]="peoples " >
+
+    <ng-container matColumnDef="ID">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let elem"> {{elem.ID}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let elem"> {{elem.Name}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Username">
+      <th mat-header-cell *matHeaderCellDef> Username </th>
+      <td mat-cell *matCellDef="let elem"> {{elem.Username}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let elem"> {{elem.Email}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="Address">
+      <th mat-header-cell *matHeaderCellDef> Address </th>
+      <td mat-cell *matCellDef="let elem"> {{elem.Address}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Phone">
+      <th mat-header-cell *matHeaderCellDef> Phone </th>
+      <td mat-cell *matCellDef="let element"> {{element.Phone}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Website">
+      <th mat-header-cell *matHeaderCellDef> Website </th>
+      <td mat-cell *matCellDef="let element"> {{element.Website}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Company">
+      <th mat-header-cell *matHeaderCellDef> Company </th>
+      <td mat-cell *matCellDef="let element"> {{element.Company}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <br>
+  <div class="jumbotron" style="background-color: rgba(0, 0, 0, 0);">
+    <div style="background-color: #373B3F; padding: 10px!important; border-radius: 20px;">
+      <mat-form-field appearance="standard" style="color: white">
+        <mat-label>ID</mat-label>
+        <input #idInput matInput class="ss">
+      </mat-form-field>
+      <mat-form-field appearance="standard" style="color: white">
+        <mat-label>Name</mat-label>
+        <input #nameInput matInput class="ss">
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>Username</mat-label>
+        <input #usernameInput matInput class="ss">
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>Email</mat-label>
+        <input #emailInput matInput class="ss">
+      </mat-form-field>
+    </div>
+    <div style="background-color: #D2584B; padding: 10px!important; border-radius: 20px; margin-top: 5px;">
+      <mat-label style="margin-top: 10px;">Address</mat-label>
+      <hr>
+      <mat-form-field appearance="standard">
+        <mat-label>Street</mat-label>
+        <input #streetInput matInput class="ss">
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>Suite</mat-label>
+        <input #suiteInput matInput class="ss">
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>City</mat-label>
+        <input #cityInput matInput class="ss">
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>Zipcode</mat-label>
+        <input #zipcodeInput matInput class="ss">
+      </mat-form-field>
+      <br><br>
+      <mat-label>Geo</mat-label>
+      <hr>
+      <mat-form-field appearance="standard">
+        <mat-label>Lat</mat-label>
+        <input #latInput matInput class="ss">
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>Long</mat-label>
+        <input #longInput matInput class="ss">
+      </mat-form-field>
+    </div>
+
+    <div style="background-color: #373B3F; padding: 10px!important; border-radius: 20px; margin-top: 5px; margin-bottom: 0px;">
+      <mat-form-field appearance="standard">
+      <mat-label>Phone</mat-label>
+      <input #phoneInput matInput class="ss">
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Website</mat-label>
+      <input #websiteInput matInput class="ss">
+    </mat-form-field>
+    <br><br>
+    <mat-label>Company</mat-label>
+    <hr>
+    <mat-form-field appearance="standard">
+      <mat-label>Name</mat-label>
+      <input #companynameInput matInput class="ss">
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Catch phrase</mat-label>
+      <input #companycsInput matInput class="ss">
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Bs</mat-label>
+      <input #companybsInput matInput class="ss">
+    </mat-form-field>
+    </div>
+  </div>
+  <button mat-raised-button color="primary"
+  (click)="addUser(
+    idInput.value, nameInput.value,
+    usernameInput.value, emailInput.value,
+    [
+    streetInput.value, suiteInput.value,
+    cityInput.value, zipcodeInput.value
+    ],
+    phoneInput.value,
+    websiteInput.value,
+    [
+    companynameInput.value,
+    companycsInput.value,
+    companybsInput.value
+    ])">Agregar Usuario</button>
+</div>
+<router-outlet></router-outlet>
