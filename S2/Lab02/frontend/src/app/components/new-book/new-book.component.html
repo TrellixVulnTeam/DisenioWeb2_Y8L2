@@ -1,0 +1,27 @@
+<div id="backgrounddiv" class="jumbotron" style="background-color: #303030; text-align: center;">
+  <h1 class="display-4" style="color: #D73964;">
+    Agregar Libro
+</h1>
+<mat-form-field appearance="standard">
+  <mat-label>Título</mat-label>
+  <input matInput #titleInput type="text">
+</mat-form-field>
+<br>
+<mat-form-field appearance="standard">
+  <mat-label>Autor</mat-label>
+  <input matInput #authorInput type="text">
+</mat-form-field>
+<br>
+<mat-form-field appearance="standard">
+  <mat-label>Resumen</mat-label>
+  <input matInput #summaryInput type="text">
+</mat-form-field>
+<br>
+<mat-form-field appearance="standard">
+  <mat-label>Género</mat-label>
+  <input matInput #genreInput type="text">
+</mat-form-field>
+<hr>
+<button mat-raised-button color="primary" (click)="addBook(titleInput.value, authorInput.value, summaryInput.value, genreInput.value)">Agregar</button>
+<button mat-raised-button color="warn" routerLink="/" routerLinkActive="active">Cancelar</button>
+</div>

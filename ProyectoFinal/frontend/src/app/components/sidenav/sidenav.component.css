@@ -1,0 +1,24 @@
+li {
+  list-style: none;
+  margin: 0;
+  /* margin-bottom: 10px; */
+  height: 65px;
+  width: 100%!important;
+  text-align: center;
+  color: #DADADA;
+  border-bottom: solid 1px #6D6D6D;
+  /* border-top: solid 1px #6D6D6D; */
+}
+
+a {
+  line-height: 65px;
+  text-align: center;
+}
+
+ul {
+  text-align: center;
+  width: 100px;
+  margin-top: 3rem;
+  padding: 0;
+  text-align: center!important;
+}
