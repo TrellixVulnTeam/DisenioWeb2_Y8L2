@@ -1,5 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+
+
 html, body {
   height: 100%;
 }
@@ -9,5 +13,16 @@ body {
 }
 
 .jumbotron {
-  background-color: teal;
+  /* background-color: teal; */
+}
+
+a {
+  color: #ECECED;
+  transition: color 300ms;
+  font-family: 'Lato', sans-serif;
+}
+
+a:hover {
+  color: #b1aeae;
+  text-decoration: none;
 }
