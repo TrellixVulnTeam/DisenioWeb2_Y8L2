@@ -13,6 +13,15 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
+import {MatSelectModule} from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatTableModule} from '@angular/material/table';
+import {HttpClientModule} from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatExpansionModule} from '@angular/material/expansion';
+// import { WavesModule, InputsModule, ButtonsModule } from 'angular-bootstrap-md'
 
 @NgModule({
   declarations: [
@@ -29,7 +38,15 @@ import {MatButtonModule} from '@angular/material/button';
     MatIconModule,
     NgbModule,
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule,
+    HttpClientModule,
+    FormsModule,
+    MatPaginatorModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

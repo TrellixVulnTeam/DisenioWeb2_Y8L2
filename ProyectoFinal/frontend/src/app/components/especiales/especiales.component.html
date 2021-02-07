@@ -1,0 +1,106 @@
+<div class="row">
+  <div class="col">
+    <div class="jumbotron">
+      <div class="contentjmb" style="text-align: center; width: 100%; padding: 10px;">
+        <h1 class="display-4">Especiales</h1>
+        <hr>
+        <br>
+        <mat-form-field appearance="standard">
+          <mat-label>Favorite food</mat-label>
+          <mat-select [(ngModel)]="especialesSelect">
+            <mat-option *ngFor="let opciones of especiales" [value]="opciones.value">
+              {{opciones.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div *ngIf="especialesSelect === 'bufet'" class="contentjmb" style="width: 100%; padding: 10px; height: auto!important;">
+        <h1>Bufet</h1>
+        <hr>
+        <mat-form-field style="width: 30%;">
+            <mat-label>Buscar por codigo</mat-label>
+            <input matInput #searchinput [(ngModel)]="userInputCodigo" (keyup)="applyFilterCode()">
+        </mat-form-field>
+        <mat-form-field style="width: 30%;">
+            <mat-label>Buscar por nombre</mat-label>
+            <input matInput #searchinput [(ngModel)]="userInputName" (keyup)="busquedaNombre()">
+        </mat-form-field>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+          <ng-container matColumnDef="codigo">
+            <th mat-header-cell *matHeaderCellDef> Codigo </th>
+            <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
+          </ng-container>
+          <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef> Nombre </th>
+            <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+          </ng-container>
+          <ng-container matColumnDef="precio">
+            <th mat-header-cell *matHeaderCellDef> Precio </th>
+            <td mat-cell *matCellDef="let element"> {{element.precio}} </td>
+          </ng-container>
+          <ng-container matColumnDef="tipo">
+            <th mat-header-cell *matHeaderCellDef> Tipo </th>
+            <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
+          </ng-container>
+          <ng-container matColumnDef="unidad_medida">
+            <th mat-header-cell *matHeaderCellDef> Unidad de medida </th>
+            <td mat-cell *matCellDef="let element"> {{element.unidad_medida}} </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <br>
+        <div class="contentjmb" style="height: auto; width: 100%; text-align: center;">
+          <mat-accordion>
+            <mat-expansion-panel hideToggle>
+              <mat-expansion-panel-header style="text-align: center!important; width: 100%!important;">
+                <mat-panel-title style="width: 100%!important;">
+                  <h1 class="display-4">Agregar Bufet</h1>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <mat-form-field>
+                <mat-label>Codigo</mat-label>
+                <input matInput #codigoInput>
+              </mat-form-field>
+              <br>
+              <mat-form-field>
+                <mat-label>Nombre</mat-label>
+                <input matInput #nombreInput>
+              </mat-form-field>
+              <br>
+              <mat-form-field>
+                <mat-label>Precio</mat-label>
+                <input matInput #precioInput>
+              </mat-form-field>
+              <br>
+              <mat-form-field>
+                <mat-label>Tipo</mat-label>
+                <input matInput #tipoInput>
+              </mat-form-field>
+              <br>
+              <mat-form-field>
+                <mat-label>Unidad de medida</mat-label>
+                <input matInput #unidadmedidaInput>
+              </mat-form-field>
+              <br>
+              <button mat-raised-button color="primary" (click)="addBufet(codigoInput.value, nombreInput.value, precioInput.value, tipoInput.value, unidadmedidaInput.value)">Agregar</button>
+              <button mat-raised-button color="warn">Borrar</button>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+      </div>
+      <br>
+      <div *ngIf="especialesSelect === 'bebidas'" class="contentjmb" style="width: 100%;">
+        <h1>Bebidas</h1>
+        <hr>
+      </div>
+      <br>
+      <div *ngIf="especialesSelect === 'especiales'" class="contentjmb" style="width: 100%;">
+        <h1>Especiales</h1>
+        <hr>
+      </div>
+      <br>
+      <a routerLink="/restaurantes" routerLinkActive="active"><button mat-raised-button color="primary" style="width: 100%;">Atrás</button></a>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,57 @@
-<div class="row">
-  <div class="col">
-    <div class="jumbotron">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <div class="jumbotron">
+        <div class="contentjmb" style="width: 100%;">
+          <h1 class="display-4">Restaurantes</h1>
+          <hr>
+          <mat-form-field>
+            <mat-label>Codigo</mat-label>
+            <input matInput>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <input matInput>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <mat-label>Especialidad</mat-label>
+            <input matInput>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <mat-label>Dirección</mat-label>
+            <input matInput>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <mat-label>Teléfono</mat-label>
+            <input matInput>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <mat-label>Activo</mat-label>
+            <input matInput>
+          </mat-form-field>
+          <br>
+          <button mat-raised-button color="primary" style="width: 40%; margin-right: 10px;">Agregar restaurante</button>
+          <button mat-raised-button color="warn" style="width: 40%;">Borrar datos</button>
+        </div>
+        <div class="contentjmb" style="margin-left: 25%; margin-right: 25%;">
+          <h1 class="display-4">Administración</h1>
+          <hr>
+          <a routerLink="/especiales" routerLinkActive="active"><button class="adminrestaurantebtn" mat-raised-button color="primary">Especiales</button></a>
+          <a routerLink="/empleados" routerLink="active"><button class="adminrestaurantebtn" mat-raised-button color="primary">Empleados</button></a>
+          <br>
+          <a routerLink="/mesas" routerLinkActive="active"><button class="adminrestaurantebtn" mat-raised-button color="primary">Mesas</button></a>
+          <a routerLink="/puestos" routerLinkActive="active"><button class="adminrestaurantebtn" mat-raised-button color="primary">Puesto</button></a>
 
+        </div>
+
+
+
+      </div>
     </div>
   </div>
 </div>

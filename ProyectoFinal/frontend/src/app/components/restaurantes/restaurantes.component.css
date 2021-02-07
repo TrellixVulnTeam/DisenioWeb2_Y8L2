@@ -1,0 +1,21 @@
+mat-form-field {
+  margin-right: 10%;
+}
+
+.addinfolic {
+  height: auto!important;
+}
+
+table {
+  width: 100%;
+}
+
+/* #licores {
+  display: none;
+} */
+
+.adminrestaurantebtn {
+  margin: 10px;
+  width: 150px;
+  height: 150px;
+}
