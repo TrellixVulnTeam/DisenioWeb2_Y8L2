@@ -22,6 +22,16 @@ export class EspecialesComponent implements OnInit {
 
   displayedColumns: string[] = ['codigo', 'nombre', 'precio', 'tipo', 'unidad_medida'];
 
+  displayedColumnsBebidasCalientes: string[] = ['codigo', 'nombre', 'precio', 'restaurante'];
+
+  displayedColumnsBebidasGaseosas: string[] = ['codigo', 'nombre', 'precio'];
+
+  displayedColumnsLicores: string[] = ['codigo', 'nombre', 'cantidad', 'precio', 'nacionalidad'];
+
+  displayedColumnsVinos: string[] = ['codigo', 'nombre', 'precio', 'nacionalidad', 'anio'];
+
+  displayedColumnsEspeciales: string[] = ['codigo', 'nombre', 'ingredientes', 'precio', 'detalles'];
+
   especiales: Especiales[] = [
     {value: 'bufet', viewValue: 'Bufet'},
     {value: 'bebidas', viewValue: 'Bebidas'},

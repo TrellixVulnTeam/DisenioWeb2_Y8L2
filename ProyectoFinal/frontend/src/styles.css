@@ -12,25 +12,82 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+th {
+  text-align: center!important;
+}
+
 .jumbotron {
+  background-color: rgba(0, 0, 0, 0);
+  height: auto;
   /* background-color: teal; */
 }
 
+.primarybtn {
+  background-color: #4AABE8!important;
+}
+
+.warnbtn {
+  background-color: #C92F2D!important;
+}
+
+.confirmbtn {
+  background-color: #5B912D!important;
+}
+
 a {
-  color: #ECECED;
+  color: #787878;
   transition: color 300ms;
   font-family: 'Lato', sans-serif;
 }
 
+mat-panel-title {
+  color: #CBCBCB!important;
+}
+
+mat-expansion-panel {
+  background-color: rgba(0, 0, 0, 0)!important;
+  box-shadow: none!important;
+}
+
+mat-expansion-panel-header {
+  transition: all 300ms!important;
+}
+
+mat-expansion-panel-header:hover {
+  color: white!important;
+  background-color: #4AABE8!important;
+}
+
+mat-expansion-panel-header:hover mat-panel-description{
+  color: white!important;
+}
+
+/* mat-expansion-panel:hover mat-panel-description {
+  color: white!important;
+} */
+
+mat-panel-description {
+  color: #A5A7AC!important;
+}
+
+h1, h2, h3, h4, h5, h6, mat-label {
+  color: #CBCBCB;
+}
+
+input{
+  color: #CBCBCB!important;
+}
+
 a:hover {
-  color: #b1aeae;
+  color: #CE8639;
   text-decoration: none;
 }
 
 .contentjmb {
-  background-color: #ECECED;
+  background-color: #292929;
   width: 48%;
-  height: 450px;
+  padding: 20px!important;
+  height: auto;
   float: left;
   margin-right: 2%;
   margin-bottom: 25px;
@@ -40,6 +97,10 @@ a:hover {
   text-align: center;
   border-radius: 15px;
 }
+
+/* mat-select, mat-option {
+  color: pink!important;
+} */
 
 h3 {
   font-family: 'Open Sans', sans-serif!important;
@@ -60,4 +121,33 @@ h3 {
 h1 {
   font-family: 'Open Sans', sans-serif!important;
   font-size: 24pt!important;
+}
+
+table {
+  background-color: #292929!important;
+  box-shadow: none!important;
+  border: none;
+}
+
+table th, td {
+  color: #CBCBCB!important;
+}
+
+table th {
+  background-color: #292929;
+}
+
+table tr:nth-child(odd) {
+  background-color: #333333;
+}
+
+table tr {
+  transition: color 30s!important;
+}
+
+table tr:hover {
+  /* background-color: #C92F2D; */
+  background: #cb2d3e;
+  background: -webkit-linear-gradient(to right, #ef473a, #cb2d3e);
+  background: linear-gradient(to right, #ef473a, #cb2d3e);
 }

@@ -1,0 +1,11 @@
+table {
+  width: 100%;
+}
+
+button {
+  margin: 10px;
+}
+
+mat-form-field {
+  margin-right: 15px;
+}

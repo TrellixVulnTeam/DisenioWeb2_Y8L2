@@ -1,1 +1,61 @@
-<p>mesas works!</p>
+<div class="row">
+  <div class="col">
+    <div class="contentjmb" style="width: 100%; padding: 10px;">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="codigo">
+          <th mat-header-cell *matHeaderCellDef> Codigo </th>
+          <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
+        </ng-container>
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef> Nombre </th>
+          <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+        </ng-container>
+        <ng-container matColumnDef="numero">
+          <th mat-header-cell *matHeaderCellDef> Número </th>
+          <td mat-cell *matCellDef="let element"> {{element.precio}} </td>
+        </ng-container>
+        <ng-container matColumnDef="cantidad">
+          <th mat-header-cell *matHeaderCellDef> No. sillas </th>
+          <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
+        </ng-container>
+        <ng-container matColumnDef="restaurante">
+          <th mat-header-cell *matHeaderCellDef> Restaurante </th>
+          <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumnsMesas"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumnsMesas;"></tr>
+      </table>
+    </div>
+    <div class="contentjmb" style="width: 100%;">
+      <h1 class="display-4">Insertar Mesa</h1>
+      <mat-form-field>
+        <mat-label>Código</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Número</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Cantidad de sillas</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Nombre restaurante</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <br>
+      <button class="confirmbtn" mat-raised-button color="primary" style="width: 50%;">Insertar</button>
+      <button class="warnbtn" mat-raised-button color="primary" style="width: 50%;">Borrar</button>
+    </div>
+    <a routerLink="/restaurantes" routerLinkActive="active"><button class="primarybtn" mat-raised-button color="primary" style="width: 100%;">Atrás</button></a>
+  </div>
+</div>

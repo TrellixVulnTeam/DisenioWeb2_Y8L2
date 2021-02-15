@@ -2,8 +2,10 @@ const mongoose = require('./database/mongoose');
 var express = require('express');
 var cors = require('cors');
 
-var Licores = require('./database/models/licores');
-var Bufet = require('./database/models/bufet');
+var Licores = require('./database/models/exportSchemas/licoresExport');
+var Bufet = require('./database/models/exportSchemas/bufetExport');
+var Consecutivos = require('./database/models/exportSchemas/consecutivosExport');
+var UDM = require('./database/models/exportSchemas/udmExport');
 
 var app = express();
 
@@ -12,6 +14,53 @@ app.use(cors());
 app.use(express.json());
 
 //SEGURIDAD
+
+// app.get('/bufet');
+
+//consecutivo
+app.get('/consecutivos', (req, res)=>{
+    Consecutivos.find({})
+    .then(consecutivos => res.send(consecutivos))
+    .catch((error) => console.log(error));
+});
+
+app.post('/consecutivos', (req, res) =>{
+    (new Consecutivos(
+        {
+            'tipo_consecutivo': req.body.tipo_consecutivo,
+            'descripcion': req.body.descripcion,
+            'valor_consecutivo': req.body.valor_consecutivo,
+            'prefijo_consecutivo': req.body.prefijo_consecutivo,
+            'prefijo': req.body.prefijo
+        }
+    ))
+    .save()
+    .then((bufet) =>{ res.send(bufet)})
+    .catch((error) => console.log(error))
+});
+
+app.get('/unidad_medida', (req, res)=>{
+    UDM.find({})
+    .then(udm => res.send(udm))
+    .catch((error) => console.log(error));
+});
+
+app.post('/unidad_medida', (req, res) =>{
+    (new UDM(
+        {
+            'codigo': req.body.codigo,
+            'unidad': req.body.unidad,
+            'escala': req.body.escala,
+            'detalle': req.body.detalle,
+            'simbolo': req.body.simbolo,
+            'simbologia': req.body.simbologia
+        }
+    ))
+    .save()
+    .then((bufet) =>{ res.send(bufet)})
+    .catch((error) => console.log(error))
+});
+
 
 //RESTAURANTES
 

@@ -1,0 +1,26 @@
+.contentjmb {
+  width: 100%;
+  height: auto;
+}
+
+table {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.marcaInfo {
+  padding: 10px;
+  width: 48%;
+  float: left;
+  margin: 1%;
+  /* border: solid 1px #4AABE8; */
+  height: auto;
+}
+
+button {
+  margin: 10px;
+}
+
+hr {
+  background-color: #C92F2D;
+}

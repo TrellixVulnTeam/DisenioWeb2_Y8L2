@@ -21,13 +21,31 @@ import {HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { MarcasComponent } from './components/marcas/marcas.component';
+import { ComestiblesComponent } from './components/comestibles/comestibles.component';
+import { DesechablesEmpaquesComponent } from './components/desechables-empaques/desechables-empaques.component';
+import { LimpiezaHigieneComponent } from './components/limpieza-higiene/limpieza-higiene.component';
+import { TecnologiaComponent } from './components/tecnologia/tecnologia.component';
+import { EquiposUtensiliosComponent } from './components/equipos-utensilios/equipos-utensilios.component';
+import { BitacorasComponent } from './components/bitacoras/bitacoras.component';
+import { ClienteReportesComponent } from './components/cliente-reportes/cliente-reportes.component';
+import { FacturacionComponent } from './components/facturacion/facturacion.component';
 // import { WavesModule, InputsModule, ButtonsModule } from 'angular-bootstrap-md'
 
 @NgModule({
   declarations: [
     AppComponent,
     SidenavComponent,
-    RoutingComps
+    RoutingComps,
+    MarcasComponent,
+    ComestiblesComponent,
+    DesechablesEmpaquesComponent,
+    LimpiezaHigieneComponent,
+    TecnologiaComponent,
+    EquiposUtensiliosComponent,
+    BitacorasComponent,
+    ClienteReportesComponent,
+    FacturacionComponent
   ],
   imports: [
     BrowserModule,

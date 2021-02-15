@@ -1,28 +1,28 @@
 const mongoose = require('mongoose');
 
-const bufetSchema = new mongoose.Schema({
-    codigo: {
+const consecutivoExportSchema = new mongoose.Schema({
+    tipo_consecutivo: {
         type: String,
         required: true
     },
-    nombre: {
-        type: String,
-        required: true
-    }, 
-    precio: {
+    descripcion: {
         type: String,
         required: true
     },
-    tipo: {
+    valor_consecutivo: {
         type: String,
         required: true
     },
-    unidad_medida: {
+    prefijo_consecutivo: {
+        type: String,
+        required: true
+    },
+    prefijo: {
         type: String,
         required: true
     }
 });
 
-const Bufet = mongoose.model('Bufet', bufetSchema);
+const consecutivoExport = mongoose.model('consecutivoE', consecutivoExportSchema);
 
-module.exports = Bufet;
+module.exports = consecutivoExport;
