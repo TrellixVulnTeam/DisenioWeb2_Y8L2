@@ -1,12 +1,12 @@
 <div class="knin">
   <mat-sidenav-container class="example-container" style="padding: 0;">
-    <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')" (closed)="events.push('close!')" style="background-color: #242424; margin: 0%">
+    <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')" (closed)="events.push('close!')" style="background-color: #353B44; margin: 0%">
       <app-sidenav></app-sidenav>
     </mat-sidenav>
-    <mat-sidenav-content style="background-color: #333333; padding: 15px">
+    <mat-sidenav-content style="background-color: #1E2025; padding: 15px">
       <p>
-        <mat-toolbar  style="background-color: #333333;">
-         <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" style="background-color: #333333!important;">
+        <mat-toolbar  style="background-color: #1E2025;">
+         <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" style="background-color: #1E2025!important;">
           <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
         </button>
         <span>Restaurante</span>

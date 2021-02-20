@@ -5,10 +5,10 @@
         <h1 class="display-4">Especiales</h1>
         <hr>
         <br>
-        <mat-form-field appearance="standard" [ngStyle]="{'color': 'pink'}">
+        <mat-form-field appearance="standard">
           <mat-label>Favorite food</mat-label>
-          <mat-select [(ngModel)]="especialesSelect" [ngStyle]="{'color': 'pink'}">
-            <mat-option *ngFor="let opciones of especiales" [value]="opciones.value" [ngStyle]="{'color': 'pink'}">
+          <mat-select class="sfdefe" [(ngModel)]="especialesSelect" style="color: teal!important;">
+            <mat-option *ngFor="let opciones of especiales" [value]="opciones.value">
               {{opciones.viewValue}}
             </mat-option>
           </mat-select>
