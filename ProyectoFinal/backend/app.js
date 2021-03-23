@@ -1,52 +1,152 @@
 const mongoose = require('./database/mongoose');
+
 var express = require('express');
+
+//MERN - React
+//MEAN - Angular
+
 var cors = require('cors');
 
-var Licores = require('./database/models/exportSchemas/licoresExport');
-var Bufet = require('./database/models/exportSchemas/bufetExport');
-var Consecutivos = require('./database/models/exportSchemas/consecutivosExport');
-var UDM = require('./database/models/exportSchemas/udmExport');
+var Licores = require('./database/models/licores');
+var Bufet = require('./database/models/bufet');
+var UnidadMedida = require('./database/models/unidad_medida');
+var DetalleUDM = require('./database/models/detalle');
+var RolesEventos = require('./database/models/roles_eventos');
+var Paises = require('./database/models/paises');
+var Consecutivo = require('./database/models/consecutivos');
+var Usuarios = require('./database/models/usuarios');
+const { rawListeners } = require('./database/models/licores');
+// var DatosPersonales = require('./database/models/usuarios');
+// var DatosTecnicos = require('./database/models/usuarios');
+// var Privilegios = require('./database/models/usuarios');
 
 var app = express();
 
+//Permisos de los headers
 app.use(cors());
 
+//Midddlewore
 app.use(express.json());
 
 //SEGURIDAD
 
-// app.get('/bufet');
+//Usuarios
 
-//consecutivo
-app.get('/consecutivos', (req, res)=>{
-    Consecutivos.find({})
-    .then(consecutivos => res.send(consecutivos))
-    .catch((error) => console.log(error));
-});
 
-app.post('/consecutivos', (req, res) =>{
-    (new Consecutivos(
-        {
-            'tipo_consecutivo': req.body.tipo_consecutivo,
-            'descripcion': req.body.descripcion,
-            'valor_consecutivo': req.body.valor_consecutivo,
-            'prefijo_consecutivo': req.body.prefijo_consecutivo,
-            'prefijo': req.body.prefijo
-        }
-    ))
-    .save()
-    .then((bufet) =>{ res.send(bufet)})
+//INSERT UPDATE DELETE FIND- CRUD
+//POST   PATCH    ""   ""
+app.get('/usuarios', (req, res) =>{
+    Usuarios.find({})
+    .then(usuarios => res.send(usuarios))
     .catch((error) => console.log(error))
 });
 
-app.get('/unidad_medida', (req, res)=>{
-    UDM.find({})
+app.post('/usuarios', (req, res) =>{
+    (new Usuarios(
+        {
+            "datos_personales" : req.body.datos_personales,
+            "datos_tecnicos" : req.body.datos_tecnicos,
+            "privilegios" : req.body.privilegios
+        }
+    ))
+    .save()
+    .then((usuarios) => {res.send(usuarios)})
+    .catch((error) => console.log(error))
+});
+
+//Consecutivos
+
+app.get('/consecutivos', (req, res) =>{
+    Consecutivo.find({})
+    .then(consecutivos => res.send(consecutivos))
+    .catch((error) => console.log(error))
+});
+
+app.post('/consecutivos', (req, res) =>{
+    (new Consecutivo(
+        {
+            'tipo_consecutivo': req.body.tipo_consecutivo,
+            'descripcion': req.body.descripcion,
+            'valor_consecutivo' : req.body.valor_consecutivo,
+            'prefijo_consecutivo' : req.body.prefijo_consecutivo,
+            'prefijo' : req.body.prefijo
+        }
+    ))
+    .save()
+    .then((consecutivo) => {res.send(consecutivo)})
+    .catch((error) => console.log(error))
+});
+
+//Países
+app.get('/paises', (req, res) =>{
+    Paises.find({})
+    .then(paises => res.send(paises))
+    .catch((error) => console.log(error))
+});
+
+app.post('/paises', (req, res) =>{
+    (new Paises(
+        {
+            'codigo' : req.body.codigo,
+            'nombre' : req.body.nombre,
+            'bandera' : req.body.bandera
+        }
+    ))
+    .save()
+    .then((paises) => {res.send(paises)})
+    .catch((error) => console.log(error));
+});
+
+//Cajas
+
+//Roles y Eventos
+
+app.get('/roles-y-eventos', (req, res) =>{
+    RolesEventos.find({})
+    .then(rolsentos => res.send(rolsentos))
+    .catch((error) => console.log(error))
+});
+
+app.post('/roles-y-eventos', (req, res) => {
+    (new RolesEventos(
+        {
+            'codigo' : req.body.codigo,
+            'nombre' : req.body.nombre,
+            'descripcion' : req.body.descripcion
+        }
+    ))
+    .save()
+    .then((rolentos) => {res.send(rolentos)})
+    .catch((error) => console.log(error))
+});
+
+//detalleUDm
+
+app.get('/detalleUDM', (req, res) =>{
+    DetalleUDM.find({})
+    .then(detalleudm => res.send(detalleudm))
+    .catch((error) => console.log(error))
+});
+
+app.post('/detalleUDM', (req, res) => {
+    (new DetalleUDM(
+        {
+            'detalle' : req.body.detalle
+        }
+    ))
+    .save()
+    .then((detalleudm) => {res.send(detalleudm)})
+    .catch((error) => console.log(error))
+});
+
+app.get('/unidad-de-medida', (req, res) =>{
+    UnidadMedida.find({})
     .then(udm => res.send(udm))
     .catch((error) => console.log(error));
 });
 
-app.post('/unidad_medida', (req, res) =>{
-    (new UDM(
+app.post('/unidad-de-medida', (req, res) =>{
+    (new UnidadMedida(
         {
             'codigo': req.body.codigo,
             'unidad': req.body.unidad,
@@ -57,14 +157,13 @@ app.post('/unidad_medida', (req, res) =>{
         }
     ))
     .save()
-    .then((bufet) =>{ res.send(bufet)})
+    .then((udm) => {res.send(udm)})
     .catch((error) => console.log(error))
 });
 
-
 //RESTAURANTES
 
-                                                //REST-BUFET
+//REST-BUFET
 app.get('/bufet', (req, res) => {
     Bufet.find({})
     .then(bufet => res.send(bufet))
@@ -86,8 +185,7 @@ app.post('/bufet', (req, res) =>{
     .catch((error) => console.log(error))
 });
 
-
-                                                //REST-LICORES
+//REST-LICORES
 
 app.get('/licores', (req, res) =>{
     Licores.find({})

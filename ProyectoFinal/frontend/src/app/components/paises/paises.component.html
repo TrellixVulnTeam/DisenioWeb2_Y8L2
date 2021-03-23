@@ -1,0 +1,51 @@
+<mat-accordion>
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <b>Búsqueda</b>
+      </mat-panel-title>
+      <mat-panel-description>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="codigo">
+        <th mat-header-cell *matHeaderCellDef> Código </th>
+        <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
+      </ng-container>
+      <ng-container matColumnDef="pais">
+        <th mat-header-cell *matHeaderCellDef> País </th>
+        <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumnsPaises"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumnsPaises;"></tr>
+    </table>
+  </mat-expansion-panel>
+</mat-accordion>
+<mat-accordion>
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <b>Insertar</b>
+      </mat-panel-title>
+      <mat-panel-description>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-form-field>
+      <mat-label>Código</mat-label>
+      <input matInput #codigoInput>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-label>Nombre</mat-label>
+      <input matInput #nombreInput>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-label>Bandera</mat-label>
+      <input matInput #banderaInput>
+    </mat-form-field>
+    <br>
+    <button class="primarybtn" mat-raised-button color="primary" (click)="addPais(codigoInput.value, nombreInput.value, banderaInput.value)">Agregar</button>
+    <button class="warnbtn" mat-raised-button color="warn">Borrar datos</button>
+  </mat-expansion-panel>
+</mat-accordion>

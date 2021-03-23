@@ -30,6 +30,12 @@ import { EquiposUtensiliosComponent } from './components/equipos-utensilios/equi
 import { BitacorasComponent } from './components/bitacoras/bitacoras.component';
 import { ClienteReportesComponent } from './components/cliente-reportes/cliente-reportes.component';
 import { FacturacionComponent } from './components/facturacion/facturacion.component';
+import { UsuariosComponent } from './components/usuarios/usuarios.component';
+import { ConsecutivosComponent } from './components/consecutivos/consecutivos.component';
+import { PaisesComponent } from './components/paises/paises.component';
+import { CajasComponent } from './components/cajas/cajas.component';
+import { RolesYEventosComponent } from './components/roles-y-eventos/roles-y-eventos.component';
+import { UnidadesDeMedidaComponent } from './components/unidades-de-medida/unidades-de-medida.component';
 // import { WavesModule, InputsModule, ButtonsModule } from 'angular-bootstrap-md'
 
 @NgModule({
@@ -45,7 +51,13 @@ import { FacturacionComponent } from './components/facturacion/facturacion.compo
     EquiposUtensiliosComponent,
     BitacorasComponent,
     ClienteReportesComponent,
-    FacturacionComponent
+    FacturacionComponent,
+    UsuariosComponent,
+    ConsecutivosComponent,
+    PaisesComponent,
+    CajasComponent,
+    RolesYEventosComponent,
+    UnidadesDeMedidaComponent
   ],
   imports: [
     BrowserModule,

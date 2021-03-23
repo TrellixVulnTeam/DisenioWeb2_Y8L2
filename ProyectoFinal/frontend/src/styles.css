@@ -59,7 +59,7 @@ mat-expansion-panel-header:hover {
   background-color: #E6C29E!important;
 }
 
-mat-expansion-panel-header:hover mat-panel-description{
+mat-expansion-panel-header:hover mat-panel-title{
   color: #1E2025!important;
 }
 
@@ -71,7 +71,7 @@ mat-panel-description {
   color: #A5A7AC!important;
 }
 
-h1, h2, h3, h4, h5, h6, mat-label {
+h1, h2, h3, h4, h5, h6, mat-label, mat-checkbox {
   color: #E0E2E8!important;
 }
 
@@ -152,7 +152,24 @@ table tr {
 }
 
 table tr:hover {
-  background-color: #61D2C2;
+  /* background-color: #E6C29E; */
+
+
+  /* background: #2C3E50;
+  background: -webkit-linear-gradient(to right, #4CA1AF, #2C3E50);
+  background: linear-gradient(to right, #4CA1AF, #2C3E50); */
+
+  background: #E6DADA;
+  background: -webkit-linear-gradient(to left, #274046, #E6DADA);
+  background: linear-gradient(to left, #274046, #E6DADA);
+
+
+
+  /* background: #334d50;
+  background: -webkit-linear-gradient(to right, #E6C29E,rgba(0, 0, 0, 0));
+  background: linear-gradient(to right, rgba(230, 194, 158, .8), rgba(0, 0, 0, 0)); */
+
+
   /* background: #cb2d3e;
   background: -webkit-linear-gradient(to right, #ef473a, #cb2d3e);
   background: linear-gradient(to right, #ef473a, #cb2d3e); */
@@ -160,6 +177,10 @@ table tr:hover {
 
 mat-select:active mat-option {
   color: pink!important;
+}
+
+hr {
+  background-color: #212932!important;
 }
 
 
