@@ -69,5 +69,9 @@ export class TaskService {
     return this.webService.post('licores', { codigo, restaurante, nombre, cantidad, marca, descripcion, nacionalidad, precio_unitario, precio_botella});
   }
 
+  getCajas() {
+    return this.webService.get('cajas');
+  }
+
 
 }

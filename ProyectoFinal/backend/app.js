@@ -16,6 +16,7 @@ var Paises = require('./database/models/paises');
 var Consecutivo = require('./database/models/consecutivos');
 var Usuarios = require('./database/models/usuarios');
 const { rawListeners } = require('./database/models/licores');
+var Cajas = require('./database/models/cajas');
 // var DatosPersonales = require('./database/models/usuarios');
 // var DatosTecnicos = require('./database/models/usuarios');
 // var Privilegios = require('./database/models/usuarios');
@@ -35,11 +36,18 @@ app.use(express.json());
 
 //INSERT UPDATE DELETE FIND- CRUD
 //POST   PATCH    ""   ""
+
 app.get('/usuarios', (req, res) =>{
     Usuarios.find({})
     .then(usuarios => res.send(usuarios))
     .catch((error) => console.log(error))
 });
+
+// app.get('/usuarios', (req, res) =>{
+//     Usuarios.find({"datos_personales.nombre" : "2"})
+//     .then(usuarios => res.send(usuarios))
+//     .catch((error) => console.log(error))
+// });
 
 app.post('/usuarios', (req, res) =>{
     (new Usuarios(
@@ -98,6 +106,25 @@ app.post('/paises', (req, res) =>{
 });
 
 //Cajas
+app.get('/cajas', (req, res) => {
+    Cajas.find({})
+    .then(cajas => res.send(cajas))
+    .catch((error) => console.log(error))
+
+});
+
+app.post('/cajas', (req, res) =>{
+    (new Cajas(
+        {
+            'datos_personales': req.body.datos_personales,
+            'datos_tecnicos': req.body.datos_tecnicos,
+            'privilegios': req.body.privilegios
+        }
+    ))
+    .save()
+    .then((cajas) => {res.send(cajas)})
+    .catch((error) => console.log(error))
+});
 
 //Roles y Eventos
 

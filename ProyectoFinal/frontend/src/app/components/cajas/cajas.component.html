@@ -50,7 +50,7 @@
       <mat-panel-description>
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <form>
+    <form (ngSubmit)="testForm()">
       <div>
         <h1 class="display-4">Datos personales</h1>
         <hr>
@@ -111,6 +111,7 @@
           <mat-checkbox class="example-margin" [checked]="selected === i" (change)="selected = i"> {{ item }}</mat-checkbox>
         </div>
       </div>
+      <button type="submit">Add</button>
     </form>
   </mat-expansion-panel>
 </mat-accordion>

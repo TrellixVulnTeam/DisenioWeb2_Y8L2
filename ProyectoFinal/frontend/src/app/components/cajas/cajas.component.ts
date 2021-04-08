@@ -23,7 +23,11 @@ export class CajasComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.taskService.getBufet()
+    this.taskService.getCajas()
     .subscribe((bufet: Bufet[]) =>{ this.dataSource = bufet });
+  }
+
+  testForm() {
+    window.alert('Form works');
   }
 }
