@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const bebidaFriasSchema = new mongoose.Schema({
+const bebidaCalienteSchema = new mongoose.Schema({
         codigo: {
             type: String,
             required: true
@@ -28,6 +28,6 @@ const bebidaFriasSchema = new mongoose.Schema({
         }
 });
 
-const BebidasFrias = mongoose.model('BebidasFrias', bebidaFriasSchema);
+const BebidasCalientes = mongoose.model('BebidasCalientes', bebidaCalienteSchema);
 
-module.exports = BebidasFrias;
+module.exports = BebidasCalientes;

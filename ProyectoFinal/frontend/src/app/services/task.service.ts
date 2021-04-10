@@ -12,8 +12,17 @@ export class TaskService {
     return this.webService.get('usuarios');
   }
 
-  postUsuario(datos_personales: [], datos_tecnicos: [], privilegios:  []) {
-    return this.webService.post('usuarios', {datos_personales, datos_tecnicos, privilegios});
+  // postUsuarios() {
+  //   this.webService.post('')
+  // }
+
+  getUsuariosAnidados() {
+    console.log(this.webService.getTablasAnidadas('usuarios'));
+    return this.webService.getTablasAnidadas('usuarios');
+  }
+
+  postUsuario(codigo: string, nombre: string, primer_apellido: string, segundo_apellido: string, telefono_1: string, telefono_2: string, login: string, contrasena: string, tipo_privilegio: string) {
+    return this.webService.post('usuarios', {codigo, nombre, primer_apellido, segundo_apellido, telefono_1, telefono_2, login, contrasena, tipo_privilegio});
   }
 
   getConsecutivos() {
@@ -69,9 +78,40 @@ export class TaskService {
     return this.webService.post('licores', { codigo, restaurante, nombre, cantidad, marca, descripcion, nacionalidad, precio_unitario, precio_botella});
   }
 
+  getBebidasCalientes() {
+    return this.webService.get('bebidas_calientes');
+  }
+
+  postBebidasCalientes(codigo: string, nombre: string, ingredientes: string, precio: string, restaurante: string, descripcion: string) {
+    return this.webService.post('bebidas_calientes', {codigo, nombre, ingredientes, precio, restaurante, descripcion});
+  }
+
+  getBebidasFrias() {
+    return this.webService.get('bebidas_frias');
+  }
+
+  postBebidasFrias(codigo: string, nombre: string, ingredientes: string, precio: string, restaurante: string, descripcion: string) {
+    return this.webService.post('bebidas_frias', {codigo, nombre, ingredientes, precio, restaurante, descripcion});
+  }
+
+  getBebidasGaseosas() {
+    return this.webService.get('bebidas_gaseosas');
+  }
+
+  postBebidasGaseosas(codigo: String, nombre: String, marca: String, nacionalidad: String, precio: String, restaurante: String, cantidad: String, descripcion: String) {
+    return this.webService.post('bebidas_gaseosas', {codigo, nombre, marca, nacionalidad, precio, restaurante, cantidad, descripcion});
+  }
+
   getCajas() {
     return this.webService.get('cajas');
   }
 
+  getEmpleados() {
+    return this.webService.get('empleados');
+  }
+
+  postEmpleados(codigo: String, cedula: String, nombre: String, primer_apellido: String, segundo_apellido: String, telefono_1: String, telefono_2: String, puesto: String, nacionalidad: String) {
+    return this.webService.post('empleados', {codigo, cedula, nombre, primer_apellido, segundo_apellido, telefono_1, telefono_2, puesto, nacionalidad});
+  }
 
 }

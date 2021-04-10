@@ -102,7 +102,6 @@
                 <b>Bebidas Calientes</b>
               </mat-panel-description>
             </mat-expansion-panel-header>
-            <p>This is the primary content of the panel.</p>
             <mat-accordion>
               <mat-expansion-panel hideToggle>
                 <mat-expansion-panel-header>
@@ -110,8 +109,7 @@
                     <b>Búsqueda</b>
                   </mat-panel-description>
                 </mat-expansion-panel-header>
-                <p>This is the primary content of the panel.</p>
-                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                <table mat-table [dataSource]="dataSourceBebidasCalientes" class="mat-elevation-z8">
                   <ng-container matColumnDef="codigo">
                     <th mat-header-cell *matHeaderCellDef> Codigo </th>
                     <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
@@ -126,7 +124,7 @@
                   </ng-container>
                   <ng-container matColumnDef="restaurante">
                     <th mat-header-cell *matHeaderCellDef> Restaurante </th>
-                    <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.restaurante}} </td>
                   </ng-container>
                   <tr mat-header-row *matHeaderRowDef="displayedColumnsBebidasCalientes"></tr>
                   <tr mat-row *matRowDef="let row; columns: displayedColumnsBebidasCalientes;"></tr>
@@ -144,32 +142,32 @@
                 <p>This is the primary content of the panel.</p>
                 <mat-form-field>
                   <mat-label>Código</mat-label>
-                  <input disabled matInput>
+                  <input matInput #codigoInput>
                 </mat-form-field>
                 <br>
                 <mat-form-field>
                   <mat-label>Nombre</mat-label>
-                  <input matInput>
+                  <input matInput #nombreInput>
                 </mat-form-field>
                 <br>
                 <mat-form-field>
                   <mat-label>Ingredientes</mat-label>
-                  <input matInput>
+                  <input matInput #ingredientesInput>
                 </mat-form-field>
                 <br>
                 <mat-form-field>
                   <mat-label>Precio</mat-label>
-                  <input matInput>
+                  <input matInput #precioInput>
                 </mat-form-field>
                 <br>
                 <mat-form-field>
                   <mat-label>Restaurante</mat-label>
-                  <input matInput>
+                  <input matInput #restauranteInput>
                 </mat-form-field>
                 <br>
                 <mat-form-field>
                   <mat-label>Descripción</mat-label>
-                  <input matInput>
+                  <input matInput #descripcionInput>
                 </mat-form-field>
                 <br>
                 <mat-form-field>
@@ -177,7 +175,7 @@
                   <input matInput>
                 </mat-form-field>
                 <br>
-                <a routerLink="/restaurantes" routerLinkActive="active"><button class="confirmbtn" mat-raised-button color="primary" style="width: 50%;">Insertar</button></a>
+                <a routerLink="/restaurantes" routerLinkActive="active"><button class="confirmbtn" mat-raised-button color="primary" style="width: 50%;" (click)="addBebidasCalientes(codigoInput.value, nombreInput.value, ingredientesInput.value, precioInput.value, restauranteInput.value, descripcionInput.value)">Insertar</button></a>
                 <a routerLink="/restaurantes" routerLinkActive="active"><button class="warnbtn" mat-raised-button color="primary" style="width: 50%; margin-top: 10px;">Borrar</button></a>
               </mat-expansion-panel>
             </mat-accordion>
@@ -192,7 +190,6 @@
                 <b>Bebidas Frías</b>
               </mat-panel-description>
             </mat-expansion-panel-header>
-            <p>This is the primary content of the panel.</p>
             <mat-accordion>
               <mat-expansion-panel hideToggle>
                 <mat-expansion-panel-header>
@@ -200,8 +197,7 @@
                     <b>Búsqueda</b>
                   </mat-panel-description>
                 </mat-expansion-panel-header>
-                <p>This is the primary content of the panel.</p>
-                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                <table mat-table [dataSource]="dataSourceBebidasFrias" class="mat-elevation-z8">
                   <ng-container matColumnDef="codigo">
                     <th mat-header-cell *matHeaderCellDef> Codigo </th>
                     <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
@@ -216,7 +212,7 @@
                   </ng-container>
                   <ng-container matColumnDef="restaurante">
                     <th mat-header-cell *matHeaderCellDef> Restaurante </th>
-                    <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.restaurante}} </td>
                   </ng-container>
                   <tr mat-header-row *matHeaderRowDef="displayedColumnsBebidasCalientes"></tr>
                   <tr mat-row *matRowDef="let row; columns: displayedColumnsBebidasCalientes;"></tr>
@@ -231,47 +227,45 @@
                     <b>Insertar</b>
                   </mat-panel-description>
                 </mat-expansion-panel-header>
-                <p>This is the primary content of the panel.</p>
                 <mat-form-field>
                   <mat-label>Código</mat-label>
-                  <input disabled matInput>
+                  <input matInput #codigoInput>
                 </mat-form-field>
                 <br>
                 <mat-form-field>
                   <mat-label>Nombre</mat-label>
-                  <input matInput>
+                  <input matInput #nombreInput>
                 </mat-form-field>
                 <br>
                 <mat-form-field>
                   <mat-label>Ingredientes</mat-label>
-                  <input matInput>
+                  <input matInput #ingredientesInput>
                 </mat-form-field>
                 <br>
                 <mat-form-field>
                   <mat-label>Precio</mat-label>
-                  <input matInput>
+                  <input matInput #precioInput>
                 </mat-form-field>
                 <br>
                 <mat-form-field>
                   <mat-label>Restaurante</mat-label>
-                  <input matInput>
+                  <input matInput #restauranteInput>
                 </mat-form-field>
                 <br>
                 <mat-form-field>
                   <mat-label>Descripción</mat-label>
-                  <input matInput>
+                  <input matInput #descripcionInput>
                 </mat-form-field>
                 <br>
                 <mat-form-field>
                   <mat-label>Foto</mat-label>
                   <input matInput>
                 </mat-form-field>
+                <br>
+                <a routerLink="/restaurantes" routerLinkActive="active"><button class="confirmbtn" mat-raised-button color="primary" style="width: 50%;" (click)="addBebidasFrias(codigoInput.value, nombreInput.value, ingredientesInput.value, precioInput.value, restauranteInput.value, descripcionInput.value)">Insertar</button></a>
+                <a routerLink="/restaurantes" routerLinkActive="active"><button class="warnbtn" mat-raised-button color="primary" style="width: 50%; margin-top: 10px;">Borrar</button></a>
               </mat-expansion-panel>
             </mat-accordion>
-
-
-
-
           </mat-expansion-panel>
         </mat-accordion>
         <br>
@@ -290,7 +284,7 @@
                     <b>Búsqueda</b>
                   </mat-panel-description>
                 </mat-expansion-panel-header>
-                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                <table mat-table [dataSource]="dataSourceBebidasGaseosas" class="mat-elevation-z8">
                   <ng-container matColumnDef="codigo">
                     <th mat-header-cell *matHeaderCellDef> Codigo </th>
                     <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
@@ -316,47 +310,49 @@
                     <b>Insertar</b>
                   </mat-panel-description>
                 </mat-expansion-panel-header>
-                <p>This is the primary content of the panel.</p>
                 <mat-form-field>
                   <mat-label>Código</mat-label>
-                  <input disabled matInput>
+                  <input matInput #codigoInput>
                 </mat-form-field>
                 <mat-form-field>
                   <mat-label>Nombre</mat-label>
-                  <input matInput>
+                  <input matInput #nombreInput>
                 </mat-form-field>
                 <br>
                 <mat-form-field>
                   <mat-label>Marca</mat-label>
-                  <input matInput>
+                  <input matInput #marcaInput>
                 </mat-form-field>
                 <mat-form-field>
                   <mat-label>Nacionalidad</mat-label>
-                  <input matInput>
+                  <input matInput #nacionalidadInput>
                 </mat-form-field>
                 <br>
                 <mat-form-field>
                   <mat-label>Precio</mat-label>
-                  <input matInput>
+                  <input matInput #precioInput>
                 </mat-form-field>
                 <mat-form-field>
                   <mat-label>Restaurante</mat-label>
-                  <input matInput>
+                  <input matInput #restauranteInput>
                 </mat-form-field>
                 <br>
                 <mat-form-field>
                   <mat-label>Cantidad</mat-label>
-                  <input matInput>
+                  <input matInput #cantidadInput>
                 </mat-form-field>
                 <mat-form-field>
                   <mat-label>Descripción</mat-label>
-                  <input matInput>
+                  <input matInput #descripcionInput>
                 </mat-form-field>
                 <br>
                 <mat-form-field>
                   <mat-label>Foto</mat-label>
                   <input matInput>
                 </mat-form-field>
+                <br>
+                <button class="confirmbtn" mat-raised-button color="primary" style="width: 50%;" (click)="addBebidasGaseosas(codigoInput.value, nombreInput.value, marcaInput.value, nacionalidadInput.value, precioInput.value, restauranteInput.value, cantidadInput.value, descripcionInput.value)">Insert3ar</button>
+                <a routerLink="/restaurantes" routerLinkActive="active"><button class="warnbtn" mat-raised-button color="primary" style="width: 50%; margin-top: 10px;">Borrar</button></a>
               </mat-expansion-panel>
             </mat-accordion>
           </mat-expansion-panel>
@@ -411,7 +407,6 @@
                     <b>Insertar</b>
                   </mat-panel-description>
                 </mat-expansion-panel-header>
-                <p>This is the primary content of the panel.</p>
                 <mat-form-field>
                   <mat-label>Código</mat-label>
                   <input disabled matInput>

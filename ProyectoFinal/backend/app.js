@@ -17,6 +17,11 @@ var Consecutivo = require('./database/models/consecutivos');
 var Usuarios = require('./database/models/usuarios');
 const { rawListeners } = require('./database/models/licores');
 var Cajas = require('./database/models/cajas');
+var BebidasCalientes = require('./database/models/bebidascalientes');
+var BebidasFrias = require('./database/models/bebidasfrias');
+var BebidasGaseosas = require('./database/models/bebidasgaseosas');
+var Empleados = require('./database/models/empleados');
+// const { runInNewContext } = require('node:vm');
 // var DatosPersonales = require('./database/models/usuarios');
 // var DatosTecnicos = require('./database/models/usuarios');
 // var Privilegios = require('./database/models/usuarios');
@@ -52,9 +57,15 @@ app.get('/usuarios', (req, res) =>{
 app.post('/usuarios', (req, res) =>{
     (new Usuarios(
         {
-            "datos_personales" : req.body.datos_personales,
-            "datos_tecnicos" : req.body.datos_tecnicos,
-            "privilegios" : req.body.privilegios
+            "codigo" : req.body.codigo,
+            "nombre" : req.body.nombre,
+            "primer_apellido" : req.body.primer_apellido,
+            "segundo_apellido" : req.body.segundo_apellido,
+            "telefono_1" : req.body.telefono_1,
+            "telefono_2" : req.body.telefono_2,
+            "login" : req.body.login,
+            "contrasena" : req.body.contrasena,
+            "tipo_privilegio" : req.body.tipo_privilegio
         }
     ))
     .save()
@@ -190,7 +201,7 @@ app.post('/unidad-de-medida', (req, res) =>{
 
 //RESTAURANTES
 
-//REST-BUFET
+//REST-ESPECIALES-BUFET
 app.get('/bufet', (req, res) => {
     Bufet.find({})
     .then(bufet => res.send(bufet))
@@ -212,7 +223,81 @@ app.post('/bufet', (req, res) =>{
     .catch((error) => console.log(error))
 });
 
-//REST-LICORES
+//REST-BEBIDAS-CALIENTES
+
+app.get('/bebidas_calientes', (req, res) =>{
+    BebidasCalientes.find({})
+    .then(bebidas_calientes => res.send(bebidas_calientes))
+    .catch((error) => console.log(error));
+});
+
+app.post('/bebidas_calientes', (req, res) => {
+    (new BebidasCalientes(
+        {
+            'codigo' : req.body.codigo,
+            'nombre' : req.body.nombre,
+            'ingredientes' : req.body.ingredientes,
+            'precio' : req.body.precio,
+            'restaurante' : req.body.restaurante,
+            'descripcion' : req.body.descripcion
+        }
+    ))
+    .save()
+    .then((bebidas_calientes) => { res.send(bebidas_calientes) })
+    .catch((error) => console.log(error))
+});
+
+//REST-BEBIDAS-FRÍAS
+
+app.get('/bebidas_frias', (req, res) =>{
+    BebidasFrias.find({})
+    .then(bebidas_frias => res.send(bebidas_frias))
+    .catch((error) => console.log(error));
+});
+
+app.post('/bebidas_frias', (req, res) => {
+    (new BebidasFrias(
+        {
+            'codigo' : req.body.codigo,
+            'nombre' : req.body.nombre,
+            'ingredientes' : req.body.ingredientes,
+            'precio' : req.body.precio,
+            'restaurante' : req.body.restaurante,
+            'descripcion' : req.body.descripcion
+        }
+    ))
+    .save()
+    .then((bebidas_frias) => { res.send(bebidas_frias) })
+    .catch((error) => console.log(error))
+});
+
+//REST-BEBIDAS-GASEOSAS
+
+app.get('/bebidas_gaseosas', (req, res) =>{
+    BebidasGaseosas.find({})
+    .then(bebidas_gaseosas => res.send(bebidas_gaseosas))
+    .catch((error) => console.log(error));
+});
+
+app.post('/bebidas_gaseosas', (req, res) => {
+    (new BebidasGaseosas(
+        {
+            'codigo': req.body.codigo,
+            'nombre': req.body.nombre,
+            'marca': req.body.marca,
+            'nacionalidad': req.body.nacionalidad,
+            'precio': req.body.precio,
+            'restaurante': req.body.restaurante,
+            'cantidad': req.body.cantidad,
+            'descripcion': req.body.descripcion
+        }
+    ))
+    .save()
+    .then((bebidas_gaseosas) => { res.send(bebidas_gaseosas) })
+    .catch((error) => console.log(error))
+});
+
+//REST-BEBIDAS-LICORES
 
 app.get('/licores', (req, res) =>{
     Licores.find({})
@@ -239,7 +324,29 @@ app.post('/licores', (req, res) =>{
         .catch((error) => console.log(error))
 });
 
+//REST-BEBIDAS-VINOS
+
 //CLIENTES
+
+app.get('/empleados', (req, res) =>{
+    Empleados.find({})
+    .then(empleados => res.send(empleados))
+    .catch((error) => console.log(error))
+});
+
+app.post('/empleados', (req, res)=> {
+    (new Empleados({
+        'codigo' : req.body.codigo,
+        'cedula': req.bod.cedula,
+        'nombre' : req.body.nombre,
+        'primer_apellido' : req.body.primer_apellido,
+        'segundo_apellido' : req.body.segundo_apellido,
+        'telefono_1' : req.body.telefono_1,
+        'telefono_2' : req.body.telefono_2,
+        'puesto' : req.body.puesto,
+        'nacionalidad' : req.body.nacionalidad
+    }))
+});
 
 //PROVEEDORES
 

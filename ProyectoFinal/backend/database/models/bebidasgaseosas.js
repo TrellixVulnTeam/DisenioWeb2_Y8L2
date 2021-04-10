@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const bebidaFriasSchema = new mongoose.Schema({
+const bebidasGaseosasSchema = new mongoose.Schema({
         codigo: {
             type: String,
             required: true
@@ -9,7 +9,11 @@ const bebidaFriasSchema = new mongoose.Schema({
             type: String,
             required: true
         },
-        ingredientes: {
+        marca: {
+            type: String,
+            required: true
+        },
+        nacionalidad: {
             type: String,
             required: true
         },
@@ -20,7 +24,10 @@ const bebidaFriasSchema = new mongoose.Schema({
         restaurante: {
             type: String,
             required: true
-    
+        },
+        cantidad: {
+            type: String,
+            required: true
         },
         descripcion: {
             type: String,
@@ -28,6 +35,6 @@ const bebidaFriasSchema = new mongoose.Schema({
         }
 });
 
-const BebidasFrias = mongoose.model('BebidasFrias', bebidaFriasSchema);
+const BebidasGaseosas = mongoose.model('BebidasGaseosas', bebidasGaseosasSchema);
 
-module.exports = BebidasFrias;
+module.exports = BebidasGaseosas;
