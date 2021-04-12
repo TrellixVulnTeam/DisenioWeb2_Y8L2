@@ -20,7 +20,8 @@ export class EditTareaComponent implements OnInit {
   }
 
   updateTarea(tareaId: string, tarea: string, concluida: boolean, responsable: string) {
-    
+    this.taskService.updateTarea(this.getId, tarea, concluida, responsable)
+    .subscribe((tareas: Tareas) => this.router.navigate(['/']));
 
   }
 
