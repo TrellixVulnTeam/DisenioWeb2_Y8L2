@@ -1,1 +1,27 @@
-<p>new-tarea works!</p>
+<div id="backgrounddiv" class="jumbotron" style="background-color: #303030; text-align: center;">
+    <h1 class="display-4" style="color: #D73964;">
+      Agregar Libro
+  </h1>
+  <mat-form-field appearance="standard">
+    <mat-label>Tarea</mat-label>
+    <input matInput #tareaInput type="text">
+  </mat-form-field>
+  <br>
+  <!-- <mat-checkbox #concluidaInput *ngIf="concluidaInput.checked == concluidaInput.value= 'dd'" class="example-margin" style="color: #C1C1C1">Concluida</mat-checkbox> -->
+  <mat-label></mat-label>
+  <br>
+  <mat-form-field appearance="standard">
+    <mat-label>Concluida</mat-label>
+    <input matInput #concluidaInput type="text">
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="standard">
+    <mat-label>Responsable</mat-label>
+    <input matInput #responsableInput type="text">
+  </mat-form-field>
+  <br>
+  <hr>
+  <button mat-raised-button color="primary" (click)="addTarea(tareaInput.value, concluidaInput.value, responsableInput.value)">Agregar</button>
+  <button mat-raised-button color="warn" routerLink="/" routerLinkActive="active">Cancelar</button>
+  </div>
+  

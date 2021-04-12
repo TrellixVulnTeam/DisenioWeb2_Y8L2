@@ -45,13 +45,18 @@ export class AppComponent implements OnInit {
 
   disableSelect = new FormControl(false);
 
+  deleteTarea(id) {
+    if (window.confirm('Desea eliminar la tarea?')) {
+      this.taskService.deleteTarea(id)
+      .subscribe((tareas: Tareas) =>{
+        this.tareas.filter(t => t._id != tareas._id)
+      });
+    }
+    
+  }
+
   // deleteBook(id) {
   //   console.log(id);
-  //   if (window.confirm('Desea eliminar el libro?')) {
-  //     this.taskService.deleteBook(id)
-  //     .subscribe((books: Books) =>{
-  //       this.books.filter(t => t._id != books._id)
-  //     });
-  //   }
+    
   // }
 }

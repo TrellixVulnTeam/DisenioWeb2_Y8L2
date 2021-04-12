@@ -2,26 +2,21 @@
     <h1 class="display-4">Editar Libro</h1>
     <hr style="border-top: solid 1px #D73964;">
     <mat-form-field appearance="standard">
-      <mat-label>Título Nuevo</mat-label>
-      <input matInput #newTitle>
+      <mat-label>Tarea</mat-label>
+      <input matInput #nuevaTareaInput>
     </mat-form-field>
     <br>
     <mat-form-field appearance="standard">
-      <mat-label>Autor Nuevo</mat-label>
-      <input matInput #newAuthor>
+      <mat-label>Concluida</mat-label>
+      <input matInput #nuevoStatusInput>
     </mat-form-field>
     <br>
     <mat-form-field appearance="standard">
-      <mat-label>Sinposis Nuevo</mat-label>
-      <input matInput #newSummary>
+      <mat-label>Responsable</mat-label>
+      <input matInput #nuevoResponsableInput>
     </mat-form-field>
     <br>
-    <mat-form-field appearance="standard">
-      <mat-label>Género Nuevo</mat-label>
-      <input matInput #newGenre>
-    </mat-form-field>
-    <br>
-    <button mat-raised-button color="primary" style="width: 90%; margin-left: 5%;" (click)="updateBook(getId, newTitle.value, newAuthor.value, newSummary.value, newGenre.value)">Editar Libro</button>
+    <button mat-raised-button color="primary" style="width: 90%; margin-left: 5%;" (click)="updateTarea(getId, nuevaTareaInput.value, nuevoStatusInput.value, nuevoResponsableInput.value)">Editar Libro</button>
       <br><br>
     <button mat-raised-button color="warn" style="width: 90%; margin-left: 5%;" routerLink="/"
         routerLinkActive="active">Cancelar</button>

@@ -16,21 +16,13 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSelectModule} from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DeleteBookComponent } from './components/delete-book/delete-book.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { NewTareaComponent } from './new-tarea/new-tarea.component';
-import { EditTareaComponent } from './components/edit-tarea/edit-tarea.component';
-import { DeleteTareaComponent } from './components/delete-tarea/delete-tarea.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RoutesApp,
-    DeleteBookComponent,
-    NewTareaComponent,
-    EditTareaComponent,
-    DeleteTareaComponent
+    RoutesApp
   ],
   imports: [
     BrowserModule,

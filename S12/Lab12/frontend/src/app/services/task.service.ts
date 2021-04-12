@@ -21,7 +21,7 @@ export class TaskService {
   }
 
   deleteTarea(tareaId: string) {
-    return this.webService.delete(`books/${tareaId}`);
+    return this.webService.delete(`tareas/${tareaId}`);
   }
 
   /*

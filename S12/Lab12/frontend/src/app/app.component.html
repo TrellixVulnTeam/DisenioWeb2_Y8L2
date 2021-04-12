@@ -25,13 +25,13 @@
 
           <mat-form-field appearance="standard">
             <mat-label>Acción deseada</mat-label>
-            <mat-select [disabled]="!element.check">
-              <a routerLink="/edit-book/{{ element._id }}">
+            <mat-select>
+              <a routerLink="/edit-tarea/{{ element._id }}">
                 <mat-option value="edit">
                   Editar
                 </mat-option>
               </a>
-              <mat-option value="delete" >
+              <mat-option value="delete" (click)="deleteTarea(element._id)">
                 Eliminar
               </mat-option>
             </mat-select>
@@ -42,7 +42,7 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
     <br>
-    <button mat-raised-button color="primary" style="width: 90%; margin-left: 5%;" routerLink="/new-book"
+    <button mat-raised-button color="primary" style="width: 90%; margin-left: 5%;" routerLink="/new-tarea"
       routerLinkActive="active">Agregar Libro</button>
   </div>
   <router-outlet></router-outlet>
