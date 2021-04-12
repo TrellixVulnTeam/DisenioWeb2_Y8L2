@@ -114,4 +114,20 @@ export class TaskService {
     return this.webService.post('empleados', {codigo, cedula, nombre, primer_apellido, segundo_apellido, telefono_1, telefono_2, puesto, nacionalidad});
   }
 
+  getMesas() {
+    return this.webService.get('mesas');
+  }
+
+  postMesas(codigo: String, nombre: String, numero: Number, cantidad_sillas: Number, nombre_restaurante: String) {
+    return this.webService.post('mesas', {codigo, nombre, numero, cantidad_sillas, nombre_restaurante});
+  }
+
+  getPuestos() {
+    return this.webService.get('puestos');
+  }
+
+  postPuestos(codigo: String, nombre: String, interno: String, externo: String, rol_restaurante: String) {
+    return this.webService.post('puestos', {codigo, nombre, interno, externo, rol_restaurante})
+  }
+
 }

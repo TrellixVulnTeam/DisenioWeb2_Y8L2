@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import Bufet from 'src/app/models/bufet';
+import Puestos from 'src/app/models/puestos';
 import { TaskService } from '../../services/task.service';
 import { Router } from '@angular/router';
 
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./puestos.component.css']
 })
 export class PuestosComponent implements OnInit {
-  bufet : Bufet[] = [];
+  puestos : Puestos[] = [];
 
   displayedColumnsPuestos: string[] = ['codigo', 'nombre', 'rol', 'interno', 'externo'];
 
@@ -18,8 +18,18 @@ export class PuestosComponent implements OnInit {
   constructor(private taskService: TaskService, private router: Router) { }
 
   ngAfterViewInit() {
-    this.taskService.getBufet()
-    .subscribe((bufet: Bufet[]) =>{ this.dataSource = bufet });
+    this.viewPuestos();
+
+  }
+
+  viewPuestos() {
+    this.taskService.getPuestos()
+    .subscribe((puestos: Puestos[]) =>{ this.dataSource = puestos });
+  }
+
+  addPuestos(codigo: String, nombre: String, interno: String, externo: String, rol_restaurante: String) {
+    this.taskService.postPuestos(codigo, nombre, interno, externo, rol_restaurante)
+    .subscribe((puestos : Puestos) => this.router.navigate(['/']));
   }
 
   ngOnInit(): void {

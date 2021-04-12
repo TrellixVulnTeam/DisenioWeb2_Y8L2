@@ -21,10 +21,8 @@ var BebidasCalientes = require('./database/models/bebidascalientes');
 var BebidasFrias = require('./database/models/bebidasfrias');
 var BebidasGaseosas = require('./database/models/bebidasgaseosas');
 var Empleados = require('./database/models/empleados');
-// const { runInNewContext } = require('node:vm');
-// var DatosPersonales = require('./database/models/usuarios');
-// var DatosTecnicos = require('./database/models/usuarios');
-// var Privilegios = require('./database/models/usuarios');
+var Mesas = require('./database/models/mesas');
+var Puestos = require('./database/models/puestos');
 
 var app = express();
 
@@ -337,7 +335,7 @@ app.get('/empleados', (req, res) =>{
 app.post('/empleados', (req, res)=> {
     (new Empleados({
         'codigo' : req.body.codigo,
-        'cedula': req.bod.cedula,
+        'cedula': req.body.cedula,
         'nombre' : req.body.nombre,
         'primer_apellido' : req.body.primer_apellido,
         'segundo_apellido' : req.body.segundo_apellido,
@@ -345,7 +343,11 @@ app.post('/empleados', (req, res)=> {
         'telefono_2' : req.body.telefono_2,
         'puesto' : req.body.puesto,
         'nacionalidad' : req.body.nacionalidad
-    }))
+    }
+    ))
+    .save()
+    .then((empleados) => { res.send(empleados) })
+    .catch((error) => console.log(error))
 });
 
 //PROVEEDORES
@@ -353,6 +355,48 @@ app.post('/empleados', (req, res)=> {
 //ADMINISTRACIÓN
 
 //REPORTES
+
+
+//MESAS
+app.get('/mesas', (req, res) => {
+    Mesas.find({})
+    .then(mesas => res.send(mesas))
+    .catch((error) => console.log(error))
+});
+
+app.post('/mesas', (req, res) => {
+    (new Mesas({
+        'codigo': req.body.codigo,
+        'nombre': req.body.nombre,
+        'numero' : req.body.numero,
+        'cantidad_sillas': req.body.cantidad_sillas,
+        'nombre_restaurante': req.body.nombre_restaurante
+    }
+    ))
+    .save()
+    .then((mesas) => { res.send(mesas) })
+    .catch((error) => console.log(error))
+});
+
+app.get('/puestos', (req, res) => {
+    Puestos.find({})
+    .then(puestos => res.send(puestos))
+    .catch((error) => console.log(error))
+});
+
+app.post('/puestos', (req, res) =>{
+    (new Puestos({
+        'codigo' : req.body.codigo,
+        'nombre': req.body.nombre,
+        'interno': req.body.interno,
+        'externo': req.body.externo,
+        'rol_restaurante': req.body.rol_restaurante
+    }
+    ))
+    .save()
+    .then((puestos) => { res.send(puestos) })
+    .catch((error) => console.log(error))
+});
 
 var port = 3000;
 
