@@ -24,6 +24,10 @@ var BebidasGaseosas = require('./database/models/bebidasgaseosas');
 var Empleados = require('./database/models/empleados');
 var Mesas = require('./database/models/mesas');
 var Puestos = require('./database/models/puestos');
+var datosCliente = require('./database/models/datoscliente');
+const fechasCliente = require('./database/models/fechascliente');
+const infopedido = require('./database/models/infopedido');
+const Cliente = require('./database/models/cliente');
 
 var app = express();
 
