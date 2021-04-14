@@ -75,6 +75,16 @@ app.post('/usuarios', (req, res) =>{
     .then((usuarios) => {res.send(usuarios)})
     .catch((error) => console.log(error))
 });
+app.patch('/usuarios/:codigo', (req, res) =>{
+    Usuarios.findByIdAndUpdate( {'_id' : req.params.codigo}, { $set : req.body})
+    .then((usuarios) => res.send(usuarios))
+    .catch((error) => console.log(error));
+});
+app.delete('/usuarios/:codigo', (req, res) => {
+    Usuarios.findByIdAndDelete(req.params.codigo)
+    .then((list) => res.send(list))
+    .catch((error) => console.log(error));
+});
 
 //Consecutivos
 
@@ -98,6 +108,16 @@ app.post('/consecutivos', (req, res) =>{
     .then((consecutivo) => {res.send(consecutivo)})
     .catch((error) => console.log(error))
 });
+app.patch('/consecutivos/:consecutivoId', (req, res) =>{
+    Consecutivo.findByIdAndUpdate( {'_id' : req.params.consecutivoId}, { $set : req.body})
+    .then((usuarios) => res.send(usuarios))
+    .catch((error) => console.log(error));
+});
+app.delete('/consecutivos/:consecutivoId', (req, res) => {
+    Consecutivo.findByIdAndDelete(req.params.consecutivoId)
+    .then((list) => res.send(list))
+    .catch((error) => console.log(error));
+});
 
 //Países
 app.get('/paises', (req, res) =>{
@@ -119,6 +139,16 @@ app.post('/paises', (req, res) =>{
     .catch((error) => console.log(error));
 });
 
+app.patch('/paises/:codigo', (req, res) =>{
+    Paises.findByIdAndUpdate( {'_id' : req.params.codigo}, { $set : req.body})
+    .then((paises) => res.send(paises))
+    .catch((error) => console.log(error));
+});
+app.delete('/paises/:codigo', (req, res) => {
+    Paises.findByIdAndDelete(req.params.codigo)
+    .then((list) => res.send(list))
+    .catch((error) => console.log(error));
+});
 //Cajas
 app.get('/cajas', (req, res) => {
     Cajas.find({})
@@ -139,7 +169,16 @@ app.post('/cajas', (req, res) =>{
     .then((cajas) => {res.send(cajas)})
     .catch((error) => console.log(error))
 });
-
+app.patch('/cajas/:codigo', (req, res) =>{
+    Cajas.findByIdAndUpdate( {'_id' : req.params.codigo}, { $set : req.body})
+    .then((cajas) => res.send(cajas))
+    .catch((error) => console.log(error));
+});
+app.delete('/cajas/:codigo', (req, res) => {
+    Cajas.findByIdAndDelete(req.params.codigo)
+    .then((list) => res.send(list))
+    .catch((error) => console.log(error));
+});
 //Roles y Eventos
 
 app.get('/roles-y-eventos', (req, res) =>{
@@ -160,6 +199,16 @@ app.post('/roles-y-eventos', (req, res) => {
     .then((rolentos) => {res.send(rolentos)})
     .catch((error) => console.log(error))
 });
+app.patch('/roles-y-eventos/:codigo', (req, res) =>{
+    RolesEventos.findByIdAndUpdate( {'_id' : req.params.codigo}, { $set : req.body})
+    .then((roles_eventos) => res.send(roles_eventos))
+    .catch((error) => console.log(error));
+});
+app.delete('/roles-y-eventos/:codigo', (req, res) => {
+    RolesEventos.findByIdAndDelete(req.params.codigo)
+    .then((list) => res.send(list))
+    .catch((error) => console.log(error));
+});
 
 //detalleUDm
 
@@ -178,6 +227,16 @@ app.post('/detalleUDM', (req, res) => {
     .save()
     .then((detalleudm) => {res.send(detalleudm)})
     .catch((error) => console.log(error))
+});
+app.patch('/detalleUDM/:detalle', (req, res) =>{
+    DetalleUDM.findByIdAndUpdate( {'_id' : req.params.detalle}, { $set : req.body})
+    .then((detalleudm) => res.send(detalleudm))
+    .catch((error) => console.log(error));
+});
+app.delete('/detalleUDM/:detalle', (req, res) => {
+    DetalleUDM.findByIdAndDelete(req.params.detalle)
+    .then((list) => res.send(list))
+    .catch((error) => console.log(error));
 });
 
 app.get('/unidad-de-medida', (req, res) =>{
@@ -202,6 +261,158 @@ app.post('/unidad-de-medida', (req, res) =>{
     .catch((error) => console.log(error))
 });
 
+app.patch('/unidad-de-medida/:codigo', (req, res) =>{
+    UnidadMedida.findByIdAndUpdate( {'_id' : req.params.codigo}, { $set : req.body})
+    .then((unidad_medida) => res.send(unidad_medida))
+    .catch((error) => console.log(error));
+});
+app.delete('/unidad-de-medida/:codigo', (req, res) => {
+    UnidadMedida.findByIdAndDelete(req.params.codigo)
+    .then((list) => res.send(list))
+    .catch((error) => console.log(error));
+});
+//Clientes
+
+//DATOS DEL CLIENTE
+
+app.get('/datoscliente', (req, res) =>{
+    datosCliente.find({})
+    .then(dtclientes => res.send(dtclientes))
+    .catch((error) => console.log(error));
+});
+app.post('/datoscliente', (req, res) =>{
+    (new datosCliente(
+        {
+            'codigo': req.body.codigo,
+            "nombre": req.body.nombre,
+            "num_mesa": req.body.num_mesa,
+            "monto": req.body.monto,
+            "restaurante": req.body.restaurante,
+            "hora_entrada": req.body.hora_entrada,
+            "hora_salida": req.body.hora_salida, 
+            "duracion": req.body.duracion
+        }
+    ))
+    .save()
+    .then((dtclientes) => {res.send(dtclientes)})
+    .catch((error) => console.log(error))
+});
+
+app.patch('/datoscliente/:codigo', (req, res) =>{
+    datosCliente.findByIdAndUpdate( {'_id' : req.params.codigo}, { $set : req.body})
+    .then((dtclientes) => res.send(dtclientes))
+    .catch((error) => console.log(error));
+});
+app.delete('/datoscliente/:codigo', (req, res) => {
+    datosCliente.findByIdAndDelete(req.params.codigo)
+    .then((list) => res.send(list))
+    .catch((error) => console.log(error));
+});
+
+//Fechas del cliente
+
+app.get('/fechascliente', (req, res) =>{
+    fechasCliente.find({})
+    .then(fhclientes => res.send(fhclientes))
+    .catch((error) => console.log(error));
+});
+
+app.post('/fechascliente', (req, res) =>{
+    (new fechasCliente(
+        {
+            'codigo': req.body.codigo,
+            'reservacion' : req.body.reservacion,
+            'fechallegada' : req.body.fechallegada,
+            'fechareservacion' : req.body.fechareservacion
+        }
+    ))
+    .save()
+    .then((fhclientes) => {res.send(fhclientes)})
+    .catch((error) => console.log(error))
+});
+app.patch('/fechascliente/:codigo', (req, res) =>{
+    fechasCliente.findByIdAndUpdate( {'_id' : req.params.codigo}, { $set : req.body})
+    .then((fhclientes) => res.send(fhclientes))
+    .catch((error) => console.log(error));
+});
+app.delete('/fechascliente/:codigo', (req, res) => {
+    fechasCliente.findByIdAndDelete(req.params.codigo)
+    .then((list) => res.send(list))
+    .catch((error) => console.log(error));
+});
+
+//Información del pedido
+
+app.get('/infopedido', (req, res) =>{
+    infopedido.find({})
+    .then(infop => res.send(infop))
+    .catch((error) => console.log(error));
+});
+
+app.post('/infopedido', (req, res) =>{
+    (new infopedido(
+        {
+            'codigo': req.body.codigo,
+            'numMesa': req.body.numMesa,
+            'pedidoSilla1' : req.body.pedidoSilla1,
+            'pedidoSilla2': req.body.pedidoSilla2,
+            'pedidoSilla3': req.body.pedidoSilla3,
+            'pedidoSilla4': req.body.pedidoSilla4,
+            'precioSilla1' : req.body.precioSilla1,
+            'precioSilla2' : req.body.precioSilla2,
+            'precioSilla3' : req.body.precioSilla3,
+            'precioSilla4' : req.body.precioSilla4,
+        }
+    ))
+    .save()
+    .then((infop) => {res.send(infop)})
+    .catch((error) => console.log(error))
+});
+app.patch('/infopedido/:codigo', (req, res) =>{
+    infopedido.findByIdAndUpdate( {'_id' : req.params.codigo}, { $set : req.body})
+    .then((infop) => res.send(infop))
+    .catch((error) => console.log(error));
+});
+app.delete('/infopedido/:codigo', (req, res) => {
+    infopedido.findByIdAndDelete(req.params.codigo)
+    .then((list) => res.send(list))
+    .catch((error) => console.log(error));
+});
+//Cliente
+
+app.get('/cliente', (req, res) =>{
+    Cliente.find({})
+    .then(cl => res.send(cl))
+    .catch((error) => console.log(error));
+});
+
+app.post('/cliente', (req, res) =>{
+    (new Cliente(
+        {
+            'codigo': req.body.codigo,
+            'nombre': req.body.nombre,
+            'monto_cliente': req.body.monto_cliente,
+            'detalle' : req.body.detalle,
+            'fecha': req.body.fecha,
+            'reservacion': req.body.reservacion,
+            'barra': req.body.barra,
+            'restaurante': req.body.restaurante
+        }
+    ))
+    .save()
+    .then((cl) => {res.send(cl)})
+    .catch((error) => console.log(error))
+});
+app.patch('/cliente/:codigo', (req, res) =>{
+    Cliente.findByIdAndUpdate( {'_id' : req.params.codigo}, { $set : req.body})
+    .then((cl) => res.send(cl))
+    .catch((error) => console.log(error));
+});
+app.delete('/cliente/:codigo', (req, res) => {
+    Cliente.findByIdAndDelete(req.params.codigo)
+    .then((list) => res.send(list))
+    .catch((error) => console.log(error));
+});
 //RESTAURANTES
 
 //REST-ESPECIALES-BUFET
@@ -294,6 +505,17 @@ app.post('/bebidas_calientes', (req, res) => {
     .catch((error) => console.log(error))
 });
 
+app.patch('/bebidas_calientes/:codigo', (req, res) =>{
+    BebidasCalientes.findByIdAndUpdate( {'_id' : req.params.codigo}, { $set : req.body})
+    .then((bebidas_calientes) => res.send(bebidas_calientes))
+    .catch((error) => console.log(error));
+});
+app.delete('/bebidas_calientes/:codigo', (req, res) => {
+    BebidasCalientes.findByIdAndDelete(req.params.codigo)
+    .then((list) => res.send(list))
+    .catch((error) => console.log(error));
+});
+
 //REST-BEBIDAS-FRÍAS
 
 app.get('/bebidas_frias', (req, res) =>{
@@ -316,6 +538,16 @@ app.post('/bebidas_frias', (req, res) => {
     .save()
     .then((bebidas_frias) => { res.send(bebidas_frias) })
     .catch((error) => console.log(error))
+});
+app.patch('/bebidas_frias/:codigo', (req, res) =>{
+    BebidasFrias.findByIdAndUpdate( {'_id' : req.params.codigo}, { $set : req.body})
+    .then((bebidas_frias) => res.send(bebidas_frias))
+    .catch((error) => console.log(error));
+});
+app.delete('/bebidas_frias/:codigo', (req, res) => {
+    BebidasFrias.findByIdAndDelete(req.params.codigo)
+    .then((list) => res.send(list))
+    .catch((error) => console.log(error));
 });
 
 //REST-BEBIDAS-GASEOSAS
@@ -342,6 +574,17 @@ app.post('/bebidas_gaseosas', (req, res) => {
     .save()
     .then((bebidas_gaseosas) => { res.send(bebidas_gaseosas) })
     .catch((error) => console.log(error))
+});
+
+app.patch('/bebidas_gaseosas/:codigo', (req, res) =>{
+    BebidasGaseosas.findByIdAndUpdate( {'_id' : req.params.codigo}, { $set : req.body})
+    .then((bebidas_gaseosas) => res.send(bebidas_gaseosas))
+    .catch((error) => console.log(error));
+});
+app.delete('/bebidas_gaseosas/:codigo', (req, res) => {
+    BebidasGaseosas.findByIdAndDelete(req.params.codigo)
+    .then((list) => res.send(list))
+    .catch((error) => console.log(error));
 });
 
 //REST-BEBIDAS-LICORES
@@ -398,6 +641,16 @@ app.post('/empleados', (req, res)=> {
     .then((empleados) => { res.send(empleados) })
     .catch((error) => console.log(error))
 });
+app.patch('/empleados/:codigo', (req, res) =>{
+    Empleados.findByIdAndUpdate( {'_id' : req.params.codigo}, { $set : req.body})
+    .then((empleados) => res.send(empleados))
+    .catch((error) => console.log(error));
+});
+app.delete('/empleados/:codigo', (req, res) => {
+    Empleados.findByIdAndDelete(req.params.codigo)
+    .then((list) => res.send(list))
+    .catch((error) => console.log(error));
+});
 
 //PROVEEDORES
 
@@ -426,6 +679,16 @@ app.post('/mesas', (req, res) => {
     .then((mesas) => { res.send(mesas) })
     .catch((error) => console.log(error))
 });
+app.patch('/mesas/:codigo', (req, res) =>{
+    Mesas.findByIdAndUpdate( {'_id' : req.params.codigo}, { $set : req.body})
+    .then((mesas) => res.send(mesas))
+    .catch((error) => console.log(error));
+});
+app.delete('/mesas/:codigo', (req, res) => {
+    Mesas.findByIdAndDelete(req.params.codigo)
+    .then((list) => res.send(list))
+    .catch((error) => console.log(error));
+});
 
 app.get('/puestos', (req, res) => {
     Puestos.find({})
@@ -445,6 +708,16 @@ app.post('/puestos', (req, res) =>{
     .save()
     .then((puestos) => { res.send(puestos) })
     .catch((error) => console.log(error))
+});
+app.patch('/puestos/:codigo', (req, res) =>{
+    Puestos.findByIdAndUpdate( {'_id' : req.params.codigo}, { $set : req.body})
+    .then((puestos) => res.send(puestos))
+    .catch((error) => console.log(error));
+});
+app.delete('/puestos/:codigo', (req, res) => {
+    Puestos.findByIdAndDelete(req.params.codigo)
+    .then((list) => res.send(list))
+    .catch((error) => console.log(error));
 });
 
 var port = 3000;
