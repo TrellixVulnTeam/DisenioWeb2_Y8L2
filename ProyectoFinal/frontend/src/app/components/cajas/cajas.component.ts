@@ -4,6 +4,11 @@ import Bufet from 'src/app/models/bufet';
 import { Router } from '@angular/router';
 import { ViewChild } from '@angular/core';
 
+interface OptionsAdmin {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-cajas',
   templateUrl: './cajas.component.html',
@@ -14,10 +19,20 @@ export class CajasComponent implements OnInit {
   selected;
   dataSource;
 
+
+
+  optionsAdmin: OptionsAdmin[] =
+  [
+    {value: 'Administrador del systema', viewValue: 'Administrador del systema'},
+    {value: 'Administrador de seguridad', viewValue: 'Administrador de seguridad'},
+    {value: 'Administrador del restaurante', viewValue: 'Administrador del restaurante'},
+    {value: 'Administrador de cuentas', viewValue: 'Administrador de cuentas'}
+  ];
+
   @ViewChild('myCheckbox') myCheckbox;
 
   isChecked = false;
-  optionsAdmin: string[] = ['Administrador del systema', 'Administrador de seguridad', 'Administrador del restaurante', 'Administrador de cuentas'];
+  // optionsAdmin: string[] = ['Administrador del systema', 'Administrador de seguridad', 'Administrador del restaurante', 'Administrador de cuentas'];
   displayedColumnsConsecutivos: string[] = ['codigo', 'fecha_registro', 'descripcion', 'entrada_dinero', 'apertura_caja', 'cierre_caja', 'restaurante'];
 
   constructor(private taskService: TaskService, private router: Router) { }

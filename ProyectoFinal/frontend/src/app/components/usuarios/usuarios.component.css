@@ -13,3 +13,7 @@ mat-checkbox {
   margin-right: 10px;
   color: #E0E2E8;
 }
+
+mat-select:active {
+  color: green!important;
+}

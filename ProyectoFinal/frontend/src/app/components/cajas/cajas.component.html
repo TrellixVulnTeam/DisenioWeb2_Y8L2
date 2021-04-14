@@ -107,9 +107,13 @@
       <div>
         <h1 class="display-4">Privilegios</h1>
         <hr>
-        <div *ngFor="let item of optionsAdmin;  let i = index">
-          <mat-checkbox (change)="checkCheckBoxvalue($event)" ng-true-value="'YOS'" class="example-margin" [checked]="selected === i" (change)="selected = i"> {{ item }}</mat-checkbox>
-        </div>
+        <mat-form-field appearance="standard" style="width: 250px!important; text-align: center;">
+          <mat-select>
+            <mat-option *ngFor="let option of optionsAdmin" [value]="option.value">
+              {{option.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
       <button type="submit">Add</button>
     </form>

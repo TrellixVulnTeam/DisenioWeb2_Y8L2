@@ -4,6 +4,11 @@ import Bufet from 'src/app/models/bufet';
 import Usuarios from 'src/app/models/usuarios';
 import { Router } from '@angular/router';
 
+interface OptionsAdmin {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-usuarios',
   templateUrl: './usuarios.component.html',
@@ -19,12 +24,12 @@ export class UsuariosComponent implements OnInit {
   tipo_privilegio;
   all = false;
 
-  optionsAdmin: string[] =
+  optionsAdmin: OptionsAdmin[] =
   [
-    'Administrador del systema',
-    'Administrador de seguridad',
-    'Administrador del restaurante',
-    'Administrador de cuentas'
+    {value: 'Administrador del systema', viewValue: 'Administrador del systema'},
+    {value: 'Administrador de seguridad', viewValue: 'Administrador de seguridad'},
+    {value: 'Administrador del restaurante', viewValue: 'Administrador del restaurante'},
+    {value: 'Administrador de cuentas', viewValue: 'Administrador de cuentas'}
   ];
   // displayedColumnsUsuarios: string[] = ['codigo'];
   displayedColumnsUsuarios: string[] = ['codigo', 'nombre', 'prim_apellido', 'seg_apellido', 'tel_fijo', 'tel_celular'];

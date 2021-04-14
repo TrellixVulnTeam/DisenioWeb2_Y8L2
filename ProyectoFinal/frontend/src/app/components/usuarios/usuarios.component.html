@@ -83,7 +83,7 @@
         </mat-form-field>
         <br>
       </div>
-      <div>
+      <div style="height: 420px;">
         <h1 class="display-4">Dátos técnicos</h1>
         <hr>
         <mat-form-field>
@@ -101,17 +101,37 @@
           <input matInput type="password">
         </mat-form-field>
         <br>
-      </div>
-      <div>
         <h1 class="display-4">Privilegios</h1>
         <hr>
-        <section class="example-section" *ngFor="let item of optionsAdmin;  let i = index">
+        <mat-form-field appearance="standard" style="width: 250px!important; text-align: center;">
+          <mat-select>
+            <mat-option *ngFor="let option of optionsAdmin" [value]="option.value">
+              {{option.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <!-- <section class="example-section" *ngFor="let item of optionsAdmin;  let i = index">
           <mat-checkbox class="example-margin" [checked]="selected === i" (change)="selected = i" ng-checked="all"> {{ item }}</mat-checkbox>
-        </section>
+        </section> -->
         <!-- <div  #tipo_privilegio>
         </div> -->
       </div>
-      <button type="submit">AA</button>
+      <!-- <div>
+        <h1 class="display-4">Privilegios</h1>
+        <hr>
+        <mat-form-field appearance="standard" style="width: 250px!important; text-align: center;">
+          <mat-select>
+            <mat-option *ngFor="let option of optionsAdmin" [value]="option.value">
+              {{option.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div> -->
+      <br>
     </form>
+    <br>
+    <a routerLink="/restaurantes" routerLinkActive="active"><button class="confirmbtn" mat-raised-button color="primary" style="width: 50%;">Insertar</button></a>
+    <br>
+    <a routerLink="/restaurantes" routerLinkActive="active"><button class="warnbtn" mat-raised-button color="primary" style="width: 50%; margin-top: 10px;">Borrar</button></a>
   </mat-expansion-panel>
 </mat-accordion>

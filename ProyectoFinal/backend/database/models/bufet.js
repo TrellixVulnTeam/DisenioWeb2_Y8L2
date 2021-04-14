@@ -3,6 +3,10 @@ const mongoose = require('mongoose');
 // cisnisndf 
 
 const bufetSchema = new mongoose.Schema({
+    bufetId: {
+        type: String, 
+        required: false
+    },
     codigo: {
         type: String,
         required: true

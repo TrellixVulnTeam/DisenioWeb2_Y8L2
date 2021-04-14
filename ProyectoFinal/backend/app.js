@@ -1,4 +1,5 @@
 const mongoose = require('./database/mongoose');
+var crpyto = require('crypto');
 
 var express = require('express');
 
@@ -209,7 +210,10 @@ app.get('/bufet', (req, res) => {
 app.post('/bufet', (req, res) =>{
     (new Bufet(
         {
-            'codigo':        req.body.codigo,
+            'codigo': crpyto
+                    .createHash("sha256")
+                    .update(req.body.codigo)
+                    .digest("hex"),
             'nombre':        req.body.nombre,
             'precio':        req.body.precio,
             'tipo':          req.body.tipo,
@@ -220,6 +224,47 @@ app.post('/bufet', (req, res) =>{
     .then((bufet) =>{ res.send(bufet)})
     .catch((error) => console.log(error))
 });
+
+
+app.patch('/bufet/:bufetId', (req, res) => {
+    Bufet.findByIdAndUpdate({'_id' : req.params.bufetId}, {$set : req.body})
+    // UPDATE * WHERE ID = 3
+    .then((bufet) => res.send(bufet))
+    // After update, mande el object [req.body]
+    .catch((error) => console.log(error));
+    //Failsafe try-catch
+});
+
+app.delete('/bufet/:bufetId', (req, res) => {
+    Bufet.findByIdAndRemove(req.params.bufetId)
+    //DELETE WHERE bufetId = 1 // req.params y req.body.codigo
+    .then((bufet) => res.send(bufet))
+    .catch((error) => console.log(error));
+});
+
+
+// 
+
+/* 
+
+UPDATE BUFETS
+app.patch('/books/:bookId', (req, res) =>{
+    Books.findByIdAndUpdate( {'_id' : req.params.bookId}, { $set : req.body})
+    // UPDATE WHERE
+    .then((book) => res.send(book))
+    .catch((error) => console.log(error));
+});
+
+ELIMINAR BUFET
+//DELETE / DELETE
+app.delete('/books/:bookId', (req, res) => {
+    Books.findByIdAndDelete(req.params.bookId)
+    .then((list) => res.send(list))
+    .catch((error) => console.log(error));
+});
+
+
+*/
 
 //REST-BEBIDAS-CALIENTES
 
