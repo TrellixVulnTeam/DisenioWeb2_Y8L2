@@ -18,7 +18,12 @@ app.get('/buseta', (req, res) =>{
 function minus(num) {
     var a = 20;
 
-    var totalRemaining = a - num;
+    if (a != 0) {
+        var totalRemaining = a - num;
+    } else if (num > a) {
+        console.log('NO PODER');
+
+    }
 
     return totalRemaining;
 
