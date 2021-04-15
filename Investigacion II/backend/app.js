@@ -15,15 +15,15 @@ app.get('/buseta', (req, res) =>{
     .catch((error) => console.log(error))
 });
 
-function minus(num) {
+function minus(numDB, num) {
     var a = 20;
 
-    if (a != 0) {
-        var totalRemaining = a - num;
-    } else if (num > a) {
-        console.log('NO PODER');
+    // if (a != 0) {
+    //     var totalRemaining = a - num;
+    // } else if (num > a) {
+    //     console.log('NO PODER');
 
-    }
+    // }
 
     return totalRemaining;
 
