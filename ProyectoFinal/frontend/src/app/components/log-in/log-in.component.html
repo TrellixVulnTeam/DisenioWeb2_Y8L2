@@ -1,15 +1,20 @@
+<script>
+  function validaUser(){
+    location.href = "/ProyectoFinal/frontend/src/app/components/administracion/administracion.component.html"
+  }
+
+</script>
 <div class="row">
   <div class="col">
     <div class="jumbotron contentjmb" style="width: 100%;">
       <p>Inicio de Sesión</p>
       <section>
         <div class="example-button-row">
-          <button mat-raised-button>Basic</button>
-          <button mat-raised-button color="primary">Primary</button>
-          <button mat-raised-button color="accent">Accent</button>
-          <button mat-raised-button color="warn">Warn</button>
-          <button mat-raised-button disabled>Disabled</button>
-          <a mat-raised-button href="https://www.google.com/" target="_blank">Link</a>
+          <label>Digite su usuario</label>
+          <input type="text" >
+          <label>Digite su contraseña</label>
+          <input type="password" >
+          <button onClick="validaUser" mat-raised-button color="primary">Login</button>
         </div>
       </section>
     </div>
