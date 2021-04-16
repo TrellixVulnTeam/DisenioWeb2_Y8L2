@@ -52,6 +52,6 @@ const marcaSchema = mongoose.Schema({
     }
 });
 
-const Marca = mongoose.model('marcas', marcaSchema);
+const Marcas = mongoose.model('Marcas', marcaSchema);
 
-module.exports = Marca;
+module.exports = Marcas;

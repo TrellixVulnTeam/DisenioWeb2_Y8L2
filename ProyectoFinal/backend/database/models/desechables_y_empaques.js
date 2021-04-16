@@ -27,6 +27,6 @@ const desechable_y_empaqueSchema = mongoose.Schema({
     }
 });
 
-const Desechable = mongoose.model('desechables_y_empaques', desechable_y_empaqueSchema);
+const Desechables = mongoose.model('Desechables', desechable_y_empaqueSchema);
 
-module.exports = Desechable;
+module.exports = Desechables;

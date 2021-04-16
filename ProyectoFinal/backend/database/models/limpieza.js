@@ -27,6 +27,6 @@ const limpiezaSchema = mongoose.Schema({
     }
 });
 
-const Limpieza = mongoose.model('limpieza', limpiezaSchema);
+const Limpieza = mongoose.model('Limpieza', limpiezaSchema);
 
 module.exports = Limpieza;

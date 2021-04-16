@@ -39,6 +39,6 @@ const comestibleSchema = mongoose.Schema({
     }
 });
 
-const Comestible = mongoose.model('comestibles', comestibleSchema);
+const Comestibles = mongoose.model('Comestibles', comestibleSchema);
 
-module.exports = Comestible;
+module.exports = Comestibles;

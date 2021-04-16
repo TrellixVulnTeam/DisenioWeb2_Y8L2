@@ -63,6 +63,6 @@ const proveedorSchema = mongoose.Schema({
     }
 });
 
-const Proveedor = mongoose.model('proveedores', proveedorSchema);
+const Proveedores = mongoose.model('Proveedores', proveedorSchema);
 
-module.exports = Proveedor;
+module.exports = Proveedores;

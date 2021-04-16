@@ -23,7 +23,7 @@ const restauranteSchema = mongoose.Schema({
     }
 });
 
-const Restaurante = mongoose.model('restaurantes', restauranteSchema);
+const Restaurantes = mongoose.model('Restaurantes', restauranteSchema);
 
-module.exports = Restaurante;
+module.exports = Restaurantes;
 

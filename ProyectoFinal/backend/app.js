@@ -26,15 +26,15 @@ var datosCliente = require('./database/models/datoscliente');
 const fechasCliente = require('./database/models/fechascliente');
 const infopedido = require('./database/models/infopedido');
 const Cliente = require('./database/models/cliente');
-const Restaurante = require('./database/models/restaurantes');
-const Marca = require('./database/models/marcas');
-const Comestible = require('./database/models/comestibles');
-const Desechable = require('./database/models/desechables_y_empaques');
+const Restaurantes = require('./database/models/restaurantes');
+const Marcas = require('./database/models/marcas');
+const Comestibles = require('./database/models/comestibles');
+const Desechables = require('./database/models/desechables_y_empaques');
 const Limpieza = require('./database/models/limpieza');
 const Tecnologia = require('./database/models/tecnologia');
-const Equipo = require('./database/models/equipos');
-const Proveedor = require('./database/models/proveedores');
-const Vino = require('./database/models/vinos');
+const Equipos = require('./database/models/equipos');
+const Proveedores = require('./database/models/proveedores');
+const Vinos = require('./database/models/vinos');
 
 
 var app = express();
@@ -699,13 +699,13 @@ app.delete('/licores/:codigo', (req, res) => {
 
 //REST-BEBIDAS-VINOS
 app.get('/vinos', (req, res) => {
-    Vino.find({})
-        .then(vinos => res.send(limpievinosza))
+    Vinos.find({})
+        .then(vinos => res.send(vinos))
         .catch((error) => console.log(error));
 });
 
 app.post('/vinos', (req, res) => {
-    (new Vino({
+    (new Vinos({
         'codigo': req.body.codigo,
         'restaurante': req.body.restaurante,
         'nombre': req.body.nombre,
@@ -725,7 +725,7 @@ app.post('/vinos', (req, res) => {
 });
 
 app.patch('/vinos/:codigo', (req, res) => {
-    Vino.findByIdAndUpdate({
+    Vinos.findByIdAndUpdate({
             '_id': req.params.codigo
         }, {
             $set: req.body
@@ -735,7 +735,7 @@ app.patch('/vinos/:codigo', (req, res) => {
 });
 
 app.delete('/vinos/:codigo', (req, res) => {
-    Vino.findByIdAndDelete(req.params.codigo)
+    Vinos.findByIdAndDelete(req.params.codigo)
         .then((list) => res.send(list))
         .catch((error) => console.log(error));
 });
@@ -783,12 +783,13 @@ app.delete('/empleados/:codigo', (req, res) => {
 
 //RESTAURANTES
 app.get('/restaurantes', (req, res) => {
-    Restaurante.find({})
+    Restaurantes.find({})
         .then(restaurantes => res.send(restaurantes))
         .catch((error) => console.log(error));
 });
 
-app.post('/restaurantes', (req, res) => {(new Restaurante({
+app.post('/restaurantes', (req, res) => {
+    (new Restaurantes({
         'codigo': req.body.codigo,
         'nombre': req.body.nombre,
         'direccion': req.body.direccion,
@@ -802,7 +803,7 @@ app.post('/restaurantes', (req, res) => {(new Restaurante({
 });
 
 app.patch('/restaurantes/:codigo', (req, res) => {
-    Restaurante.findByIdAndUpdate({
+    Restaurantes.findByIdAndUpdate({
             '_id': req.params.codigo
         }, {
             $set: req.body
@@ -812,7 +813,7 @@ app.patch('/restaurantes/:codigo', (req, res) => {
 });
 
 app.delete('/restaurantes/:codigo', (req, res) => {
-    Restaurante.findByIdAndDelete(req.params.codigo)
+    Restaurantes.findByIdAndDelete(req.params.codigo)
         .then((list) => res.send(list))
         .catch((error) => console.log(error));
 });
@@ -821,13 +822,13 @@ app.delete('/restaurantes/:codigo', (req, res) => {
 
 //MARCAS
 app.get('/marcas', (req, res) => {
-    Marca.find({})
+    Marcas.find({})
         .then(marcas => res.send(marcas))
         .catch((error) => console.log(error));
 });
 
 app.post('/marcas', (req, res) => {
-    (new Marca({
+    (new Marcas({
         'codigo': req.body.codigo,
         'nombre': req.body.nombre,
         'descripcion': req.body.descripcion,
@@ -847,7 +848,7 @@ app.post('/marcas', (req, res) => {
 });
 
 app.patch('/marcas/:codigo', (req, res) => {
-    Marca.findByIdAndUpdate({
+    Marcas.findByIdAndUpdate({
             '_id': req.params.codigo
         }, {
             $set: req.body
@@ -857,20 +858,20 @@ app.patch('/marcas/:codigo', (req, res) => {
 });
 
 app.delete('/marcas/:codigo', (req, res) => {
-    Marca.findByIdAndDelete(req.params.codigo)
+    Marcas.findByIdAndDelete(req.params.codigo)
         .then((list) => res.send(list))
         .catch((error) => console.log(error));
 });
 
 //COMESTIBLES
 app.get('/comestibles', (req, res) => {
-    Comestible.find({})
+    Comestibles.find({})
         .then(comestibles => res.send(comestibles))
         .catch((error) => console.log(error));
 });
 
 app.post('/comestibles', (req, res) => {
-    (new Comestible({
+    (new Comestibles({
         'codigo': req.body.codigo,
         'nombre': req.body.nombre,
         'cantidad': req.body.cantidad,
@@ -889,7 +890,7 @@ app.post('/comestibles', (req, res) => {
 });
 
 app.patch('/comestibles/:codigo', (req, res) => {
-    Comestible.findByIdAndUpdate({
+    Comestibles.findByIdAndUpdate({
             '_id': req.params.codigo
         }, {
             $set: req.body
@@ -899,20 +900,20 @@ app.patch('/comestibles/:codigo', (req, res) => {
 });
 
 app.delete('/comestibles/:codigo', (req, res) => {
-    Comestible.findByIdAndDelete(req.params.codigo)
+    Comestibles.findByIdAndDelete(req.params.codigo)
         .then((list) => res.send(list))
         .catch((error) => console.log(error));
 });
 
 //DESECHABLES Y EMPAQUES
 app.get('/desechables_y_empaques', (req, res) => {
-    Desechable.find({})
+    Desechables.find({})
         .then(desechables_y_empaques => res.send(desechables_y_empaques))
         .catch((error) => console.log(error));
 });
 
 app.post('/desechables_y_empaques', (req, res) => {
-    (new Desechable({
+    (new Desechables({
         'codigo': req.body.codigo,
         'nombre': req.body.nombre,
         'cantidad': req.body.cantidad,
@@ -928,7 +929,7 @@ app.post('/desechables_y_empaques', (req, res) => {
 });
 
 app.patch('/desechables_y_empaques/:codigo', (req, res) => {
-    Desechable.findByIdAndUpdate({
+    Desechables.findByIdAndUpdate({
             '_id': req.params.codigo
         }, {
             $set: req.body
@@ -938,8 +939,7 @@ app.patch('/desechables_y_empaques/:codigo', (req, res) => {
 });
 
 app.delete('/desechables_y_empaques/:codigo', (req, res) => {
-    Desechable.findByIdAndDelete(req.params.codigo)
-        .then((list) => res.send(list))
+    Desechables        .then((list) => res.send(list))
         .catch((error) => console.log(error));
 });
 
@@ -1024,13 +1024,13 @@ app.delete('/tecnologia/:codigo', (req, res) => {
 
 //EQUIPOS Y UTENSILIOS
 app.get('/equipos', (req, res) => {
-    Equipo.find({})
+    Equipos.find({})
         .then(equipos => res.send(equipos))
         .catch((error) => console.log(error))
 });
 
 app.post('/equipos', (req, res) => {
-    (new Equipo({
+    (new Equipos({
         'codigo': req.body.codigo,
         'nombre': req.body.nombre,
         'cantidad': req.body.cantidad,
@@ -1046,7 +1046,7 @@ app.post('/equipos', (req, res) => {
 });
 
 app.patch('/equipos/:codigo', (req, res) => {
-    Equipo.findByIdAndUpdate({
+    Equipos.findByIdAndUpdate({
             '_id': req.params.codigo
         }, {
             $set: req.body
@@ -1056,7 +1056,7 @@ app.patch('/equipos/:codigo', (req, res) => {
 });
 
 app.delete('/equipos/:codigo', (req, res) => {
-    Equipo.findByIdAndDelete(req.params.codigo)
+    Equipos.findByIdAndDelete(req.params.codigo)
         .then((list) => res.send(list))
         .catch((error) => console.log(error));
 });
@@ -1064,13 +1064,13 @@ app.delete('/equipos/:codigo', (req, res) => {
 
 //PROVEEDORES
 app.get('/proveedores', (req, res) => {
-    Proveedor.find({})
+    Proveedores.find({})
         .then(proveedores => res.send(proveedores))
         .catch((error) => console.log(error))
 });
 
 app.post('/proveedores', (req, res) => {
-    (new Proveedor({
+    (new Proveedores({
         'codigo': req.body.codigo,
         'nombre': req.body.nombre,
         'primer_apellido': req.body.primer_apellido,
@@ -1095,7 +1095,7 @@ app.post('/proveedores', (req, res) => {
 });
 
 app.patch('/proveedores/:codigo', (req, res) => {
-    Proveedor.findByIdAndUpdate({
+    Proveedores.findByIdAndUpdate({
             '_id': req.params.codigo
         }, {
             $set: req.body
@@ -1105,7 +1105,7 @@ app.patch('/proveedores/:codigo', (req, res) => {
 });
 
 app.delete('/proveedores/:codigo', (req, res) => {
-    Proveedor.findByIdAndDelete(req.params.codigo)
+    Proveedores.findByIdAndDelete(req.params.codigo)
         .then((list) => res.send(list))
         .catch((error) => console.log(error));
 });
