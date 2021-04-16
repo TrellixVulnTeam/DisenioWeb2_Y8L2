@@ -939,7 +939,8 @@ app.patch('/desechables_y_empaques/:codigo', (req, res) => {
 });
 
 app.delete('/desechables_y_empaques/:codigo', (req, res) => {
-    Desechables        .then((list) => res.send(list))
+    Desechables.findByIdAndDelete(req.params.codigo)
+        .then((list) => res.send(list))
         .catch((error) => console.log(error));
 });
 
@@ -951,7 +952,7 @@ app.get('/limpieza', (req, res) => {
 });
 
 app.post('/limpieza', (req, res) => {
-    (new Desechable({
+    (new Limpieza({
         'codigo': req.body.codigo,
         'nombre': req.body.nombre,
         'cantidad': req.body.cantidad,

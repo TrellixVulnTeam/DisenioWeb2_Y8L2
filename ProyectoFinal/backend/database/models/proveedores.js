@@ -10,7 +10,7 @@ const proveedorSchema = mongoose.Schema({
         required: true
     },
     primer_apellido: {
-        type: Number,
+        type: String,
         required: true
     },
     segundo_apellido: {
@@ -26,11 +26,11 @@ const proveedorSchema = mongoose.Schema({
         required: false
     },
     celular: {
-        type: String,
+        type: Number,
         required: true
     },
     cedula: {
-        type: Number,
+        type: String,
         required: false
     },
     fecha_ingreso: {
@@ -42,7 +42,7 @@ const proveedorSchema = mongoose.Schema({
         required: true
     },
     correo: {
-        type: Number,
+        type: String,
         required: false
     },
     direccion: {
