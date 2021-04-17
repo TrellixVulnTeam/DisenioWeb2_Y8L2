@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const datos_personalesSchema = mongoose.Schema({
+const cajasSchema = mongoose.Schema({
     codigo: {
         type: String, 
         required: true
@@ -23,11 +23,7 @@ const datos_personalesSchema = mongoose.Schema({
     },
     telefono2: {
         type: String
-    }
-
-});
-
-const datos_tecnicosSchema = mongoose.Schema({
+    },
     login: {
         type: String,
         required: true
@@ -35,20 +31,8 @@ const datos_tecnicosSchema = mongoose.Schema({
     contrasenia: {
         type: String,
         required: true
-    }
-});
-
-const privilegiosSchema = mongoose.Schema({
+    },
     tipo_administrador: {
-        type: String,
-        required: true
-    }
-});
-
-const cajasSchema = mongoose.Schema({
-    datos_personales: [datos_personalesSchema],
-    datos_tecnicos: [datos_tecnicosSchema],
-    privilegios: {
         type: String,
         required: true
     }

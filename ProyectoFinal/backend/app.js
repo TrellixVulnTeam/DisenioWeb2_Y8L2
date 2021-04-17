@@ -402,10 +402,8 @@ app.post('/datoscliente', (req, res) => {
         "duracion": req.body.duracion
     }))
     .save()
-        .then((dtclientes) => {
-            res.send(dtclientes)
-        })
-        .catch((error) => console.log(error))
+    .then((dtclientes) => { res.send(dtclientes) })
+    .catch((error) => console.log(error))
 });
 
 app.patch('/datoscliente/:codigo', (req, res) => {
@@ -1457,8 +1455,17 @@ app.delete('/puestos/:codigo', (req, res) => {
         .catch((error) => console.log(error));
 });
 
+
+app.patch('/datoscliente/:codigo', (req, res) =>{
+    Cliente.findByIdAndUpdate( {'_id' : req.params.codigo}, { $set : req.body})
+    // UPDATE WHERE
+    .then((cliente) => res.send(cliente))
+    .catch((error) => console.log(error));
+});
+
 var port = 3000;
 
 app.listen(port, () => {
     console.log('RestauranteJS funciona');
 });
+
