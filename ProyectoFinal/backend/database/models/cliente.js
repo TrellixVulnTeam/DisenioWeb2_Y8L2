@@ -1,9 +1,13 @@
 const mongoose = require('mongoose');
 
 const clienteSchema = mongoose.Schema({
+    // clienteId: {
+    //     type : String,
+    //     required: false
+    // },
     codigo: {
         type: String,
-        required: true
+        required: false
     }, 
     nombre: {
         type: String,

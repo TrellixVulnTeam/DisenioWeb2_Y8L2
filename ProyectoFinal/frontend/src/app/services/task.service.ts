@@ -130,4 +130,36 @@ export class TaskService {
     return this.webService.post('puestos', {codigo, nombre, interno, externo, rol_restaurante})
   }
 
+  getClientes() {
+    return this.webService.get('datoscliente');
+  }
+
+  getEquipos() {
+    return this.webService.get('equipos');
+  }
+
+  postEquipos(codigo: string, nombre: string) {
+    return this.webService.post('equipos', {codigo, nombre})
+
+  }
+
+  updateEquipos(codigo: string, nombre: string) {
+    return this.webService.patch(`equipos/${codigo}`, {codigo, nombre});
+    // localhost:3000/equipos/:codig
+  }
+
+
+
+  // updateBook(bookId: string, title: string, author: string, summary: string, genre: string) {
+  //   return this.webService.patch(`books/${bookId}`, { title, author, summary, genre });
+  // }
+
+  // deleteBook(bookId: string) {
+  //   return this.webService.delete(`books/${bookId}`);
+  // }
+
+
+  // app.get('/equipos')
+  // req.body
+
 }
