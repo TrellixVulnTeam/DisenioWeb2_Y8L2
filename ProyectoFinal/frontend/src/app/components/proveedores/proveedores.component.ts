@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../../services/task.service';
-import Bufet from 'src/app/models/bufet';
+import Proveedores from 'src/app/models/proveedore';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,29 +10,10 @@ import { Router } from '@angular/router';
 })
 export class ProveedoresComponent implements OnInit {
 
-  // especialesSelect;
-  bufet : Bufet[] = [];
+  proveedores : Proveedores[] = [];
   dataSource;
-  // userInputName: string;
-  // userInputCodigo: string;
 
-  // displayedColumns: string[] = ['codigo', 'nombre', 'precio', 'tipo', 'unidad_medida'];
-
-  displayedColumnsMarca: string[] = ['codigo', 'nombre', 'descripcion', 'nacionalidad', 'empresa', 'telefono'];
-
-  // displayedColumnsBebidasGaseosas: string[] = ['codigo', 'nombre', 'precio'];
-
-  // displayedColumnsLicores: string[] = ['codigo', 'nombre', 'cantidad', 'precio', 'nacionalidad'];
-
-  // displayedColumnsVinos: string[] = ['codigo', 'nombre', 'precio', 'nacionalidad', 'anio'];
-
-  // displayedColumnsEspeciales: string[] = ['codigo', 'nombre', 'ingredientes', 'precio', 'detalles'];
-
-  // especiales: Especiales[] = [
-  //   {value: 'bufet', viewValue: 'Bufet'},
-  //   {value: 'bebidas', viewValue: 'Bebidas'},
-  //   {value: 'especiales', viewValue: 'Especiales'}
-  // ];
+  displayedColumnsMarca: string[] = ['codigo', 'nombre', 'prim_apellido', 'seg_apellido', 'tel_oficina', 'fax', 'cel'];
 
   constructor(private taskService: TaskService, private router: Router) { }
 
@@ -41,46 +22,12 @@ export class ProveedoresComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.taskService.getBufet()
-    .subscribe((bufet: Bufet[]) =>{ this.dataSource = bufet });
+    this.viewProveedores();
   }
 
-  // addBufet(codigo: string, nombre: string, precio: string, tipo: string, unidad_medida: string) {
-  //   this.taskService.postBufet(codigo, nombre, precio, tipo, unidad_medida)
-  //   .subscribe((bufets : Bufet) => this.router.navigate(['/restaurantes']));
+  viewProveedores() {
+    this.taskService.getProveedores()
+    .subscribe((proveedores: Proveedores[]) => { this.dataSource = proveedores })
+  }
 
-  // }
-
-  // busquedaCodigo() {
-  //   if (this.userInputCodigo !="") {
-  //     this.dataSource = this.dataSource.filter(res =>{
-  //       return res.codigo.toLocaleLowerCase().match(this.userInputCodigo.toLocaleLowerCase());
-  //     });
-  //   } else if (this.userInputCodigo == "" || this.userInputName == "") {
-  //     this.ngOnInit();
-  //   }
-  // }
-
-  // applyFilterCode() {
-  //   if (this.userInputCodigo != "") {
-
-  //     this.dataSource = this.dataSource.filter(res =>{
-  //       return res.codigo.toLocaleLowerCase().match(this.userInputCodigo.toLocaleLowerCase())
-  //     });
-
-  //   } else if (this.userInputCodigo == "") {
-  //     this.ngOnInit();
-  //   }
-  // }
-
-
-  // busquedaNombre() {
-  //   if (this.userInputName !="") {
-  //     this.dataSource = this.dataSource.filter(res =>{
-  //       return res.nombre.toLocaleLowerCase().match(this.userInputName.toLocaleLowerCase());
-  //     });
-  //   } else if (this.userInputName == "" || this.userInputCodigo == "") {
-  //     this.ngOnInit();
-  //   }
-  // }
 }
