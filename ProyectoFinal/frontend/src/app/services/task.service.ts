@@ -25,8 +25,8 @@ export class TaskService {
     return this.webService.post('usuarios', {codigo, nombre, primer_apellido, segundo_apellido, telefono_1, telefono_2, login, contrasena, tipo_privilegio});
   }
 
-  patchUsuario(codigo: string, nombre: string, primer_apellido: string, segundo_apellido: string, telefono_1: string, telefono_2: string, login: string, contrasena: string, tipo_privilegio: string){
-    return this.webService.patch(`usuarios/${codigo}`, {codigo, nombre, primer_apellido, segundo_apellido, telefono_1, telefono_2, login, contrasena, tipo_privilegio})
+  patchUsuario(usrId: String,codigo: string, nombre: string, primer_apellido: string, segundo_apellido: string, telefono_1: string, telefono_2: string, login: string, contrasena: string, tipo_privilegio: string){
+    return this.webService.patch(`usuarios/${usrId}`, {codigo, nombre, primer_apellido, segundo_apellido, telefono_1, telefono_2, login, contrasena, tipo_privilegio})
   }
 
   deleteUsuario(codigo: String){
@@ -41,8 +41,8 @@ export class TaskService {
     return this.webService.post('consecutivos', {tipo_consecutivo, descripcion, valor_consecutivo, prefijo_consecutivo, prefijo})
   }
 
-  patchConsecutivos(codigo: String,tipo_consecutivo : string, descripcion : string, valor_consecutivo : string, prefijo_consecutivo : string, prefijo : string){
-    return this.webService.patch(`consecutivos/${codigo}`,{tipo_consecutivo, descripcion, valor_consecutivo, prefijo_consecutivo, prefijo} )
+  patchConsecutivos(ConsecutivoId: String,codigo: String,tipo_consecutivo : string, descripcion : string, valor_consecutivo : string, prefijo_consecutivo : string, prefijo : string){
+    return this.webService.patch(`consecutivos/${ConsecutivoId}`,{tipo_consecutivo, descripcion, valor_consecutivo, prefijo_consecutivo, prefijo} )
   }
 
   deleteConsecutivos(codigo:String){
@@ -57,8 +57,8 @@ export class TaskService {
     return this.webService.post('paises', {codigo, nombre, bandera})
   }
 
-  patchPais(codigo: string, nombre: string, bandera: string){
-      return this.webService.patch(`paises/${codigo}`,{codigo, nombre, bandera} )
+  patchPais(paisId:String, codigo: string, nombre: string, bandera: string){
+      return this.webService.patch(`paises/${paisId}`,{codigo, nombre, bandera} )
   }
 
   deletePais(codigo:String){
@@ -74,8 +74,8 @@ export class TaskService {
     return this.webService.post('roles-y-eventos', {codigo, nombre, descripcion});
   }
 
-  patchRolento(codigo: string, nombre: string, descripcion: string){
-    return this.webService.patch(`roles-y-eventos/${codigo}`, {codigo, nombre, descripcion})
+  patchRolento(rolentoId: String, codigo: string, nombre: string, descripcion: string){
+    return this.webService.patch(`roles-y-eventos/${rolentoId}`, {codigo, nombre, descripcion})
   }
 
   deleteRolento(codigo:String){
@@ -90,12 +90,14 @@ export class TaskService {
     return this.webService.get('unidad-de-medida');
   }
 
+
   postUnidadMedida(codigo: string, unidad: string, escala: string, detalle: string, simbolo: string, simbologia: string) {
     return this.webService.post('unidad-de-medida', {codigo, unidad, escala, detalle, simbolo, simbologia});
   }
 
-  patchUnidadMedida(codigo: string, unidad: string, escala: string, detalle: string, simbolo: string, simbologia: string){
-    return this.webService.patch(`unidad-de-medida/${codigo}`, {codigo, unidad, escala, detalle, simbolo, simbologia})
+
+  patchUnidadMedida(unidadMedidaId: String,codigo: string, unidad: string, escala: string, detalle: string, simbolo: string, simbologia: string){
+    return this.webService.patch(`unidad-de-medida/${unidadMedidaId}`, {codigo, unidad, escala, detalle, simbolo, simbologia})
   }
 
   deleteUnidadMedida(codigo:String){
@@ -111,12 +113,28 @@ export class TaskService {
 
   }
 
+  patchBufet(bufetId: String, codigo: string, nombre: string, precio: string, tipo: string, unidad_medida: string){
+    return this.webService.patch(`bufet/${bufetId}`, {codigo, nombre, precio, tipo, unidad_medida})
+  }
+
+  deleteBufet(codigo:String){
+    return this.webService.delete(`bufet/${codigo}`)
+  }
+
   getLicores() {
     return this.webService.get('licores');
   }
 
   postLicor(codigo: string, restaurante: string, nombre: string, cantidad: string, marca: string, descripcion: string, nacionalidad: string, precio_unitario: number, precio_botella: number) {
     return this.webService.post('licores', { codigo, restaurante, nombre, cantidad, marca, descripcion, nacionalidad, precio_unitario, precio_botella});
+  }
+
+  patchLicor(licorId: String,codigo: string, restaurante: string, nombre: string, cantidad: string, marca: string, descripcion: string, nacionalidad: string, precio_unitario: number, precio_botella: number){
+    return this.webService.patch(`licores/${licorId}`, { codigo, restaurante, nombre, cantidad, marca, descripcion, nacionalidad, precio_unitario, precio_botella})
+  }
+
+  deleteLicor(codigo:String){
+    return this.webService.delete(`licores/${codigo}`)
   }
 
   getBebidasCalientes() {
