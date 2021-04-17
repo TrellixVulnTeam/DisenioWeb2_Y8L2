@@ -37,6 +37,7 @@ import { CajasComponent } from './components/cajas/cajas.component';
 import { RolesYEventosComponent } from './components/roles-y-eventos/roles-y-eventos.component';
 import { UnidadesDeMedidaComponent } from './components/unidades-de-medida/unidades-de-medida.component';
 // import { WavesModule, InputsModule, ButtonsModule } from 'angular-bootstrap-md'
+import {HttpClientModule} from 'angular/common/http';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { UnidadesDeMedidaComponent } from './components/unidades-de-medida/unida
     UnidadesDeMedidaComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
