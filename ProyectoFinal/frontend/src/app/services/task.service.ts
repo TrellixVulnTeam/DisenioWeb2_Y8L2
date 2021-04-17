@@ -25,12 +25,28 @@ export class TaskService {
     return this.webService.post('usuarios', {codigo, nombre, primer_apellido, segundo_apellido, telefono_1, telefono_2, login, contrasena, tipo_privilegio});
   }
 
+  patchUsuario(codigo: string, nombre: string, primer_apellido: string, segundo_apellido: string, telefono_1: string, telefono_2: string, login: string, contrasena: string, tipo_privilegio: string){
+    return this.webService.patch(`usuarios/${codigo}`, {codigo, nombre, primer_apellido, segundo_apellido, telefono_1, telefono_2, login, contrasena, tipo_privilegio})
+  }
+
+  deleteUsuario(codigo: String){
+    return this.webService.delete(`usuarios/${codigo}`)
+  }
+
   getConsecutivos() {
     return this.webService.get('consecutivos');
   }
 
   postConsecutivos(tipo_consecutivo : string, descripcion : string, valor_consecutivo : string, prefijo_consecutivo : string, prefijo : string) {
     return this.webService.post('consecutivos', {tipo_consecutivo, descripcion, valor_consecutivo, prefijo_consecutivo, prefijo})
+  }
+
+  patchConsecutivos(codigo: String,tipo_consecutivo : string, descripcion : string, valor_consecutivo : string, prefijo_consecutivo : string, prefijo : string){
+    return this.webService.patch(`consecutivos/${codigo}`,{tipo_consecutivo, descripcion, valor_consecutivo, prefijo_consecutivo, prefijo} )
+  }
+
+  deleteConsecutivos(codigo:String){
+    return this.webService.delete(`consecutivos/${codigo}`)
   }
 
   getPaises() {
@@ -41,12 +57,29 @@ export class TaskService {
     return this.webService.post('paises', {codigo, nombre, bandera})
   }
 
+  patchPais(codigo: string, nombre: string, bandera: string){
+      return this.webService.patch(`paises/${codigo}`,{codigo, nombre, bandera} )
+  }
+
+  deletePais(codigo:String){
+    return this.webService.delete(`paises/${codigo}`)
+  }
+
+
   getRolesYEventos() {
     return this.webService.get('roles-y-eventos');
   }
 
   postRolento(codigo: string, nombre: string, descripcion: string) {
     return this.webService.post('roles-y-eventos', {codigo, nombre, descripcion});
+  }
+
+  patchRolento(codigo: string, nombre: string, descripcion: string){
+    return this.webService.patch(`roles-y-eventos/${codigo}`, {codigo, nombre, descripcion})
+  }
+
+  deleteRolento(codigo:String){
+    return this.webService.delete(`roles-y-eventos/${codigo}`)
   }
 
   getDetalle() {
@@ -59,6 +92,14 @@ export class TaskService {
 
   postUnidadMedida(codigo: string, unidad: string, escala: string, detalle: string, simbolo: string, simbologia: string) {
     return this.webService.post('unidad-de-medida', {codigo, unidad, escala, detalle, simbolo, simbologia});
+  }
+
+  patchUnidadMedida(codigo: string, unidad: string, escala: string, detalle: string, simbolo: string, simbologia: string){
+    return this.webService.patch(`unidad-de-medida/${codigo}`, {codigo, unidad, escala, detalle, simbolo, simbologia})
+  }
+
+  deleteUnidadMedida(codigo:String){
+    return this.webService.delete(`unidad-de-medida/${codigo}`)
   }
 
   getBufet() {
