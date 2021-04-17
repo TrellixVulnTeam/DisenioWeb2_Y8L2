@@ -130,4 +130,68 @@ export class TaskService {
     return this.webService.post('puestos', {codigo, nombre, interno, externo, rol_restaurante})
   }
 
+  getBitacoras(){
+    return this.webService.get('bitacoras')
+  }
+
+  postBitacoras(codigo: String, fecharango: Date, usuario: String, fechaini: Date, fechafin: Date, descripcion: String){
+    return this.webService.post('bitacoras',{codigo, fecharango, usuario, fechaini, fechafin, descripcion} )
+  }
+
+  getDatosCliente(){
+    return this.webService.get('datoscliente')
+  }
+
+  postDatosCliente(codigo: String, nombre: String, num_mesa: Number, monto: Number, restaurante: String, hora_entrada: Date, hora_salida: Date, duracion: Date ){
+    return this.webService.post('datoscliente', {codigo, nombre, num_mesa, monto, restaurante, hora_entrada, hora_salida, duracion})
+  }
+
+  getEspecialidades(){
+    return this.webService.get('especialidades');
+  }
+
+  postEspecialidades(codigo:String, nombre: String, ingredientes:String, precio:Number, detalle: String){
+    return this.webService.post('especialidades', {codigo, nombre, ingredientes, precio, detalle})
+  }
+
+  getFacturacion(){
+    return this.webService.get('facturacion')
+  }
+
+  postFacturacion(codigo: String, fecha: Date, descripcion: String, dineroentrada: Number, cajaapertura: Number, cajacierre:Number, restaurante: String, estadocuenta: Number){
+    return this.webService.post('facturacion', {codigo, fecha, descripcion, dineroentrada, cajaapertura, cajacierre, restaurante, estadocuenta})
+  }
+
+  getFechascliente(){
+    return this.webService.get('fechascliente')
+  }
+
+  postFechascliente(codigo: String, reservacion: String, fechallegada:Date, fechaReservacion: Date){
+    return this.webService.post('fechascliente', {codigo, reservacion, fechallegada, fechaReservacion})
+  }
+
+  getPrivilegios(){
+    return this.webService.get('privilegios')
+  }
+
+  postPrivilegios(codigo:String, adminsistema: String, adminseguridad:String, adminrest:String, admincuentas: String){
+    return this.webService.post('privilegios', {codigo, adminsistema, adminseguridad, adminrest, admincuentas})
+  }
+
+  getinfoPedido(){
+    return this.webService.get('infopedido')
+  }
+
+  postinfoPedido(codigo:String, numMesa: String, pedidoSilla1: String, pedidoSilla2: String, pedidoSilla3: String, pedidoSilla4: String, precioSilla1: Number,precioSilla2: Number,precioSilla3: Number,precioSilla4: Number){
+    return this.webService.post('infopedido', {codigo, numMesa, pedidoSilla1, pedidoSilla2, pedidoSilla3, pedidoSilla4, precioSilla1, precioSilla2,precioSilla3,precioSilla4})
+  }
+
+  getinfoContacto(){
+    return this.webService.get('info-contacto')
+  }
+
+  postinfoContacto(codigo:String, nombre:String, detalleempresa: String, telefono: Number, foto: String){
+    return this.webService.post('info-contacto', {codigo, nombre, detalleempresa, telefono, foto})
+  }
+
 }
