@@ -35,6 +35,7 @@ const Tecnologia = require('./database/models/tecnologia');
 const Equipo = require('./database/models/equipos');
 const Proveedor = require('./database/models/proveedores');
 const Vino = require('./database/models/vinos');
+const session = require('express-session');
 
 
 var app = express();
@@ -42,7 +43,36 @@ var app = express();
 //Permisos de los headers
 app.use(cors());
 
-//Midddlewore
+
+//LOGIN COOKIES & SESSION
+var TWO_HOURS = 1000 * 60 * 60 * 2;
+var SESS_LIFETIME = TWO_HOURS;
+const SESS_NAME = 'sid';
+const NODE_DEV = 'development';
+const SESS_SECRET = 'ssh!quiet,it\asecret!';
+
+const redirectLogin = (req, res, next) => {
+    if (!req.session.userId) {
+        res.redirect('/login');
+    } else {
+        next();
+    }
+}
+
+const redirectHome = (req, res, next) => {
+    if (req.session.userId) {
+        res.redirect('/home');
+    } else {
+        next();
+    }
+}
+
+
+
+
+
+
+//Midddleware
 app.use(express.json());
 
 //SEGURIDAD
