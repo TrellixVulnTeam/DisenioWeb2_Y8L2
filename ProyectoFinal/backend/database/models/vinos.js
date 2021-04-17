@@ -14,7 +14,7 @@ const vinoSchema = new mongoose.Schema({
         required: true
     },
     cantidad: {
-        type: String,
+        type: Number,
         required: true
     },
     marca: {
@@ -48,6 +48,6 @@ const vinoSchema = new mongoose.Schema({
     // }
 });
 
-const Vino = mongoose.model('vinos', vinoSchema);
+const Vinos = mongoose.model('Vinos', vinoSchema);
 
-module.exports = Vino;
+module.exports = Vinos;

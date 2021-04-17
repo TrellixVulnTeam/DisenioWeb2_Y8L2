@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
-const restauranteSchema = mongoose.Schema({
+
+const infocontactoSchema = mongoose.Schema({
     codigo: {
         type: String,
         required: true
@@ -9,21 +10,20 @@ const restauranteSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    direccion: {
+    detalleempresa: {
         type: String,
-        required: true
-    },
-    cantidadClientes: {
-        type: Number,
         required: true
     },
     telefono: {
         type: Number,
         required: true
+    },
+    foto: {
+        type: String,
+        required: false
     }
 });
 
-const Restaurantes = mongoose.model('Restaurantes', restauranteSchema);
+const infoContacto = mongoose.model('infoContacto', infocontactoSchema);
 
-module.exports = Restaurantes;
-
+module.exports = infoContacto;

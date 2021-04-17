@@ -26,16 +26,21 @@ var datosCliente = require('./database/models/datoscliente');
 const fechasCliente = require('./database/models/fechascliente');
 const infopedido = require('./database/models/infopedido');
 const Cliente = require('./database/models/cliente');
-const Restaurante = require('./database/models/restaurantes');
-const Marca = require('./database/models/marcas');
-const Comestible = require('./database/models/comestibles');
-const Desechable = require('./database/models/desechables_y_empaques');
+const Restaurantes = require('./database/models/restaurantes');
+const Marcas = require('./database/models/marcas');
+const Comestibles = require('./database/models/comestibles');
+const Desechables = require('./database/models/desechables_y_empaques');
 const Limpieza = require('./database/models/limpieza');
 const Tecnologia = require('./database/models/tecnologia');
-const Equipo = require('./database/models/equipos');
-const Proveedor = require('./database/models/proveedores');
-const Vino = require('./database/models/vinos');
-const session = require('express-session');
+const Equipos = require('./database/models/equipos');
+const Proveedores = require('./database/models/proveedores');
+const Vinos = require('./database/models/vinos');
+const infoMarcas = require('./database/models/infomarcas');
+const infoContacto = require('./database/models/infocontacto');
+const Especialides = require('./database/models/especialidades');
+const Privilegios = require('./database/models/privilegios');
+const Bitacora = require('./database/models/bitacoras');
+const Facturacion = require('./database/models/Facturacion');
 
 
 var app = express();
@@ -267,6 +272,45 @@ app.delete('/roles-y-eventos/:codigo', (req, res) => {
         .then((list) => res.send(list))
         .catch((error) => console.log(error));
 });
+
+//Privilegios
+
+app.get('/privilegios', (req, res) => {
+    Privilegios.find({})
+        .then(privilegios => res.send(privilegios))
+        .catch((error) => console.log(error))
+});
+
+app.post('/privilegios', (req, res) => {
+    (new Privilegios({
+        'codigo': req.body.codigo,
+        'adminsistema': req.body.adminsistema,
+        'adminseguridad': req.body.adminseguridad,
+        'adminrest': req.body.adminrest,
+        'admincuentas': req.body.admincuentas
+    }))
+    .save()
+        .then((privilegios) => {
+            res.send(privilegios)
+        })
+        .catch((error) => console.log(error))
+});
+app.patch('/privilegios/:codigo', (req, res) => {
+    Privilegios.findByIdAndUpdate({
+            '_id': req.params.codigo
+        }, {
+            $set: req.body
+        })
+        .then((privilegios) => res.send(privilegios))
+        .catch((error) => console.log(error));
+});
+app.delete('/privilegios/:codigo', (req, res) => {
+    Privilegios.findByIdAndDelete(req.params.codigo)
+        .then((list) => res.send(list))
+        .catch((error) => console.log(error));
+});
+
+
 
 //detalleUDm
 
@@ -566,6 +610,44 @@ app.delete('/books/:bookId', (req, res) => {
 
 */
 
+//ESPECIALIDADES
+
+app.get('/especialidades', (req, res) => {
+    Especialides.find({})
+        .then(espe => res.send(espe))
+        .catch((error) => console.log(error));
+});
+
+app.post('/especialidades', (req, res) => {
+    (new Especialides({
+        'codigo': req.body.codigo,
+        'nombre': req.body.nombre,
+        'ingredientes': req.body.ingredientes,
+        'detalle': req.body.detalle,
+        'precio': req.body.precio
+    }))
+    .save()
+        .then((espe) => {
+            res.send(espe)
+        })
+        .catch((error) => console.log(error))
+});
+app.patch('/especialidades/:codigo', (req, res) => {
+    Especialides.findByIdAndUpdate({
+            '_id': req.params.codigo
+        }, {
+            $set: req.body
+        })
+        .then((espe) => res.send(espe))
+        .catch((error) => console.log(error));
+});
+app.delete('/especialidades/:codigo', (req, res) => {
+    Especialides.findByIdAndDelete(req.params.codigo)
+        .then((list) => res.send(list))
+        .catch((error) => console.log(error));
+});
+
+
 //REST-BEBIDAS-CALIENTES
 
 app.get('/bebidas_calientes', (req, res) => {
@@ -729,13 +811,13 @@ app.delete('/licores/:codigo', (req, res) => {
 
 //REST-BEBIDAS-VINOS
 app.get('/vinos', (req, res) => {
-    Vino.find({})
-        .then(vinos => res.send(limpievinosza))
+    Vinos.find({})
+        .then(vinos => res.send(vinos))
         .catch((error) => console.log(error));
 });
 
 app.post('/vinos', (req, res) => {
-    (new Vino({
+    (new Vinos({
         'codigo': req.body.codigo,
         'restaurante': req.body.restaurante,
         'nombre': req.body.nombre,
@@ -755,7 +837,7 @@ app.post('/vinos', (req, res) => {
 });
 
 app.patch('/vinos/:codigo', (req, res) => {
-    Vino.findByIdAndUpdate({
+    Vinos.findByIdAndUpdate({
             '_id': req.params.codigo
         }, {
             $set: req.body
@@ -765,7 +847,7 @@ app.patch('/vinos/:codigo', (req, res) => {
 });
 
 app.delete('/vinos/:codigo', (req, res) => {
-    Vino.findByIdAndDelete(req.params.codigo)
+    Vinos.findByIdAndDelete(req.params.codigo)
         .then((list) => res.send(list))
         .catch((error) => console.log(error));
 });
@@ -813,12 +895,13 @@ app.delete('/empleados/:codigo', (req, res) => {
 
 //RESTAURANTES
 app.get('/restaurantes', (req, res) => {
-    Restaurante.find({})
+    Restaurantes.find({})
         .then(restaurantes => res.send(restaurantes))
         .catch((error) => console.log(error));
 });
 
-app.post('/restaurantes', (req, res) => {(new Restaurante({
+app.post('/restaurantes', (req, res) => {
+    (new Restaurantes({
         'codigo': req.body.codigo,
         'nombre': req.body.nombre,
         'direccion': req.body.direccion,
@@ -832,7 +915,7 @@ app.post('/restaurantes', (req, res) => {(new Restaurante({
 });
 
 app.patch('/restaurantes/:codigo', (req, res) => {
-    Restaurante.findByIdAndUpdate({
+    Restaurantes.findByIdAndUpdate({
             '_id': req.params.codigo
         }, {
             $set: req.body
@@ -842,22 +925,101 @@ app.patch('/restaurantes/:codigo', (req, res) => {
 });
 
 app.delete('/restaurantes/:codigo', (req, res) => {
-    Restaurante.findByIdAndDelete(req.params.codigo)
+    Restaurantes.findByIdAndDelete(req.params.codigo)
         .then((list) => res.send(list))
         .catch((error) => console.log(error));
 });
 
-//PROVEEDORES
+//BITACORA
+
+app.get('/bitacoras', (req, res) => {
+    Bitacora.find({})
+        .then(bitacoras => res.send(bitacoras))
+        .catch((error) => console.log(error));
+});
+
+app.post('/bitacoras', (req, res) => {
+    (new Bitacora({
+        'codigo': req.body.codigo,
+        'fecharango': req.body.fecharango,
+        'usuario': req.body.usuario,
+        'fechaini': req.body.fechaini,
+        'fechafin': req.body.fechafin,
+        'descripcion': req.body.descripcion
+    })).save()
+    .then((bitacoras) => {
+            res.send(bitacoras)
+        })
+        .catch((error) => console.log(error))
+});
+
+app.patch('/bitacoras/:codigo', (req, res) => {
+    Bitacora.findByIdAndUpdate({
+            '_id': req.params.codigo
+        }, {
+            $set: req.body
+        })
+        .then((bitacoras) => res.send(bitacoras))
+        .catch((error) => console.log(error));
+});
+
+app.delete('/bitacoras/:codigo', (req, res) => {
+    Bitacora.findByIdAndDelete(req.params.codigo)
+        .then((list) => res.send(list))
+        .catch((error) => console.log(error));
+});
+
+//FACTURACION
+
+app.get('/facturacion', (req, res) => {
+    Facturacion.find({})
+        .then(fact => res.send(fact))
+        .catch((error) => console.log(error));
+});
+
+app.post('/facturacion', (req, res) => {
+    (new Facturacion({
+        'codigo': req.body.codigo,
+        'fecha': req.body.fecha,
+        'descripcion': req.body.descripcion,
+        'dineroentrada': req.body.dineroentrada,
+        'cajaapertura': req.body.cajaapertura,
+        'cajacierre': req.body.cajacierre,
+        'restaurante': req.body.restaurante,
+        'estadocuenta': req.body.estadocuenta
+    })).save()
+    .then((fact) => {
+            res.send(fact)
+        })
+        .catch((error) => console.log(error))
+});
+
+app.patch('/facturacion/:codigo', (req, res) => {
+    Facturacion.findByIdAndUpdate({
+            '_id': req.params.codigo
+        }, {
+            $set: req.body
+        })
+        .then((fact) => res.send(fact))
+        .catch((error) => console.log(error));
+});
+
+app.delete('/facturacion/:codigo', (req, res) => {
+    Facturacion.findByIdAndDelete(req.params.codigo)
+        .then((list) => res.send(list))
+        .catch((error) => console.log(error));
+});
+
 
 //MARCAS
 app.get('/marcas', (req, res) => {
-    Marca.find({})
+    Marcas.find({})
         .then(marcas => res.send(marcas))
         .catch((error) => console.log(error));
 });
 
 app.post('/marcas', (req, res) => {
-    (new Marca({
+    (new Marcas({
         'codigo': req.body.codigo,
         'nombre': req.body.nombre,
         'descripcion': req.body.descripcion,
@@ -877,7 +1039,7 @@ app.post('/marcas', (req, res) => {
 });
 
 app.patch('/marcas/:codigo', (req, res) => {
-    Marca.findByIdAndUpdate({
+    Marcas.findByIdAndUpdate({
             '_id': req.params.codigo
         }, {
             $set: req.body
@@ -887,20 +1049,99 @@ app.patch('/marcas/:codigo', (req, res) => {
 });
 
 app.delete('/marcas/:codigo', (req, res) => {
-    Marca.findByIdAndDelete(req.params.codigo)
+    Marcas.findByIdAndDelete(req.params.codigo)
         .then((list) => res.send(list))
         .catch((error) => console.log(error));
 });
 
+// INFO MARCAS
+
+app.get('/info-marcas', (req, res) => {
+    infoMarcas.find({})
+        .then(infomarcas => res.send(infomarcas))
+        .catch((error) => console.log(error));
+});
+
+app.post('/info-marcas', (req, res) => {
+    (new infoMarcas({
+        'codigo': req.body.codigo,
+        'nombre': req.body.nombre,
+        'descripcion': req.body.descripcion,
+        'nacionalidad': req.body.nacionalidad,
+        'foto': req.body.foto
+    }))
+    .save()
+        .then((infomarcas) => {
+            res.send(infomarcas)
+        })
+        .catch((error) => console.log(error))
+});
+
+app.patch('/info-marcas/:codigo', (req, res) => {
+    infoMarcas.findByIdAndUpdate({
+            '_id': req.params.codigo
+        }, {
+            $set: req.body
+        })
+        .then((infomarcas) => res.send(infomarcas))
+        .catch((error) => console.log(error));
+});
+
+app.delete('/info-marcas/:codigo', (req, res) => {
+    infoMarcas.findByIdAndDelete(req.params.codigo)
+        .then((list) => res.send(list))
+        .catch((error) => console.log(error));
+});
+
+//INFO CONTACTO
+
+app.get('/info-contacto', (req, res) => {
+    infoContacto.find({})
+        .then(infoContacto => res.send(infoContacto))
+        .catch((error) => console.log(error));
+});
+
+app.post('/info-contacto', (req, res) => {
+    (new infoContacto({
+        'codigo': req.body.codigo,
+        'nombre': req.body.nombre,
+        'detalleempresa': req.body.detalleempresa,
+        'telefono': req.body.telefono,
+        'foto': req.body.foto
+    }))
+    .save()
+        .then((infocontacto) => {
+            res.send(infocontacto)
+        })
+        .catch((error) => console.log(error))
+});
+
+app.patch('/info-contacto/:codigo', (req, res) => {
+    infoContacto.findByIdAndUpdate({
+            '_id': req.params.codigo
+        }, {
+            $set: req.body
+        })
+        .then((infocontacto) => res.send(infocontacto))
+        .catch((error) => console.log(error));
+});
+
+app.delete('/info-contacto/:codigo', (req, res) => {
+    infoContacto.findByIdAndDelete(req.params.codigo)
+        .then((list) => res.send(list))
+        .catch((error) => console.log(error));
+});
+
+
 //COMESTIBLES
 app.get('/comestibles', (req, res) => {
-    Comestible.find({})
+    Comestibles.find({})
         .then(comestibles => res.send(comestibles))
         .catch((error) => console.log(error));
 });
 
 app.post('/comestibles', (req, res) => {
-    (new Comestible({
+    (new Comestibles({
         'codigo': req.body.codigo,
         'nombre': req.body.nombre,
         'cantidad': req.body.cantidad,
@@ -919,7 +1160,7 @@ app.post('/comestibles', (req, res) => {
 });
 
 app.patch('/comestibles/:codigo', (req, res) => {
-    Comestible.findByIdAndUpdate({
+    Comestibles.findByIdAndUpdate({
             '_id': req.params.codigo
         }, {
             $set: req.body
@@ -929,20 +1170,20 @@ app.patch('/comestibles/:codigo', (req, res) => {
 });
 
 app.delete('/comestibles/:codigo', (req, res) => {
-    Comestible.findByIdAndDelete(req.params.codigo)
+    Comestibles.findByIdAndDelete(req.params.codigo)
         .then((list) => res.send(list))
         .catch((error) => console.log(error));
 });
 
 //DESECHABLES Y EMPAQUES
 app.get('/desechables_y_empaques', (req, res) => {
-    Desechable.find({})
+    Desechables.find({})
         .then(desechables_y_empaques => res.send(desechables_y_empaques))
         .catch((error) => console.log(error));
 });
 
 app.post('/desechables_y_empaques', (req, res) => {
-    (new Desechable({
+    (new Desechables({
         'codigo': req.body.codigo,
         'nombre': req.body.nombre,
         'cantidad': req.body.cantidad,
@@ -958,7 +1199,7 @@ app.post('/desechables_y_empaques', (req, res) => {
 });
 
 app.patch('/desechables_y_empaques/:codigo', (req, res) => {
-    Desechable.findByIdAndUpdate({
+    Desechables.findByIdAndUpdate({
             '_id': req.params.codigo
         }, {
             $set: req.body
@@ -968,7 +1209,7 @@ app.patch('/desechables_y_empaques/:codigo', (req, res) => {
 });
 
 app.delete('/desechables_y_empaques/:codigo', (req, res) => {
-    Desechable.findByIdAndDelete(req.params.codigo)
+    Desechables.findByIdAndDelete(req.params.codigo)
         .then((list) => res.send(list))
         .catch((error) => console.log(error));
 });
@@ -981,7 +1222,7 @@ app.get('/limpieza', (req, res) => {
 });
 
 app.post('/limpieza', (req, res) => {
-    (new Desechable({
+    (new Limpieza({
         'codigo': req.body.codigo,
         'nombre': req.body.nombre,
         'cantidad': req.body.cantidad,
@@ -1054,13 +1295,13 @@ app.delete('/tecnologia/:codigo', (req, res) => {
 
 //EQUIPOS Y UTENSILIOS
 app.get('/equipos', (req, res) => {
-    Equipo.find({})
+    Equipos.find({})
         .then(equipos => res.send(equipos))
         .catch((error) => console.log(error))
 });
 
 app.post('/equipos', (req, res) => {
-    (new Equipo({
+    (new Equipos({
         'codigo': req.body.codigo,
         'nombre': req.body.nombre,
         'cantidad': req.body.cantidad,
@@ -1076,7 +1317,7 @@ app.post('/equipos', (req, res) => {
 });
 
 app.patch('/equipos/:codigo', (req, res) => {
-    Equipo.findByIdAndUpdate({
+    Equipos.findByIdAndUpdate({
             '_id': req.params.codigo
         }, {
             $set: req.body
@@ -1086,7 +1327,7 @@ app.patch('/equipos/:codigo', (req, res) => {
 });
 
 app.delete('/equipos/:codigo', (req, res) => {
-    Equipo.findByIdAndDelete(req.params.codigo)
+    Equipos.findByIdAndDelete(req.params.codigo)
         .then((list) => res.send(list))
         .catch((error) => console.log(error));
 });
@@ -1094,13 +1335,13 @@ app.delete('/equipos/:codigo', (req, res) => {
 
 //PROVEEDORES
 app.get('/proveedores', (req, res) => {
-    Proveedor.find({})
+    Proveedores.find({})
         .then(proveedores => res.send(proveedores))
         .catch((error) => console.log(error))
 });
 
 app.post('/proveedores', (req, res) => {
-    (new Proveedor({
+    (new Proveedores({
         'codigo': req.body.codigo,
         'nombre': req.body.nombre,
         'primer_apellido': req.body.primer_apellido,
@@ -1125,7 +1366,7 @@ app.post('/proveedores', (req, res) => {
 });
 
 app.patch('/proveedores/:codigo', (req, res) => {
-    Proveedor.findByIdAndUpdate({
+    Proveedores.findByIdAndUpdate({
             '_id': req.params.codigo
         }, {
             $set: req.body
@@ -1135,7 +1376,7 @@ app.patch('/proveedores/:codigo', (req, res) => {
 });
 
 app.delete('/proveedores/:codigo', (req, res) => {
-    Proveedor.findByIdAndDelete(req.params.codigo)
+    Proveedores.findByIdAndDelete(req.params.codigo)
         .then((list) => res.send(list))
         .catch((error) => console.log(error));
 });

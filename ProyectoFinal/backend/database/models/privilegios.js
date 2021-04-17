@@ -1,29 +1,29 @@
 const mongoose = require('mongoose');
 
-const restauranteSchema = mongoose.Schema({
+
+const privilegiosSchema = mongoose.Schema({
     codigo: {
         type: String,
         required: true
     }, 
-    nombre: {
+    adminsistema: {
         type: String,
         required: true
     },
-    direccion: {
+    adminseguridad: {
         type: String,
         required: true
     },
-    cantidadClientes: {
+    adminrest: {
         type: Number,
         required: true
     },
-    telefono: {
-        type: Number,
-        required: true
+    admincuentas: {
+        type: String,
+        required: false
     }
 });
 
-const Restaurantes = mongoose.model('Restaurantes', restauranteSchema);
+const privilegios = mongoose.model('privilegios', privilegiosSchema);
 
-module.exports = Restaurantes;
-
+module.exports = privilegios;

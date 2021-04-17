@@ -31,6 +31,6 @@ const tecnologiaSchema = mongoose.Schema({
     }
 });
 
-const Tecnologia = mongoose.model('tecnologia', tecnologiaSchema);
+const Tecnologia = mongoose.model('Tecnologia', tecnologiaSchema);
 
 module.exports = Tecnologia;

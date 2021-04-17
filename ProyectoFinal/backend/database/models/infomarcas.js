@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
-const limpiezaSchema = mongoose.Schema({
+
+const infomarcaSchema = mongoose.Schema({
     codigo: {
         type: String,
         required: true
@@ -9,24 +10,20 @@ const limpiezaSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    cantidad: {
-        type: Number,
-        required: true
-    },
-    nombre_restaurante: {
-        type: String,
-        required: true
-    },
-    marca: {
-        type: String,
-        required: false
-    },
     descripcion: {
         type: String,
         required: true
+    },
+    nacionalidad: {
+        type: String,
+        required: true
+    },
+    foto: {
+        type: String,
+        required: false
     }
 });
 
-const Limpieza = mongoose.model('Limpieza', limpiezaSchema);
+const infoMarcas = mongoose.model('infoMarcas', infomarcaSchema);
 
-module.exports = Limpieza;
+module.exports = infoMarcas;
