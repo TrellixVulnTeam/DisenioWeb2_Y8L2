@@ -5,15 +5,15 @@
   </ng-container>
   <ng-container matColumnDef="usuario">
     <th mat-header-cell *matHeaderCellDef> Usuario </th>
-    <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.usuario}} </td>
   </ng-container>
   <ng-container matColumnDef="fecha_hora">
     <th mat-header-cell *matHeaderCellDef> Fecha y Hora </th>
-    <td mat-cell *matCellDef="let element"> {{element.precio}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.fechaini}} </td>
   </ng-container>
   <ng-container matColumnDef="descripcion">
     <th mat-header-cell *matHeaderCellDef> Descripción </th>
-    <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
   </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumnsBitacoras"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumnsBitacoras;"></tr>

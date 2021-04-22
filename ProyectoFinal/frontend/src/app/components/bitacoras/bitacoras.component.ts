@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../../services/task.service';
 import Bufet from 'src/app/models/bufet';
+import Bitacoras from 'src/app/models/bitacoras';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,7 +10,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./bitacoras.component.css']
 })
 export class BitacorasComponent implements OnInit {
-  bufet : Bufet[] = [];
+  // bufet : Bufet[] = [];
+  bitacoras : Bitacoras[] = [];
+
   dataSource;
 
   displayedColumnsBitacoras: string[] = ['codigo', 'usuario', 'fecha_hora', 'descripcion'];
@@ -21,8 +24,8 @@ export class BitacorasComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.taskService.getBufet()
-    .subscribe((bufet: Bufet[]) =>{ this.dataSource = bufet });
+    this.taskService.getBitacoras()
+    .subscribe((bitacoras: Bitacoras[]) =>{ this.dataSource = bitacoras });
   }
 
 }
