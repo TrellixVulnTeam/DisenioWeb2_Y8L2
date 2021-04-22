@@ -23,8 +23,16 @@
             <td mat-cell *matCellDef="let element"> {{element.nombre_empresa}} </td>
           </ng-container>
           <ng-container matColumnDef="numero">
-            <th mat-header-cell *matHeaderCellDef> Telefono </th>
+            <th mat-header-cell *matHeaderCellDef> Telf. Empresa </th>
             <td mat-cell *matCellDef="let element"> {{element.telefono_empresa}} </td>
+          </ng-container>
+          <ng-container matColumnDef="cantidad">
+            <th mat-header-cell *matHeaderCellDef> Cedula Juridica </th>
+            <td mat-cell *matCellDef="let element"> {{element.cedula_juridicaEmpresa}} </td>
+          </ng-container>
+          <ng-container matColumnDef="restaurante">
+            <th mat-header-cell *matHeaderCellDef> Detalle Empresa </th>
+            <td mat-cell *matCellDef="let element"> {{element.detalle_empresa}} </td>
           </ng-container>
           <tr mat-header-row *matHeaderRowDef="displayedColumnsMarcas"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumnsMarcas;"></tr>
@@ -72,9 +80,10 @@
             <input matInput #detalle_empresaInput>
           </mat-form-field>
         <br>
-        <!-- <button class="confirmbtn" mat-raised-button color="primary" style="width: 50%;" (click)="postMarcas(codigoInput.value, nombreInput.value, descripcionInput.value, nacionalidadInput.value, nombre_empresaInput.value, telefono_empresaInput.value, cedula_juridicaEmpresaInput.value, detalle_empresaInput.value)">Insertar</button> -->
+        <button class="confirmbtn" mat-raised-button color="primary" style="width: 50%;" (click)="postMarcas(codigoInput.value, nombreInput.value, descripcionInput.value, nacionalidadInput.value, nombre_empresaInput.value, telefono_empresaInput.value, cedula_juridicaEmpresaInput.value, detalle_empresaInput.value)">Insertar</button>
         <button class="warnbtn" mat-raised-button color="primary" style="width: 50%;">Borrar</button>
       </div>
       <a routerLink="/restaurantes" routerLinkActive="active"><button class="primarybtn" mat-raised-button color="primary" style="width: 100%;">Atrás</button></a>
     </div>
   </div>
+  

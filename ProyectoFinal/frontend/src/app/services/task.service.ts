@@ -355,17 +355,16 @@ export class TaskService {
     return this.webService.delete(`info-contacto/${codigo}`)
   }
 
-
+  
   //Marcas
   getMarcas() {
     return this.webService.get('marcas');
   }
-  postMarcas(codigo: String, nombre : String, descripcion : String, nacionalidad : String, nombre_empresa : String, telefono_empresa : Number, cedula_juridicaEmpresa : String, detalle_empresa : String) {
-    return this.webService.post('marcas', {codigo, nombre, descripcion, nacionalidad, nombre_empresa, telefono_empresa, cedula_juridicaEmpresa, detalle_empresa})
+  postMarcas(nombre : string, descripcion : string, nacionalidad : string, nombre_empresa : string, telefono_empresa : number, cedula_juridicaEmpresa : string, detalle_empresa : string) {
+    return this.webService.post('marcas', {nombre, descripcion, nacionalidad, nombre_empresa, telefono_empresa, cedula_juridicaEmpresa, detalle_empresa})
   }
-
-  patchMarcas(marcaId:String, codigo: string, nombre : string, descripcion : string, nacionalidad : string, nombre_empresa : string, telefono_empresa : number, cedula_juridicaEmpresa : string, detalle_empresa : string){
-    return this.webService.patch(`marcas/${marcaId}`,{codigo, nombre, descripcion, nacionalidad, nombre_empresa, telefono_empresa, cedula_juridicaEmpresa, detalle_empresa} )
+  patchMarcas(codigo: string, nombre : string, descripcion : string, nacionalidad : string, nombre_empresa : string, telefono_empresa : number, cedula_juridicaEmpresa : string, detalle_empresa : string){
+    return this.webService.patch(`marcas/${codigo}`,{codigo, nombre, descripcion, nacionalidad, nombre_empresa, telefono_empresa, cedula_juridicaEmpresa, detalle_empresa} )
   }
   deleteMarcas(codigo:String){
     return this.webService.delete(`marcas/${codigo}`)
@@ -375,11 +374,11 @@ export class TaskService {
   getLimpieza() {
     return this.webService.get('limpieza');
   }
-  postLimpieza(codigo: String, nombre : string, cantidad : number, nombre_restaurante : string, marca : string, descripcion : number) {
-    return this.webService.post('limpieza', {codigo, nombre, cantidad, nombre_restaurante, marca, descripcion})
+  postLimpieza(nombre : string, cantidad : number, nombre_restaurante : string, marca : string, descripcion : number) {
+    return this.webService.post('limpieza', {nombre, cantidad, nombre_restaurante, marca, descripcion})
   }
-  patchLimpieza(limpiezaID: String, codigo: string, nombre : string, cantidad : number, nombre_restaurante : string, marca : string, descripcion : number){
-    return this.webService.patch(`limpieza/${limpiezaID}`,{codigo, nombre, cantidad, nombre_restaurante, marca, descripcion} )
+  patchLimpieza(codigo: string, nombre : string, cantidad : number, nombre_restaurante : string, marca : string, descripcion : number){
+    return this.webService.patch(`limpieza/${codigo}`,{codigo, nombre, cantidad, nombre_restaurante, marca, descripcion} )
   }
   deleteLimpieza(codigo:String){
     return this.webService.delete(`limpieza/${codigo}`)
@@ -389,11 +388,11 @@ export class TaskService {
   getProveedores() {
     return this.webService.get('proveedores');
   }
-  postProveedores(codigo: String, nombre : String, primer_apellido : String, segundo_apellido : String, telefono_oficina : Number, fax : String, celular : Number, cedula : String, fecha_ingreso : Number, nombre_proveedor : String, correo : String, direccion : String, nombre_contactoEmpresa : String, telefono_contactoEmpresa : Number, direccion_empresa : String) {
-    return this.webService.post('proveedores', {codigo, nombre, primer_apellido, segundo_apellido, telefono_oficina, fax, celular, cedula, fecha_ingreso, nombre_proveedor, correo, direccion, nombre_contactoEmpresa, telefono_contactoEmpresa, direccion_empresa})
+  postProveedores(nombre : string, primer_apellido : string, segundo_apellido : string, telefono_oficina : number, fax : string, celular : number, cedula : string, fecha_ingreso : string, nombre_proveedor : string, correo : string, direccion : string, nombre_contactoEmpresa : number, telefono_contactoEmpresa : number, direccion_empresa : string) {
+    return this.webService.post('proveedores', {nombre, primer_apellido, segundo_apellido, telefono_oficina, fax, celular, cedula, fecha_ingreso, nombre_proveedor, correo, direccion, nombre_contactoEmpresa, telefono_contactoEmpresa, direccion_empresa})
   }
-  patchProveedores(proveedorId: String, codigo: String, nombre : String, primer_apellido : String, segundo_apellido : String, telefono_oficina : Number, fax : String, celular : Number, cedula : String, fecha_ingreso : String, nombre_proveedor : String, correo : String, direccion : String, nombre_contactoEmpresa : Number, telefono_contactoEmpresa : Number, direccion_empresa : String){
-    return this.webService.patch(`proveedores/${proveedorId}`,{codigo, nombre, primer_apellido, segundo_apellido, telefono_oficina, fax, celular, cedula, fecha_ingreso, nombre_proveedor, correo, direccion, nombre_contactoEmpresa, telefono_contactoEmpresa, direccion_empresa} )
+  patchProveedores(codigo: string, nombre : string, primer_apellido : string, segundo_apellido : string, telefono_oficina : number, fax : string, celular : number, cedula : string, fecha_ingreso : string, nombre_proveedor : string, correo : string, direccion : string, nombre_contactoEmpresa : number, telefono_contactoEmpresa : number, direccion_empresa : string){
+    return this.webService.patch(`proveedores/${codigo}`,{codigo, nombre, primer_apellido, segundo_apellido, telefono_oficina, fax, celular, cedula, fecha_ingreso, nombre_proveedor, correo, direccion, nombre_contactoEmpresa, telefono_contactoEmpresa, direccion_empresa} )
   }
   deleteProveedores(codigo:String){
     return this.webService.delete(`proveedores/${codigo}`)
@@ -403,11 +402,11 @@ export class TaskService {
   getRestaurantes() {
     return this.webService.get('restaurantes');
   }
-  postRestaurantes(codigo: String, nombre : string, direccion : string, cantidadClientes : number, telefono : number) {
-    return this.webService.post('restaurantes', {codigo, nombre, direccion, cantidadClientes, telefono})
+  postRestaurantes(nombre : string, direccion : string, cantidadClientes : number, telefono : number) {
+    return this.webService.post('restaurantes', {nombre, direccion, cantidadClientes, telefono})
   }
-  patchRestaurantes(restauranteId: String, codigo: string, nombre : string, direccion : string, cantidadClientes : number, telefono : number){
-    return this.webService.patch(`restaurantes/${restauranteId}`,{codigo, nombre, direccion, cantidadClientes, telefono} )
+  patchRestaurantes(codigo: string, nombre : string, direccion : string, cantidadClientes : number, telefono : number){
+    return this.webService.patch(`restaurantes/${codigo}`,{codigo, nombre, direccion, cantidadClientes, telefono} )
   }
   deleteRestaurantes(codigo:String){
     return this.webService.delete(`restaurantes/${codigo}`)
@@ -417,11 +416,11 @@ export class TaskService {
   getTecnologia() {
     return this.webService.get('tecnologia');
   }
-  postTecnologia(codigo:String,nombre : string, cantidad : number, nombre_restaurante : string, precio: number, marca : string, descripcion : number) {
-    return this.webService.post('tecnologia', {codigo,nombre, cantidad, nombre_restaurante, precio, marca, descripcion})
+  postTecnologia(nombre : string, cantidad : number, nombre_restaurante : string, precio: number, marca : string, descripcion : number) {
+    return this.webService.post('tecnologia', {nombre, cantidad, nombre_restaurante, precio, marca, descripcion})
   }
-  patchTecnologia(tecnologiaId:String, codigo: string, nombre : string, cantidad : number, nombre_restaurante : string, precio: number, marca : string, descripcion : number){
-    return this.webService.patch(`tecnologia/${tecnologiaId}`,{codigo, nombre, cantidad, nombre_restaurante, precio, marca, descripcion} )
+  patchTecnologia(codigo: string, nombre : string, cantidad : number, nombre_restaurante : string, precio: number, marca : string, descripcion : number){
+    return this.webService.patch(`tecnologia/${codigo}`,{codigo, nombre, cantidad, nombre_restaurante, precio, marca, descripcion} )
   }
   deleteTecnologia(codigo:String){
     return this.webService.delete(`tecnologia/${codigo}`)
@@ -429,27 +428,27 @@ export class TaskService {
 
   //Desechables
   getDesechables() {
-    return this.webService.get('desechables_y_empaques');
+    return this.webService.get('desechables');
   }
-  postDesechables(codigo: String, nombre : String, cantidad : Number, nombre_restaurante : String, marca : String, descripcion : Number) {
-    return this.webService.post('desechables_y_empaques', {codigo,nombre, cantidad, nombre_restaurante, marca, descripcion})
+  postDesechables(nombre : string, cantidad : number, nombre_restaurante : string, marca : string, descripcion : number) {
+    return this.webService.post('desechables', {nombre, cantidad, nombre_restaurante, marca, descripcion})
   }
-  patchDesechables(desechableId: String,codigo: string, nombre : string, cantidad : number, nombre_restaurante : string, marca : string, descripcion : number){
-    return this.webService.patch(`desechables_y_empaques/${desechableId}`,{codigo, nombre, cantidad, nombre_restaurante, marca, descripcion} )
+  patchDesechables(codigo: string, nombre : string, cantidad : number, nombre_restaurante : string, marca : string, descripcion : number){
+    return this.webService.patch(`desechables/${codigo}`,{codigo, nombre, cantidad, nombre_restaurante, marca, descripcion} )
   }
   deleteDesechables(codigo:String){
-    return this.webService.delete(`desechables_y_empaques/${codigo}`)
+    return this.webService.delete(`desechables/${codigo}`)
   }
-
+  
   //Equipos
   getEquipos() {
     return this.webService.get('equipos');
   }
-  postEquipos(codigo:String, nombre : string, cantidad : number, nombre_restaurante : string, marca : string, descripcion : number) {
-    return this.webService.post('equipos', {codigo,nombre, cantidad, nombre_restaurante, marca, descripcion})
+  postEquipos(nombre : string, cantidad : number, nombre_restaurante : string, marca : string, descripcion : number) {
+    return this.webService.post('equipos', {nombre, cantidad, nombre_restaurante, marca, descripcion})
   }
-  patchEquipos(equipoId: String, codigo: string, nombre : string, cantidad : number, nombre_restaurante : string, marca : string, descripcion : number){
-    return this.webService.patch(`equipos/${equipoId}`,{codigo, nombre, cantidad, nombre_restaurante, marca, descripcion} )
+  patchEquipos(codigo: string, nombre : string, cantidad : number, nombre_restaurante : string, marca : string, descripcion : number){
+    return this.webService.patch(`equipos/${codigo}`,{codigo, nombre, cantidad, nombre_restaurante, marca, descripcion} )
   }
   deleteEquipos(codigo:String){
     return this.webService.delete(`equipos/${codigo}`)
@@ -459,11 +458,11 @@ export class TaskService {
   getVinos() {
     return this.webService.get('vinos');
   }
-  postVinos(codigo:String, nombre : string, cantidad : number, marca : string, descripcion : string, nacionalidad : string, precio_unitario : number, anio_cosecha : number, precio_botella : number) {
-    return this.webService.post('vinos', {codigo, nombre, cantidad, marca, descripcion, nacionalidad, precio_unitario, anio_cosecha, precio_botella})
+  postVinos(nombre : string, cantidad : number, marca : string, descripcion : string, nacionalidad : string, precio_unitario : number, anio_cosecha : number, precio_botella : number) {
+    return this.webService.post('vinos', {nombre, cantidad, marca, descripcion, nacionalidad, precio_unitario, anio_cosecha, precio_botella})
   }
-  patchVinos(vinoId: String, codigo: string,nombre : string, cantidad : number, marca : string, descripcion : string, nacionalidad : string, precio_unitario : number, anio_cosecha : number, precio_botella : number){
-    return this.webService.patch(`vinos/${vinoId}`,{codigo, nombre, cantidad, marca, descripcion, nacionalidad, precio_unitario, anio_cosecha, precio_botella} )
+  patchVinos(codigo: string,nombre : string, cantidad : number, marca : string, descripcion : string, nacionalidad : string, precio_unitario : number, anio_cosecha : number, precio_botella : number){
+    return this.webService.patch(`vinos/${codigo}`,{codigo, nombre, cantidad, marca, descripcion, nacionalidad, precio_unitario, anio_cosecha, precio_botella} )
   }
   deleteVinos(codigo:String){
     return this.webService.delete(`vinos/${codigo}`)

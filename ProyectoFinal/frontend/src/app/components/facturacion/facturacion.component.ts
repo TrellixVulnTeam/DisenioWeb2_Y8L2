@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../../services/task.service';
 import Bufet from 'src/app/models/bufet';
-import Facturacion from 'src/app/models/facturacion';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./facturacion.component.css']
 })
 export class FacturacionComponent implements OnInit {
-  facturacion : Facturacion[] = [];
+  bufet : Bufet[] = [];
   dataSource;
 
   displayedColumnsFacturacion: string[] = ['codigo', 'fecha_registro', 'descripcion', 'entrada_dinero', 'apertura_caja', 'cierre_caja', 'restaurante'];
@@ -22,7 +21,7 @@ export class FacturacionComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.taskService.getFacturacion()
-    .subscribe((facturacion: Facturacion[]) =>{ this.dataSource = facturacion });
+    this.taskService.getBufet()
+    .subscribe((bufet: Bufet[]) =>{ this.dataSource = bufet });
   }
 }

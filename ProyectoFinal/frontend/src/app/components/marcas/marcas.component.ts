@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import Mesas from 'src/app/models/marcas';
-import Marcas from 'src/app/models/marcas';
 import { TaskService } from '../../services/task.service';
 import { Router } from '@angular/router';
 
@@ -17,9 +16,8 @@ import { Router } from '@angular/router';
 })
 
 export class MarcasComponent implements OnInit {
-  marcas : Marcas[] = [];
 
-  displayedColumnsMarcas: string[] = ['codigo', 'nombre', 'numero', 'cantidad', 'restaurante', 'numero'];
+  displayedColumnsMesas: string[] = ['codigo', 'nombre', 'numero', 'cantidad', 'restaurante'];
 
   dataSource;
 
@@ -37,15 +35,6 @@ export class MarcasComponent implements OnInit {
     this.taskService.getMesas()
     .subscribe((mesas : Mesas[]) => { this.dataSource = mesas });
   }
-
-  postMarcas() {
-
-  }
-
-  // viewMarcas() {
-  //   this.taskService.getMarcas()
-  //   .subscribe((marcas: Marcas[]) => this.dataSource = marcas);
-  // }
 
   postMesas(codigo: String, nombre: String, numero: Number, cantidad_sillas: Number, nombre_restaurante: String) {
     this.taskService.postMesas(codigo, nombre, numero, cantidad_sillas, nombre_restaurante)

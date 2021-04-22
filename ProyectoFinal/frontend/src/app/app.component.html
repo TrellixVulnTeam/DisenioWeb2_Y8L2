@@ -1,23 +1,20 @@
 <div class="knin">
   <mat-sidenav-container class="example-container" style="padding: 0;">
-    <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
-      (closed)="events.push('close!')" style="background-color: #353B44; margin: 0%">
+    <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')" (closed)="events.push('close!')" style="background-color: #353B44; margin: 0%">
       <app-sidenav></app-sidenav>
     </mat-sidenav>
     <mat-sidenav-content style="background-color: #1E2025; padding: 15px">
       <p>
-        <mat-toolbar style="background-color: #1E2025;">
-          <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
-            style="background-color: #1E2025!important;">
-            <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
-          </button>
-          <span>Restaurante</span>
-          <span class="example-spacer"></span>
-          <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon"
-            routerLink="/login" routerLinkActive="active">
-            <mat-icon>person</mat-icon>
-          </button>
-        </mat-toolbar>
+        <mat-toolbar  style="background-color: #1E2025;">
+         <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" style="background-color: #1E2025!important;">
+          <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+        </button>
+        <span>Restaurante</span>
+        <span class="example-spacer"></span>
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" routerLink="/login" routerLinkActive="active">
+          <mat-icon>person</mat-icon>
+       </button>
+      </mat-toolbar>
       </p>
       <div class="row">
         <div class="col">
@@ -27,9 +24,3 @@
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>
-
-<!-- <div>
-  <h1>File Upload</h1>
-  <input type="file" (change)="onFileSelected($event)">
-  <button type="button" (click)="onUpload()"></button>
-</div> -->

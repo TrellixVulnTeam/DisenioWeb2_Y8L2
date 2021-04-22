@@ -9,11 +9,11 @@
   </ng-container>
   <ng-container matColumnDef="cantidad">
     <th mat-header-cell *matHeaderCellDef> Cantidad </th>
-    <td mat-cell *matCellDef="let element"> {{element.cantidad}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.precio}} </td>
   </ng-container>
   <ng-container matColumnDef="restaurante">
     <th mat-header-cell *matHeaderCellDef> Restaurante </th>
-    <td mat-cell *matCellDef="let element"> {{element.nombre_restaurante}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
   </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumnsDesechablesEmpaques"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumnsDesechablesEmpaques;"></tr>
@@ -29,35 +29,31 @@
     <br>
     <mat-form-field>
       <mat-label>Código</mat-label>
-      <input matInput #code>
+      <input matInput>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Restaurante</mat-label>
-      <mat-select #restaurante>
-        <mat-option *ngFor="let e of options" [value]="e.value">
-          {{e.viewValue}}
-        </mat-option>
-      </mat-select>
+      <input matInput>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Nombre</mat-label>
-      <input matInput #nombre>
+      <input matInput>
     </mat-form-field>
     <br>
     <mat-form-field>
       <mat-label>Marca</mat-label>
-      <input matInput #marca>
+      <input matInput>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Cantidad</mat-label>
-      <input matInput #cantidad>
+      <input matInput>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Descripción</mat-label>
-      <input matInput #descripcion>
+      <input matInput>
     </mat-form-field>
     <br>
-    <button class="confirmbtn" mat-raised-button color="primary" style="width: 50%;" (click)="addDesechable(code.value, nombre.value, cantidad.value, restaurante.value, marca.value, descripcion.value)">Insertar</button>
+    <button class="confirmbtn" mat-raised-button color="primary" style="width: 50%;">Insertar</button>
     <button class="warnbtn" mat-raised-button color="primary" style="width: 50%;">Borrar</button>
   </mat-expansion-panel>
 </mat-accordion>
