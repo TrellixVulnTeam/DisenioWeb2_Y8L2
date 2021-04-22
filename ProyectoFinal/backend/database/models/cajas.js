@@ -5,34 +5,27 @@ const cajasSchema = mongoose.Schema({
         type: String, 
         required: true
     },
-    nombre: {
+    fecha: {
+        type: Date,
+        required: true
+    },
+    descripcion: {
         type: String,
         required: true
     },
-    primer_apellido: {
+    dineroEntrada: {
+        type: Number,
+        required: true
+    },
+    cajaApertura: {
         type: String,
         required: true
     },
-    segundo_apellido: {
-        type: String,
+    cajaCierre: {
+        type: Number,
         required: true
     },
-    telefono1: {
-        type: String,
-        required: true
-    },
-    telefono2: {
-        type: String
-    },
-    login: {
-        type: String,
-        required: true
-    },
-    contrasenia: {
-        type: String,
-        required: true
-    },
-    tipo_administrador: {
+    restaurante: {
         type: String,
         required: true
     }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../../services/task.service';
-import Bufet from 'src/app/models/bufet';
+import Cajas from 'src/app/models/cajas';
 import { Router } from '@angular/router';
 import { ViewChild } from '@angular/core';
 
@@ -15,7 +15,7 @@ interface OptionsAdmin {
   styleUrls: ['./cajas.component.css']
 })
 export class CajasComponent implements OnInit {
-  bufet : Bufet[] = [];
+  caja : Cajas[] = [];
   selected;
   dataSource;
 
@@ -33,7 +33,7 @@ export class CajasComponent implements OnInit {
 
   isChecked = false;
   // optionsAdmin: string[] = ['Administrador del systema', 'Administrador de seguridad', 'Administrador del restaurante', 'Administrador de cuentas'];
-  displayedColumnsConsecutivos: string[] = ['codigo', 'fecha_registro', 'descripcion', 'entrada_dinero', 'apertura_caja', 'cierre_caja', 'restaurante'];
+  //displayedColumnsConsecutivos: string[] = ['codigo', 'fecha_registro', 'descripcion', 'entrada_dinero', 'apertura_caja', 'cierre_caja', 'restaurante'];
 
   constructor(private taskService: TaskService, private router: Router) { }
 
@@ -43,20 +43,18 @@ export class CajasComponent implements OnInit {
 
   ngAfterViewInit() {
     this.taskService.getCajas()
-    .subscribe((bufet: Bufet[]) =>{ this.dataSource = bufet });
+    .subscribe((caja: Cajas[]) =>{ this.dataSource = caja });
   }
 
-  testForm() {
-    window.alert('Form works');
-  }
 
   checkCheckBoxvalue(event){
     console.log(event.checked)
   }
 
-  // ELAMO() {
-  //   console.log(myCheckbox, 'Value of checkbox');
-  // }
+  addCajas(codigo:String, fecha:Date, descripcion:String, dineroEntrada:Number, cajaApertura: String, cajaCierre:String, restaurante: String){
+    this.taskService.postCajas(codigo, fecha, descripcion,dineroEntrada,cajaApertura, cajaCierre, restaurante )
+    .subscribe((caja : Cajas) => this.router.navigate(['/']));
+  }
 
 }
 

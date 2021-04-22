@@ -190,6 +190,16 @@ export class TaskService {
     return this.webService.get('cajas');
   }
 
+  postCajas(codigo:String, fecha:Date, descripcion:String, dineroEntrada:Number, cajaApertura: String, cajaCierre:String, restaurante: String){
+    return this.webService.post('cajas',{codigo, fecha, descripcion, dineroEntrada, cajaApertura, cajaCierre, restaurante})
+  }
+  patchCajas(cajaId: String, codigo:String, fecha:Date, descripcion:String, dineroEntrada:Number, cajaApertura: String, cajaCierre:String, restaurante: String){
+    return this.webService.patch(`cajas/${cajaId}`, {codigo, fecha, descripcion, dineroEntrada, cajaApertura, cajaCierre, restaurante})
+  }
+
+  deleteCajas(codigo: String){
+    return this.webService.delete(`cajas/${codigo}`)
+  }
 
 
   getEmpleados() {
@@ -355,7 +365,7 @@ export class TaskService {
     return this.webService.delete(`info-contacto/${codigo}`)
   }
 
-  
+
   //Marcas
   getMarcas() {
     return this.webService.get('marcas');
@@ -457,7 +467,7 @@ export class TaskService {
   deleteDesechables(codigo:String){
     return this.webService.delete(`desechables/${codigo}`)
   }
-  
+
   //Equipos
   getEquipos() {
     return this.webService.get('equipos');

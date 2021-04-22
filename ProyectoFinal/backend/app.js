@@ -214,9 +214,13 @@ app.get('/cajas', (req, res) => {
 
 app.post('/cajas', (req, res) => {
     (new Cajas({
-        'datos_personales': req.body.datos_personales,
-        'datos_tecnicos': req.body.datos_tecnicos,
-        'privilegios': req.body.privilegios
+        'codigo': req.body.descripcion,
+        'fecha': req.body.fecha,
+        'descripcion': req.body.descripcion,
+        'dineroEntrada': req.body.dineroEntrada,
+        'cajaApertura' : req.body.cajaApertura,
+        'cajaCierre': req.body.cajaCierre,
+        'restaurante': req.body.restaurante
     }))
     .save()
         .then((cajas) => {
