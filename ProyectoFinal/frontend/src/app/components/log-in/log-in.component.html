@@ -1,21 +1,30 @@
-<script>
-  function validaUser(){
-    location.href = "/ProyectoFinal/frontend/src/app/components/administracion/administracion.component.html"
-  }
-
-</script>
 <div class="row">
   <div class="col">
     <div class="jumbotron contentjmb" style="width: 100%;">
       <p>Inicio de Sesión</p>
       <section>
-        <div class="example-button-row">
+        <mat-label id="label-warn" style="color: #DBC2A7!important; display: none;">Usuario y/o contraseña invalida</mat-label>
+        <br>
+        <mat-form-field appearance="standard">
+          <mat-label>Digite su usuario</mat-label>
+          <input matInput #username>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="standard">
+          <mat-label>Digite su contraseña</mat-label>
+          <input matInput type="password" #password>
+        </mat-form-field>
+        <br>
+        <button class="confirmbtn" mat-raised-button color="primary" style="width: 50%;" (click)="validaUser(username.value, password.value)">Log in</button>
+        <br>
+        <a routerLink="/restaurantes" routerLinkActive="active"><button class="warnbtn" mat-raised-button color="primary" style="width: 50%; margin-top: 10px;">Cancelar</button></a>
+        <!-- <div class="example-button-row">
           <label>Digite su usuario</label>
           <input type="text" >
           <label>Digite su contraseña</label>
           <input type="password" >
           <button onClick="validaUser" mat-raised-button color="primary">Login</button>
-        </div>
+        </div> -->
       </section>
     </div>
   </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-log-in',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LogInComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
+  validaUser(username: String, password: String){
+
+    if (username !== "cc" && password !== "cc") {
+      document.getElementById('label-warn').style.display = "block";
+    } else {
+      this.router.navigate(['/adminCP']);
+    }
+  }
 }

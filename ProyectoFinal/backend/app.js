@@ -1022,12 +1022,10 @@ app.post('/marcas', (req, res) => {
         'nombre': req.body.nombre,
         'descripcion': req.body.descripcion,
         'nacionalidad': req.body.nacionalidad,
-        'foto_marca': req.body.foto_marca,
         'nombre_empresa': req.body.nombre_empresa,
         'telefono_empresa': req.body.telefono_empresa,
         'cedula_juridicaEmpresa': req.body.cedula_juridicaEmpresa,
-        'detalle_empresa': req.body.detalle_empresa,
-        'foto_empresa': req.body.foto_empresa
+        'detalle_empresa': req.body.detalle_empresa
     }))
     .save()
         .then((marcas) => {

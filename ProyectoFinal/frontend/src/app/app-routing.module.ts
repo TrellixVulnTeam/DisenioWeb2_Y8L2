@@ -12,6 +12,7 @@ import { PuestosComponent } from './components/puestos/puestos.component';
 import { ReportesComponent } from './components/reportes/reportes.component';
 import { RestaurantesComponent } from './components/restaurantes/restaurantes.component';
 import { SeguridadComponent } from './components/seguridad/seguridad.component';
+import { AdminContentComponent } from './components/admin-content/admin-content.component';
 
 const routes: Routes = [
   {path: 'seguridad', component: SeguridadComponent},
@@ -24,7 +25,8 @@ const routes: Routes = [
   {path: 'empleados', component: EmpleadosComponent},
   {path: 'mesas', component: MesasComponent},
   {path: 'puestos', component: PuestosComponent},
-  {path: 'especiales', component: EspecialesComponent}
+  {path: 'especiales', component: EspecialesComponent},
+  {path: 'adminCP', component: AdminContentComponent}
   // {path: 'entorno-restaurante', component: EntornoRestauranteComponent}
 ];
 

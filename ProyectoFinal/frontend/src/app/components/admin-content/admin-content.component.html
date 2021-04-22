@@ -1,8 +1,7 @@
 <div class="row">
   <div class="col">
     <div class="jumbotron">
-      <app-log-in></app-log-in>
-      <!-- <div class="jumbotron contentjmb" style="width: 100%;">
+      <div class="jumbotron contentjmb" style="width: 100%;">
         <div class="contentjmb" style="margin-left: 25%; margin-right: 25%;">
           <h1 class="display-4">Administración</h1>
           <hr>
@@ -16,7 +15,9 @@
           <a routerLink="/puestos" routerLinkActive="active"><button class="adminrestaurantebtn primarybtn" mat-raised-button
               color="primary">Puesto</button></a>
         </div>
-      </div> -->
+        <br>
+        <button class="confirmbtn" mat-raised-button color="primary" style="width: 50%;" (click)="logOut()">Log in</button>
+      </div>
     </div>
   </div>
 </div>

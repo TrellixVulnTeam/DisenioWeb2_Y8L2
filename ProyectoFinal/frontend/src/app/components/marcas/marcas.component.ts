@@ -38,8 +38,16 @@ export class MarcasComponent implements OnInit {
     .subscribe((mesas : Mesas[]) => { this.dataSource = mesas });
   }
 
-  postMarcas() {
-
+  postMarcas(
+    codigo: string, nombre: string, descripcion: string,
+    nacionalidad: string,
+    nombre_empresa: string, telefono_empresa: number,
+    cedula_juridicaEmpresa: string, detalle_empresa: string) {
+      this.taskService.postMarcas(
+        codigo, nombre, descripcion,
+        nacionalidad, nombre_empresa, telefono_empresa,
+        cedula_juridicaEmpresa, detalle_empresa)
+      .subscribe((marcas : Marcas) => this.router.navigate(['/']));
   }
 
   // viewMarcas() {

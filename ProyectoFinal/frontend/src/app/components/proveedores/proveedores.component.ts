@@ -43,14 +43,21 @@ export class ProveedoresComponent implements OnInit {
     .subscribe((proveedores : Proveedores) => { this.datasourceProveedores = proveedores })
   }
 
-  addMarcas(codigo: String, nombre: String, descripcion: String, nacionalidad: String, nombre_empresa: String, telefono_empresa: Number, cedula_juridicaEmpresa: String, detalle_empresa: String) {
-    this.taskService.postMarcas(codigo, nombre, descripcion, nacionalidad, nombre_empresa, telefono_empresa, cedula_juridicaEmpresa, detalle_empresa)
-    .subscribe((marcas: Marcas) => this.router.navigate['/']);
+  postMarcas(
+    codigo: string, nombre: string, descripcion: string,
+    nacionalidad: string,
+    nombre_empresa: string, telefono_empresa: number,
+    cedula_juridicaEmpresa: string, detalle_empresa: string) {
+      this.taskService.postMarcas(
+        codigo, nombre, descripcion,
+        nacionalidad, nombre_empresa, telefono_empresa,
+        cedula_juridicaEmpresa, detalle_empresa)
+      .subscribe((marcas : Marcas) => this.router.navigate(['/']));
   }
 
   addProvedores(codigo: String, nombre: String, primer_apellido: String, segundo_apellido: String, telefono_oficina: Number, fax: String, celular: Number, cedula: String, fecha_ingreso: Number, nombre_proveedor: String, correo: String, direccion: String, nombre_contactoEmpresa: String, telefono_contactoEmpresa: Number, direccion_empresa: String) {
     this.taskService.postProveedores(codigo, nombre, primer_apellido, segundo_apellido, telefono_oficina, fax, celular, cedula, fecha_ingreso, nombre_proveedor, correo, direccion, nombre_contactoEmpresa, telefono_contactoEmpresa, direccion_empresa)
-    .subscribe((proveedores: Proveedores) => this.router.navigate['/']);
+    .subscribe((proveedores: Proveedores) => this.router.navigate[('/')]);
 
   }
 }

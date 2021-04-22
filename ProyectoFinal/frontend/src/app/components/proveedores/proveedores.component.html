@@ -39,7 +39,7 @@
                 <b>Insertar marca</b>
               </mat-panel-title>
             </mat-expansion-panel-header>
-            <form (ngSubmit)="addMarcas(codigo.value, nombre.value, descripcion.value, nacionalidad.value, cedulaJuridica.value, nombreEmpresa.value,  detalleEmpresa.value, telefono.value)">
+            <form (ngSubmit)="postMarcas(codigo.value, nombre.value, descripcion.value, nacionalidad.value, nombreEmpresa.value, telefono.value, cedulaJuridica.value, detalleEmpresa.value)">
               <div class="marcaInfo">
                 <h1 class="lead">Información de la marca</h1>
                 <hr>
@@ -89,7 +89,7 @@
                 </mat-form-field>
                 <br>
                 <mat-form-field>
-                  <mat-label>Teléfono</mat-label>
+                  <mat-label>Teléfonooo</mat-label>
                   <input matInput #telefono>
                 </mat-form-field>
                 <br>

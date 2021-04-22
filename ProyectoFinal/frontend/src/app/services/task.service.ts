@@ -427,6 +427,24 @@ export class TaskService {
     return this.webService.delete(`tecnologia/${codigo}`)
   }
 
+  //Comestibles
+
+  getComestibles(){
+    return this.webService.get('comestibles')
+  }
+
+  postComestibles(codigo:String, nombre: String, cantidad: Number, restaurante: String, tipo_comestible: String, marca: String, clase_comestible: String, linea_comestible: String, unidad_medida:String){
+    return this.webService.post('comestibles', {codigo, nombre, cantidad, restaurante, tipo_comestible, marca, clase_comestible, linea_comestible, unidad_medida})
+  }
+
+  patchComestibles(comestibleId: String, codigo:String, nombre: String, cantidad: Number, restaurante: String, tipo_comestible: String, marca: String, clase_comestible: String, linea_comestible: String, unidad_medida:String){
+    return this.webService.patch(`comestible/${comestibleId}`, {codigo:String, nombre: String, cantidad: Number, restaurante: String, tipo_comestible: String, marca: String, clase_comestible: String, linea_comestible: String, unidad_medida:String})
+  }
+
+  deleteComestibles(codigo:String){
+    return this.webService.delete(`comestible/${codigo}`)
+  }
+
   //Desechables
   getDesechables() {
     return this.webService.get('desechables_y_empaques');
