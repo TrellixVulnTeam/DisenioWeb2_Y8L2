@@ -38,6 +38,7 @@ import { RolesYEventosComponent } from './components/roles-y-eventos/roles-y-eve
 import { UnidadesDeMedidaComponent } from './components/unidades-de-medida/unidades-de-medida.component';
 import { AdminContentComponent } from './components/admin-content/admin-content.component';
 // import { WavesModule, InputsModule, ButtonsModule } from 'angular-bootstrap-md'
+import {HttpClientModule} from 'angular/common/http';
 
 @NgModule({
   declarations: [

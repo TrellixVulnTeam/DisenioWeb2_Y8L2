@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import Mesas from 'src/app/models/marcas';
-import Marcas from 'src/app/models/marcas';
 import { TaskService } from '../../services/task.service';
 import { Router } from '@angular/router';
 
@@ -17,9 +16,8 @@ import { Router } from '@angular/router';
 })
 
 export class MarcasComponent implements OnInit {
-  marcas : Marcas[] = [];
 
-  displayedColumnsMarcas: string[] = ['codigo', 'nombre', 'numero', 'cantidad', 'restaurante', 'numero'];
+  displayedColumnsMesas: string[] = ['codigo', 'nombre', 'numero', 'cantidad', 'restaurante'];
 
   dataSource;
 

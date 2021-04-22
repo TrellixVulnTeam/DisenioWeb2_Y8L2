@@ -355,15 +355,14 @@ export class TaskService {
     return this.webService.delete(`info-contacto/${codigo}`)
   }
 
-
+  
   //Marcas
   getMarcas() {
     return this.webService.get('marcas');
   }
-  postMarcas(codigo: String, nombre : String, descripcion : String, nacionalidad : String, nombre_empresa : String, telefono_empresa : Number, cedula_juridicaEmpresa : String, detalle_empresa : String) {
-    return this.webService.post('marcas', {codigo, nombre, descripcion, nacionalidad, nombre_empresa, telefono_empresa, cedula_juridicaEmpresa, detalle_empresa})
+  postMarcas(nombre : string, descripcion : string, nacionalidad : string, nombre_empresa : string, telefono_empresa : number, cedula_juridicaEmpresa : string, detalle_empresa : string) {
+    return this.webService.post('marcas', {nombre, descripcion, nacionalidad, nombre_empresa, telefono_empresa, cedula_juridicaEmpresa, detalle_empresa})
   }
-
   patchMarcas(codigo: string, nombre : string, descripcion : string, nacionalidad : string, nombre_empresa : string, telefono_empresa : number, cedula_juridicaEmpresa : string, detalle_empresa : string){
     return this.webService.patch(`marcas/${codigo}`,{codigo, nombre, descripcion, nacionalidad, nombre_empresa, telefono_empresa, cedula_juridicaEmpresa, detalle_empresa} )
   }
@@ -389,10 +388,10 @@ export class TaskService {
   getProveedores() {
     return this.webService.get('proveedores');
   }
-  postProveedores(codigo: String, nombre : String, primer_apellido : String, segundo_apellido : String, telefono_oficina : Number, fax : String, celular : Number, cedula : String, fecha_ingreso : Number, nombre_proveedor : String, correo : String, direccion : String, nombre_contactoEmpresa : String, telefono_contactoEmpresa : Number, direccion_empresa : String) {
-    return this.webService.post('proveedores', {codigo, nombre, primer_apellido, segundo_apellido, telefono_oficina, fax, celular, cedula, fecha_ingreso, nombre_proveedor, correo, direccion, nombre_contactoEmpresa, telefono_contactoEmpresa, direccion_empresa})
+  postProveedores(nombre : string, primer_apellido : string, segundo_apellido : string, telefono_oficina : number, fax : string, celular : number, cedula : string, fecha_ingreso : string, nombre_proveedor : string, correo : string, direccion : string, nombre_contactoEmpresa : number, telefono_contactoEmpresa : number, direccion_empresa : string) {
+    return this.webService.post('proveedores', {nombre, primer_apellido, segundo_apellido, telefono_oficina, fax, celular, cedula, fecha_ingreso, nombre_proveedor, correo, direccion, nombre_contactoEmpresa, telefono_contactoEmpresa, direccion_empresa})
   }
-  patchProveedores(codigo: String, nombre : String, primer_apellido : String, segundo_apellido : String, telefono_oficina : Number, fax : String, celular : Number, cedula : String, fecha_ingreso : String, nombre_proveedor : String, correo : String, direccion : String, nombre_contactoEmpresa : Number, telefono_contactoEmpresa : Number, direccion_empresa : String){
+  patchProveedores(codigo: string, nombre : string, primer_apellido : string, segundo_apellido : string, telefono_oficina : number, fax : string, celular : number, cedula : string, fecha_ingreso : string, nombre_proveedor : string, correo : string, direccion : string, nombre_contactoEmpresa : number, telefono_contactoEmpresa : number, direccion_empresa : string){
     return this.webService.patch(`proveedores/${codigo}`,{codigo, nombre, primer_apellido, segundo_apellido, telefono_oficina, fax, celular, cedula, fecha_ingreso, nombre_proveedor, correo, direccion, nombre_contactoEmpresa, telefono_contactoEmpresa, direccion_empresa} )
   }
   deleteProveedores(codigo:String){
@@ -447,18 +446,18 @@ export class TaskService {
 
   //Desechables
   getDesechables() {
-    return this.webService.get('desechables_y_empaques');
+    return this.webService.get('desechables');
   }
-  postDesechables(code: String, nombre : String, cantidad : Number, nombre_restaurante : String, marca : String, descripcion : Number) {
-    return this.webService.post('desechables_y_empaques', {nombre, cantidad, nombre_restaurante, marca, descripcion})
+  postDesechables(nombre : string, cantidad : number, nombre_restaurante : string, marca : string, descripcion : number) {
+    return this.webService.post('desechables', {nombre, cantidad, nombre_restaurante, marca, descripcion})
   }
   patchDesechables(codigo: string, nombre : string, cantidad : number, nombre_restaurante : string, marca : string, descripcion : number){
-    return this.webService.patch(`desechables_y_empaques/${codigo}`,{codigo, nombre, cantidad, nombre_restaurante, marca, descripcion} )
+    return this.webService.patch(`desechables/${codigo}`,{codigo, nombre, cantidad, nombre_restaurante, marca, descripcion} )
   }
   deleteDesechables(codigo:String){
-    return this.webService.delete(`desechables_y_empaques/${codigo}`)
+    return this.webService.delete(`desechables/${codigo}`)
   }
-
+  
   //Equipos
   getEquipos() {
     return this.webService.get('equipos');
@@ -485,6 +484,21 @@ export class TaskService {
   }
   deleteVinos(codigo:String){
     return this.webService.delete(`vinos/${codigo}`)
+  }
+
+  //Comestibles
+
+  getComestibles(){
+    return this.webService.get('comestibles')
+  }
+  postComestibles(codigo:String, nombre: String, cantidad: Number, restaurante: String, tipo_comestible: String, marca: String, clase_comestible: String, linea_comestible: String, unidad_medida:String){
+    return this.webService.post('comestibles', {codigo, nombre, cantidad, restaurante, tipo_comestible, marca, clase_comestible, linea_comestible, unidad_medida})
+  }
+  patchComestibles(comestibleId: String, codigo:String, nombre: String, cantidad: Number, restaurante: String, tipo_comestible: String, marca: String, clase_comestible: String, linea_comestible: String, unidad_medida:String){
+    return this.webService.patch(`comestible/${comestibleId}`, {codigo:String, nombre: String, cantidad: Number, restaurante: String, tipo_comestible: String, marca: String, clase_comestible: String, linea_comestible: String, unidad_medida:String})
+  }
+  deleteComestibles(codigo:String){
+    return this.webService.delete(`comestible/${codigo}`)
   }
 
 }

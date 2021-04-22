@@ -34,7 +34,7 @@ export class ClientesComponent implements OnInit {
   }
 
   viewClientes() {
-    this.taskService.getDatosCliente()
+    this.taskService.getClientes()
     .subscribe((clientes: Cliente[]) =>{ this.dataSource = clientes });
   }
 

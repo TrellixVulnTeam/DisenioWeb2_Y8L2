@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Bufet from 'src/app/models/bufet';
 import Mesas from 'src/app/models/mesas';
 import { TaskService } from '../../services/task.service';
 import { Router } from '@angular/router';
@@ -9,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./mesas.component.css']
 })
 export class MesasComponent implements OnInit {
+  bufet : Bufet[] = [];
   mesas : Mesas[] = [];
 
   displayedColumnsMesas: string[] = ['codigo', 'nombre', 'numero', 'cantidad', 'restaurante'];
