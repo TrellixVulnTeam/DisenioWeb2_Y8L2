@@ -33,7 +33,7 @@ export class CajasComponent implements OnInit {
 
   isChecked = false;
   // optionsAdmin: string[] = ['Administrador del systema', 'Administrador de seguridad', 'Administrador del restaurante', 'Administrador de cuentas'];
-  //displayedColumnsConsecutivos: string[] = ['codigo', 'fecha_registro', 'descripcion', 'entrada_dinero', 'apertura_caja', 'cierre_caja', 'restaurante'];
+  displayedColumnsCajas: string[] = ['codigo', 'fecha_registro', 'descripcion', 'entrada_dinero', 'apertura_caja', 'cierre_caja', 'restaurante'];
 
   constructor(private taskService: TaskService, private router: Router) { }
 
