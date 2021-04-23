@@ -30,13 +30,13 @@ export class ClientesComponent implements OnInit {
   constructor(private taskService: TaskService, private router: Router) { }
 
   ngOnInit(): void {
-    this.viewClientes();
+    // this.viewClientes();
   }
 
-  viewClientes() {
-    this.taskService.getClientes()
-    .subscribe((clientes: Cliente[]) =>{ this.dataSource = clientes });
-  }
+//   viewClientes() {
+//     this.taskService.getClientes()
+//     .subscribe((clientes: Cliente[]) =>{ this.dataSource = clientes });
+//   }
 
 
   busquedaCodigo() {
