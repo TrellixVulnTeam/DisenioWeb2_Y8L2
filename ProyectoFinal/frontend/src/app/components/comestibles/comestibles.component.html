@@ -15,6 +15,14 @@
     <th mat-header-cell *matHeaderCellDef> Restaurante </th>
     <td mat-cell *matCellDef="let element"> {{element.restaurante}} </td>
   </ng-container>
+  <ng-container matColumnDef="update">
+    <th mat-header-cell *matHeaderCellDef> update </th>
+    <td mat-cell *matCellDef="let element"> <button>Update</button> </td>
+  </ng-container>
+  <ng-container matColumnDef="delete">
+    <th mat-header-cell *matHeaderCellDef> delete </th>
+    <td mat-cell *matCellDef="let element"> <button>Delete</button> </td>
+  </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumnsComestibles"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumnsComestibles"></tr>
 </table>

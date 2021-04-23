@@ -14,7 +14,7 @@ export class TecnologiaComponent implements OnInit {
   bufet : Bufet[] = [];
   dataSource;
 
-  displayedColumnsLimpiezaHigiene: string[] = ['codigo', 'nombre', 'cantidad', 'restaurante'];
+  displayedColumnsLimpiezaHigiene: string[] = ['codigo', 'nombre', 'cantidad', 'restaurante', 'update', 'delete'];
 
   constructor(private taskService: TaskService, private router: Router) { }
 
@@ -29,5 +29,10 @@ export class TecnologiaComponent implements OnInit {
   viewTecnologia() {
     this.taskService.getTecnologia()
     .subscribe((tecnologia: Tecnologia) => { this.dataSource = tecnologia});
+  }
+
+  postTecnologia(codigo: string, nombre: string, cantidad: number, nombre_restaurante: string, precio : number, marca: string, descripcion: string) {
+    this.taskService.postTecnologia(codigo, nombre, cantidad, nombre_restaurante, precio, marca, descripcion)
+    .subscribe((tecnologia : Tecnologia) => this.router.navigate(['/']));
   }
 }

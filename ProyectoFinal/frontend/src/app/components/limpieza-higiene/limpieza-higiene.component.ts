@@ -14,7 +14,7 @@ export class LimpiezaHigieneComponent implements OnInit {
   limpieza : Limpieza[] = [];
   dataSource;
 
-  displayedColumnsLimpiezaHigiene: string[] = ['codigo', 'nombre', 'cantidad', 'restaurante'];
+  displayedColumnsLimpiezaHigiene: string[] = ['codigo', 'nombre', 'cantidad', 'restaurante', 'update', 'delete'];
 
   constructor(private taskService: TaskService, private router: Router) { }
 
@@ -29,6 +29,12 @@ export class LimpiezaHigieneComponent implements OnInit {
   viewLimpiezas() {
     this.taskService.getLimpieza()
     .subscribe((limpieza : Limpieza) => {this.dataSource = limpieza});
+  }
+
+  postLimpiezas(codigo: string, nombre: string, cantidad: number, nombre_restaurante: string, marca: string, descripcion: string) {
+    console.log(codigo);
+    this.taskService.postLimpieza(codigo, nombre, cantidad, nombre_restaurante, marca, descripcion)
+    .subscribe((limpieaza : Limpieza) => this.router.navigate(['/']));
   }
 
 }
