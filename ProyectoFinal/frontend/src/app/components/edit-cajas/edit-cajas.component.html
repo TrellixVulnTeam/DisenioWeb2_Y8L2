@@ -1,0 +1,50 @@
+<mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <b>Editar</b>
+      </mat-panel-title>
+      <mat-panel-description>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <form (ngSubmit)="testForm()">
+      <div>
+        <mat-form-field>
+          <mat-label>Código</mat-label>
+          <input matInput>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-label>Fecha Registro</mat-label>
+          <input matInput>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-label>Descripcion</mat-label>
+          <input matInput>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-label>Entrada de dinero</mat-label>
+          <input matInput>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-label>Apertura de caja</mat-label>
+          <input matInput>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-label>Cierre de caja</mat-label>
+          <input matInput>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Restaurante</mat-label>
+            <input matInput>
+          </mat-form-field>
+          <br>
+      </div>
+      <button type="submit">Editar</button>
+    </form>
+  </mat-expansion-panel>
+</mat-accordion>
