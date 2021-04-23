@@ -1,0 +1,82 @@
+<mat-accordion>
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <b>Insertar</b>
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <!-- <form (ngSubmit)="addUsuario(codigo.value, nombre.value, primer_apellido.value, segundo_apellido.value, telefono_1.value, telefono_2.value, login.value, contrasena.value, tipo_privilegio)"> -->
+      <form (ngSubmit)="test()">
+        <div>
+          <h1 class="display-4">Datos personales</h1>
+          <hr>
+          <mat-form-field>
+            <mat-label>Código</mat-label>
+            <input matInput #codigo>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <input matInput #nombre>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <mat-label>Primer apellido</mat-label>
+            <input matInput #primer_apellido>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <mat-label>Segundo apellido</mat-label>
+            <input matInput #segundo_apellido>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <mat-label>Teléfono</mat-label>
+            <input matInput #telefono>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput #email>
+          </mat-form-field>
+          <br>
+        </div>
+        <div style="height: 420px;">
+          <h1 class="display-4">Dátos técnicos</h1>
+          <hr>
+          <mat-form-field>
+            <mat-label>Login</mat-label>
+            <input matInput #login>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <mat-label>Contraseña</mat-label>
+            <input matInput type="password" #contrasena>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <mat-label>Confirmar contraseña</mat-label>
+            <input matInput type="password">
+          </mat-form-field>
+          <br>
+          <h1 class="display-4">Privilegios</h1>
+          <hr>
+          <mat-form-field appearance="standard" style="width: 250px!important; text-align: center;">
+            <mat-select>
+              <mat-option *ngFor="let option of optionsAdmin" [value]="option.value">
+                {{option.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <br>
+      </form>
+      <br>
+      <a routerLink="/restaurantes" routerLinkActive="active"><button (click)="editUsuario(getId,codigo.value, nombre.value, primer_apellido.value, segundo_apellido.value, telefono.value, email.value, login.value,password.value, option.value)" class="confirmbtn" mat-raised-button color="primary" style="width: 50%;">Insertar</button></a>
+      <br>
+      <a routerLink="/restaurantes" routerLinkActive="active"><button class="warnbtn" mat-raised-button color="primary" style="width: 50%; margin-top: 10px;">Borrar</button></a>
+    </mat-expansion-panel>
+  </mat-accordion>
+  

@@ -71,10 +71,19 @@ export class UsuariosComponent implements OnInit {
     alert('ss');
   }
 
-  addUsuario(codigo: string, nombre: string, primer_apellido: string, segundo_apellido: string, telefono_1: string, telefono_2: string, login: string, contrasena: string, tipo_privilegio: string) {
+  addUsuario(codigo: string, nombre: string, primer_apellido: string, segundo_apellido: string, telefono: string, email: string, login: string, contrasena: string, tipo_privilegio: string) {
     // this.taskService.post
-    this.taskService.postUsuario(codigo, nombre, primer_apellido, segundo_apellido, telefono_1, telefono_2, login, contrasena, tipo_privilegio)
-    .subscribe((usuario : Usuarios) => this.router.navigate(['/']));
+    this.taskService.postUsuario(codigo, nombre, primer_apellido, segundo_apellido, telefono, email, login, contrasena, tipo_privilegio)
+    .subscribe((usuario: Usuarios) => this.router.navigate(['/']));
+  }
+
+  deleteUsuario(codigo){
+    if (window.confirm('¿Desea eliminar el usuario?')) {
+        this.taskService.deleteUsuario(codigo)
+        .subscribe((usuario: Usuarios) =>{
+          this.usuario.filter(t => t._id != usuario._id)
+        });
+      }
   }
 
   test() {

@@ -39,6 +39,9 @@ import { AdminContentComponent } from './components/admin-content/admin-content.
 // import { WavesModule, InputsModule, ButtonsModule } from 'angular-bootstrap-md'
 import {HttpClientModule} from '@angular/common/http';
 import { EditPaisComponent } from './components/edit-pais/edit-pais.component';
+import { EditConsecutivoComponent } from './components/edit-consecutivo/edit-consecutivo.component';
+import { EditRolesYEventosComponent } from './components/edit-roles-y-eventos/edit-roles-y-eventos.component';
+import { EditUsuarioComponent } from './components/edit-usuario/edit-usuario.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +64,10 @@ import { EditPaisComponent } from './components/edit-pais/edit-pais.component';
     RolesYEventosComponent,
     UnidadesDeMedidaComponent,
     AdminContentComponent,
-    EditPaisComponent
+    EditPaisComponent,
+    EditConsecutivoComponent,
+    EditRolesYEventosComponent,
+    EditUsuarioComponent
   ],
   imports: [
     HttpClientModule,
