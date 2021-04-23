@@ -14,8 +14,6 @@ import { RestaurantesComponent } from './components/restaurantes/restaurantes.co
 import { SeguridadComponent } from './components/seguridad/seguridad.component';
 import { AdminContentComponent } from './components/admin-content/admin-content.component';
 import { EditPaisComponent } from './components/edit-pais/edit-pais.component';
-import {CajasComponent } from './components/cajas/cajas.component';
-import {EditCajasComponent} from './components/edit-cajas/edit-cajas.component';
 
 const routes: Routes = [
   {path: 'seguridad', component: SeguridadComponent},
@@ -30,8 +28,7 @@ const routes: Routes = [
   {path: 'puestos', component: PuestosComponent},
   {path: 'especiales', component: EspecialesComponent},
   {path: 'adminCP', component: AdminContentComponent},
-  {path : 'seguridad/:codigo', component: EditPaisComponent},
-  {path: 'seguridad/:codigo', component: EditCajasComponent}
+  {path : 'seguridad/:codigo', component: EditPaisComponent}
   // {path: 'entorno-restaurante', component: EntornoRestauranteComponent}
 ];
 
