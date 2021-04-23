@@ -14,7 +14,7 @@ export class EquiposUtensiliosComponent implements OnInit {
   bufet : Bufet[] = [];
   dataSource;
 
-  displayedColumnsEquiposUtensilios: string[] = ['codigo', 'nombre', 'cantidad', 'restaurante'];
+  displayedColumnsEquiposUtensilios: string[] = ['codigo', 'nombre', 'cantidad', 'restaurante', 'update', 'delete'];
 
   constructor(private taskService: TaskService, private router: Router) { }
 
@@ -29,6 +29,11 @@ export class EquiposUtensiliosComponent implements OnInit {
   viewEquipos() {
     this.taskService.getEquipos()
     .subscribe((equipos : Equipos[]) => { this.dataSource = equipos });
+  }
+
+  addEquipos(codigo, nombre, cantidad, nombre_restaurante, marca, descripcion) {
+    this.taskService.postEquipos(codigo, nombre, cantidad, nombre_restaurante, marca, descripcion)
+    .subscribe((equipos : Equipos) => this.router.navigate(['/']));
   }
 
 }

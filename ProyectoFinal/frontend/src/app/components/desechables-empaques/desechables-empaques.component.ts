@@ -11,10 +11,9 @@ import { Router } from '@angular/router';
 })
 export class DesechablesEmpaquesComponent implements OnInit {
     desechables: Desechables[] = [];
-    bufet : Bufet[] = [];
     dataSource;
 
-  displayedColumnsDesechablesEmpaques: string[] = ['codigo', 'nombre', 'cantidad', 'restaurante'];
+  displayedColumnsDesechablesEmpaques: string[] = ['codigo', 'nombre', 'cantidad', 'restaurante', 'update', 'delete'];
 
   constructor(private taskService: TaskService, private router: Router) { }
 

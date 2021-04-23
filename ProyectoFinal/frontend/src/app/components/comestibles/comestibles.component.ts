@@ -14,7 +14,7 @@ export class ComestiblesComponent implements OnInit {
   comestibles : Comestibles[] = [];
   dataSource;
 
-  displayedColumnsComestibles: string[] = ['codigo', 'nombre', 'cantidad', 'restaurante'];
+  displayedColumnsComestibles: string[] = ['codigo', 'nombre', 'cantidad', 'restaurante',  'update', 'delete'];
 
   constructor(private taskService: TaskService, private router: Router) { }
 
