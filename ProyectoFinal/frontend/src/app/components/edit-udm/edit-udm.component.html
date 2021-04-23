@@ -1,0 +1,44 @@
+<mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <b>Insertar</b>
+      </mat-panel-title>
+      <mat-panel-description>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-form-field>
+      <mat-label>Código</mat-label>
+      <input matInput #codigoInput>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-label>Unidad</mat-label>
+      <input matInput #unidadInput>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-label>Escala</mat-label>
+      <input matInput #escalaInput>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-label>Detalle</mat-label>
+      <mat-select #detalleInput>
+        <mat-option *ngFor="let e of detalles" [value]="e.detalle"> {{ e.detalle }} </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-label>Símbolo</mat-label>
+      <input matInput #simboloInput>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-label>Simbología</mat-label>
+      <input matInput #simbologiaInput>
+    </mat-form-field>
+    <br>
+    <button class="primarybtn" mat-raised-button color="primary" (click)="editUDM(getId, codigoInput.value, unidadInput.value, escalaInput.value, detalleInput.value, simboloInput.value, simbologiaInput.value)">Agregar</button>
+    <button class="warnbtn" mat-raised-button color="warn">Borrar datos</button>
+  </mat-expansion-panel>
+</mat-accordion>
