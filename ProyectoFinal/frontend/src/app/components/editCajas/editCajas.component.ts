@@ -14,17 +14,17 @@ export class EditCajasComponent implements OnInit {
 
   cajas: Cajas[] = [];
 
-  constructor(private taskService : TaskService, private router: Router, private activatedRoute: ActivatedRoute) {
-    this.getId = this.activatedRoute.snapshot.paramMap.get('id');
+  constructor(private taskService: TaskService, private router: Router, private activatedRoute: ActivatedRoute) {
+    this.getId = this.activatedRoute.snapshot.paramMap.get('codigo');
   }
 
   ngOnInit(): void {
 
   }
 
-  updateBook(cajaId:String, codigo:String, fecha:Date, descripcion:String, dineroEntrada:Number, cajaApertura: String, cajaCierre:String, restaurante: String) {
-    this.taskService.updateBook(this.getId, codigo, fecha, descripcion,dineroEntrada,cajaApertura, cajaCierre, restaurante)
-    .subscribe((cajas: Cajas) => this.router.navigate(['/']));
+  editCajas(cajaId: string, codigo:string, fecha:Date, descripcion:String, dineroEntrada:Number, cajaApertura: String, cajaCierre:String, restaurante: String){
+    this.taskService.patchCajas(this.getId,codigo, fecha, descripcion,dineroEntrada,cajaApertura, cajaCierre, restaurante )
+    .subscribe((caja: Cajas) => this.router.navigate(['/']));
   }
 
 }

@@ -15,7 +15,7 @@ interface OptionsAdmin {
   styleUrls: ['./cajas.component.css']
 })
 export class CajasComponent implements OnInit {
-  caja : Cajas[] = [];
+  caja: Cajas[] = [];
   selected;
   dataSource;
 
@@ -33,7 +33,7 @@ export class CajasComponent implements OnInit {
 
   isChecked = false;
   // optionsAdmin: string[] = ['Administrador del systema', 'Administrador de seguridad', 'Administrador del restaurante', 'Administrador de cuentas'];
-  displayedColumnsCajas: string[] = ['codigo', 'fecha_registro', 'descripcion', 'entrada_dinero', 'apertura_caja', 'cierre_caja', 'restaurante'];
+  displayedColumnsCajas: string[] = ['codigo', 'fecha_registro', 'descripcion', 'entrada_dinero', 'apertura_caja', 'cierre_caja', 'restaurante', 'editar', 'eliminar'];
 
   constructor(private taskService: TaskService, private router: Router) { }
 
@@ -48,12 +48,21 @@ export class CajasComponent implements OnInit {
 
 
   checkCheckBoxvalue(event){
-    console.log(event.checked)
+    console.log(event.checked);
   }
 
   addCajas(codigo:String, fecha:Date, descripcion:String, dineroEntrada:Number, cajaApertura: String, cajaCierre:String, restaurante: String){
     this.taskService.postCajas(codigo, fecha, descripcion,dineroEntrada,cajaApertura, cajaCierre, restaurante )
-    .subscribe((caja : Cajas) => this.router.navigate(['/']));
+    .subscribe((caja: Cajas) => this.router.navigate(['/']));
+  }
+  deleteCaja(codigo) {
+    console.log(codigo);
+    if (window.confirm('¿Desea eliminar la caja?')) {
+      this.taskService.deleteCajas(codigo)
+      .subscribe((caja: Cajas) =>{
+        this.caja.filter(t => t._id != caja._id)
+      });
+    }
   }
 
 }

@@ -24,7 +24,7 @@ export class EditPaisComponent implements OnInit {
 
   editPais(idPais: String, codigo: string, nombre: string, bandera: string) {
     this.taskService.patchPais(this.getId, codigo, nombre, bandera)
-    .subscribe((pais : Pais) => this.router.navigate(['/']));
+    .subscribe((pais: Pais) => this.router.navigate(['/']));
   }
 
 }

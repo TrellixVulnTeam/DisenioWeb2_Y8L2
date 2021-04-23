@@ -36,6 +36,14 @@
         <th mat-header-cell *matHeaderCellDef> Restaurante </th>
         <td mat-cell *matCellDef="let element"> {{element.restaurante}} </td>
       </ng-container>
+      <ng-container matColumnDef="editar">
+        <th mat-header-cell *matHeaderCellDef> editar </th>
+        <td mat-cell *matCellDef="let element"> <a routerLink="/seguridad/{{ element._id }}"><button>Editar</button></a> </td>
+      </ng-container>
+      <ng-container matColumnDef="eliminar">
+        <th mat-header-cell *matHeaderCellDef> eliiminar </th>
+        <td mat-cell *matCellDef="let element"> <button (click)="deleteCaja(element._id)">Eliminar</button> </td>
+      </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumnsCajas"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumnsCajas;"></tr>
     </table>
@@ -54,41 +62,41 @@
       <div>
         <mat-form-field>
           <mat-label>Código</mat-label>
-          <input matInput>
+          <input matInput codigoInput>
         </mat-form-field>
         <br>
         <mat-form-field>
           <mat-label>Fecha Registro</mat-label>
-          <input matInput>
+          <input matInput fecharegistroInput>
         </mat-form-field>
         <br>
         <mat-form-field>
           <mat-label>Descripcion</mat-label>
-          <input matInput>
+          <input matInput descripcionInput>
         </mat-form-field>
         <br>
         <mat-form-field>
           <mat-label>Entrada de dinero</mat-label>
-          <input matInput>
+          <input matInput entradadineroInput>
         </mat-form-field>
         <br>
         <mat-form-field>
           <mat-label>Apertura de caja</mat-label>
-          <input matInput>
+          <input matInput aperturacajaInput>
         </mat-form-field>
         <br>
         <mat-form-field>
           <mat-label>Cierre de caja</mat-label>
-          <input matInput>
+          <input matInput cierreCajaInput>
         </mat-form-field>
         <br>
         <mat-form-field>
             <mat-label>Restaurante</mat-label>
-            <input matInput>
+            <input matInput restauranteInput>
           </mat-form-field>
           <br>
       </div>
-      <button type="submit">Add</button>
+      <button (click)="addCajas(codigoInput.value, fecharegistroInput.value, descripcionInput.value,entradadineroInput.value, aperturacajaInput.value, cierreCajaInput.value, restauranteInput.value)" type="submit">Add</button>
     </form>
   </mat-expansion-panel>
 </mat-accordion>
