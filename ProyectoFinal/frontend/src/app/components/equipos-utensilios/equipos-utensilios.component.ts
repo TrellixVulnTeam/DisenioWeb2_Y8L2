@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../../services/task.service';
 import Bufet from 'src/app/models/bufet';
+import Equipos from 'src/app/models/equipos';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./equipos-utensilios.component.css']
 })
 export class EquiposUtensiliosComponent implements OnInit {
+  equipos : Equipos[] = [];
   bufet : Bufet[] = [];
   dataSource;
 
@@ -21,8 +23,12 @@ export class EquiposUtensiliosComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.taskService.getBufet()
-    .subscribe((bufet: Bufet[]) =>{ this.dataSource = bufet });
+    this.viewEquipos();
+  }
+
+  viewEquipos() {
+    this.taskService.getEquipos()
+    .subscribe((equipos : Equipos[]) => { this.dataSource = equipos });
   }
 
 }

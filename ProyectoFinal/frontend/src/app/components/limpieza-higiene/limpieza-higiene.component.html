@@ -9,11 +9,11 @@
   </ng-container>
   <ng-container matColumnDef="cantidad">
     <th mat-header-cell *matHeaderCellDef> Cantidad </th>
-    <td mat-cell *matCellDef="let element"> {{element.precio}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.cantidad}} </td>
   </ng-container>
   <ng-container matColumnDef="restaurante">
     <th mat-header-cell *matHeaderCellDef> Restaurante </th>
-    <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.nombre_restaurante}} </td>
   </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumnsLimpiezaHigiene"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumnsLimpiezaHigiene;"></tr>
@@ -27,48 +27,40 @@
       </mat-panel-title>
     </mat-expansion-panel-header>
     <br>
-    <mat-form-field>
-      <mat-label>Código</mat-label>
-      <input matInput>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Restaurante</mat-label>
-      <input matInput>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Nombre</mat-label>
-      <input matInput>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Marca</mat-label>
-      <input matInput>
-    </mat-form-field>
-    <br>
-    <section style="margin-top: 10px;">
+    <form>
+      <mat-form-field>
+        <mat-label>Código</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <br>
       <mat-form-field>
         <mat-label>Cantidad</mat-label>
         <input matInput>
       </mat-form-field>
+      <br>
       <mat-form-field>
-        <mat-label>Descripción</mat-label>
+        <mat-label>Restaurante</mat-label>
         <input matInput>
       </mat-form-field>
-      <mat-form-field>
-        <mat-label>Tipo</mat-label>
-        <input matInput>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Cantidad de medida</mat-label>
-        <input matInput>
-      </mat-form-field>
-    </section>
-    <br>
-    <mat-form-field style="width: 770px;">
-      <mat-label>Unidad de medida</mat-label>
-      <input matInput>
-    </mat-form-field>
-    <br>
-    <button class="confirmbtn" mat-raised-button color="primary" style="width: 50%;">Insertar</button>
-    <button class="warnbtn" mat-raised-button color="primary" style="width: 50%;">Borrar</button>
+      <br>
+      <section style="margin-top: 10px;">
+        <mat-form-field>
+          <mat-label>Marca</mat-label>
+          <input matInput>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-label>Descripción</mat-label>
+          <input matInput>
+        </mat-form-field>
+      </section>
+      <br>
+      <button class="confirmbtn" mat-raised-button color="primary" style="width: 50%;">Insertar</button>
+    </form>
   </mat-expansion-panel>
 </mat-accordion>

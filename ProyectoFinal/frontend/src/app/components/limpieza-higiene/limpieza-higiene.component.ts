@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../../services/task.service';
 import Bufet from 'src/app/models/bufet';
+import Limpieza from 'src/app/models/limpieza';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class LimpiezaHigieneComponent implements OnInit {
   bufet : Bufet[] = [];
+  limpieza : Limpieza[] = [];
   dataSource;
 
   displayedColumnsLimpiezaHigiene: string[] = ['codigo', 'nombre', 'cantidad', 'restaurante'];
@@ -21,8 +23,12 @@ export class LimpiezaHigieneComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.taskService.getBufet()
-    .subscribe((bufet: Bufet[]) =>{ this.dataSource = bufet });
+    this.viewLimpiezas();
+  }
+
+  viewLimpiezas() {
+    this.taskService.getLimpieza()
+    .subscribe((limpieza : Limpieza) => {this.dataSource = limpieza});
   }
 
 }

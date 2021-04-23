@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../../services/task.service';
 import Bufet from 'src/app/models/bufet';
+import Tecnologia from 'src/app/models/tecnologia';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./tecnologia.component.css']
 })
 export class TecnologiaComponent implements OnInit {
+  tecnologia: Tecnologia[] = [];
   bufet : Bufet[] = [];
   dataSource;
 
@@ -21,7 +23,11 @@ export class TecnologiaComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.taskService.getBufet()
-    .subscribe((bufet: Bufet[]) =>{ this.dataSource = bufet });
+    this.viewTecnologia();
+  }
+
+  viewTecnologia() {
+    this.taskService.getTecnologia()
+    .subscribe((tecnologia: Tecnologia) => { this.dataSource = tecnologia});
   }
 }
