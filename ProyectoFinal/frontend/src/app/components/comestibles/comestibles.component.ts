@@ -31,9 +31,9 @@ export class ComestiblesComponent implements OnInit {
     .subscribe((comestibles: Comestibles[]) =>{ this.dataSource = comestibles });
   }
 
-  // addComestible(codigo: String, nombre: String, cantidad: Number, restaurante: String, tipo_comestible: String, marca: String, clase_comestible: Number, linea_comestible: String, unidad_medida: String) {
-  //   this.taskService.postComestibles(codigo, nombre, cantidad, restaurante, tipo_comestible, marca, clase_comestible, linea_comestible, unidad_medida)
-  //   .subscribe((comestible: Comestibles) => this.router.navigate(['/']));
-  // }
+  addComestible(codigo: String, nombre: String, cantidad: Number, restaurante: String, tipo_comestible: String, marca: String, clase_comestible: String, linea_comestible: String, unidad_medida: String) {
+    this.taskService.postComestibles(codigo, nombre, cantidad, restaurante, tipo_comestible, marca, clase_comestible, linea_comestible, unidad_medida)
+    .subscribe((comestible: Comestibles) => this.router.navigate(['/']));
+  }
 
 }

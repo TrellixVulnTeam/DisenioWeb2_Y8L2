@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../../services/task.service';
 import Bufet from 'src/app/models/bufet';
+import Desechables from 'src/app/models/desechables';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,8 +10,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./desechables-empaques.component.css']
 })
 export class DesechablesEmpaquesComponent implements OnInit {
-  bufet : Bufet[] = [];
-  dataSource;
+    desechables: Desechables[] = [];
+    bufet : Bufet[] = [];
+    dataSource;
 
   displayedColumnsDesechablesEmpaques: string[] = ['codigo', 'nombre', 'cantidad', 'restaurante'];
 
@@ -21,7 +23,19 @@ export class DesechablesEmpaquesComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.taskService.getBufet()
-    .subscribe((bufet: Bufet[]) =>{ this.dataSource = bufet });
+      this.viewDesechables();
+
+    // this.taskService.getBufet()
+    // .subscribe((bufet: Bufet[]) =>{ this.dataSource = bufet });
+  }
+
+  viewDesechables() {
+      this.taskService.getDesechables()
+      .subscribe((desechables: Desechables) => { this.dataSource = desechables });
+  }
+
+  addDesechables(codigo: string, nombre: string, cantidad: number, nombre_restaurante: string, marca: string, descripcion: string) {
+      this.taskService.postDesechables(codigo, nombre, cantidad, nombre_restaurante, marca, descripcion )
+      .subscribe((desechables: Desechables) => this.router.navigate(['/']));
   }
 }

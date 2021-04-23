@@ -451,16 +451,19 @@ export class TaskService {
 
   //Desechables
   getDesechables() {
-    return this.webService.get('desechables');
+    return this.webService.get('desechables_y_empaques');
   }
-  postDesechables(nombre : string, cantidad : number, nombre_restaurante : string, marca : string, descripcion : number) {
-    return this.webService.post('desechables', {nombre, cantidad, nombre_restaurante, marca, descripcion})
+  postDesechables(codigo: string, nombre : string, cantidad : number, nombre_restaurante : string, marca : string, descripcion : string) {
+    return this.webService.post('desechables_y_empaques', {codigo, nombre, cantidad, nombre_restaurante, marca, descripcion})
   }
+  // postDesechables(codigo: string) {
+  //   return this.webService.post('desechables_y_empaques', {codigo})
+  // }
   patchDesechables(codigo: string, nombre : string, cantidad : number, nombre_restaurante : string, marca : string, descripcion : number){
-    return this.webService.patch(`desechables/${codigo}`,{codigo, nombre, cantidad, nombre_restaurante, marca, descripcion} )
+    return this.webService.patch(`desechables_y_empaques/${codigo}`,{codigo, nombre, cantidad, nombre_restaurante, marca, descripcion} )
   }
   deleteDesechables(codigo:String){
-    return this.webService.delete(`desechables/${codigo}`)
+    return this.webService.delete(`desechables_y_empaques/${codigo}`)
   }
 
   //Equipos

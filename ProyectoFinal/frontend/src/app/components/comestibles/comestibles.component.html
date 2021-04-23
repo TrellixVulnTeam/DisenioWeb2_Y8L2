@@ -27,48 +27,61 @@
       </mat-panel-title>
     </mat-expansion-panel-header>
     <br>
-    <mat-form-field>
-      <mat-label>Código</mat-label>
-      <input matInput>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Nombre</mat-label>
-      <input matInput>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Cantidad</mat-label>
-      <input matInput>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Tipo Comestible</mat-label>
-      <input matInput>
-    </mat-form-field>
-    <br>
-    <section style="margin-top: 10px;">
-      <mat-form-field>
-        <mat-label>Restaurante</mat-label>
-        <input matInput>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Marca</mat-label>
-        <input matInput>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Clase comestible</mat-label>
-        <input matInput>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Linea comestible</mat-label>
-        <input matInput>
-      </mat-form-field>
-    </section>
-    <br>
-    <mat-form-field style="width: 770px;">
-      <mat-label>Unidad de medida</mat-label>
-      <input matInput>
-    </mat-form-field>
-    <br>
-    <button class="confirmbtn" mat-raised-button color="primary" style="width: 50%;">Insertar</button>
-    <button class="warnbtn" mat-raised-button color="primary" style="width: 50%;">Borrar</button>
+    <form (ngSubmit)="addComestible(codigo.value, nombre.value, cantidad.value, restaurante.value, tipo_comestible.value, marcas.value, clase_comestible.value, linea_comestible.value, udm.value)">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+              <b>Insertar comestible</b>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <br>
+          <mat-form-field>
+            <mat-label>Código</mat-label>
+            <input matInput #codigo>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <input matInput #nombre>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <mat-label>Cantidad</mat-label>
+            <input matInput #cantidad>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <mat-label>Tipo Comestible</mat-label>
+            <input matInput #tipo_comestible>
+          </mat-form-field>
+          <br>
+          <section style="margin-top: 10px;">
+            <mat-form-field>
+              <mat-label>Restaurante</mat-label>
+              <input matInput #restaurante>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+              <mat-label>Marca</mat-label>
+              <input matInput #marcas>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+              <mat-label>Clase comestible</mat-label>
+              <input matInput #clase_comestible>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+              <mat-label>Linea comestible</mat-label>
+              <input matInput #linea_comestible>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+              <mat-label>Unidad de medida</mat-label>
+              <input matInput #udm>
+            </mat-form-field>
+          </section>
+          <br>
+          <button class="confirmbtn" mat-raised-button color="primary" style="width: 50%;">Insertar</button>
+    </form>
   </mat-expansion-panel>
 </mat-accordion>

@@ -1196,6 +1196,17 @@ app.post('/desechables_y_empaques', (req, res) => {
         .catch((error) => console.log(error))
 });
 
+// app.post('/desechables_y_empaques', (req, res) => {
+//     (new Desechables({
+//         'codigo': req.body.codigo
+//     }))
+//     .save()
+//         .then((desechables_y_empaques) => {
+//             res.send(desechables_y_empaques)
+//         })
+//         .catch((error) => console.log(error))
+// });
+
 app.patch('/desechables_y_empaques/:codigo', (req, res) => {
     Desechables.findByIdAndUpdate({
             '_id': req.params.codigo
