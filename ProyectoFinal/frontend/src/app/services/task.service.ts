@@ -16,11 +16,6 @@ export class TaskService {
   //   this.webService.post('')
   // }
 
-  getUsuariosAnidados() {
-    console.log(this.webService.getTablasAnidadas('usuarios'));
-    return this.webService.getTablasAnidadas('usuarios');
-  }
-
   postUsuario(codigo: string, nombre: string, primer_apellido: string, segundo_apellido: string, telefono_1: string, telefono_2: string, login: string, contrasena: string, tipo_privilegio: string) {
     return this.webService.post('usuarios', {codigo, nombre, primer_apellido, segundo_apellido, telefono_1, telefono_2, login, contrasena, tipo_privilegio});
   }
@@ -57,8 +52,8 @@ export class TaskService {
     return this.webService.post('paises', {codigo, nombre, bandera})
   }
 
-  patchPais(paisId:String, codigo: string, nombre: string, bandera: string){
-      return this.webService.patch(`paises/${paisId}`,{codigo, nombre, bandera} )
+  patchPais(idPais: string, codigo: string, nombre: string, bandera: string){
+      return this.webService.patch(`paises/${idPais}`,{codigo, nombre, bandera} )
   }
 
   deletePais(codigo:String){
@@ -498,17 +493,17 @@ export class TaskService {
 
   //Comestibles
 
-  getComestibles(){
-    return this.webService.get('comestibles')
-  }
-  postComestibles(codigo:String, nombre: String, cantidad: Number, restaurante: String, tipo_comestible: String, marca: String, clase_comestible: String, linea_comestible: String, unidad_medida:String){
-    return this.webService.post('comestibles', {codigo, nombre, cantidad, restaurante, tipo_comestible, marca, clase_comestible, linea_comestible, unidad_medida})
-  }
-  patchComestibles(comestibleId: String, codigo:String, nombre: String, cantidad: Number, restaurante: String, tipo_comestible: String, marca: String, clase_comestible: String, linea_comestible: String, unidad_medida:String){
-    return this.webService.patch(`comestible/${comestibleId}`, {codigo:String, nombre: String, cantidad: Number, restaurante: String, tipo_comestible: String, marca: String, clase_comestible: String, linea_comestible: String, unidad_medida:String})
-  }
-  deleteComestibles(codigo:String){
-    return this.webService.delete(`comestible/${codigo}`)
-  }
+  // getComestibles(){
+  //   return this.webService.get('comestibles')
+  // }
+  // postComestibles(codigo:String, nombre: String, cantidad: Number, restaurante: String, tipo_comestible: String, marca: String, clase_comestible: String, linea_comestible: String, unidad_medida:String){
+  //   return this.webService.post('comestibles', {codigo, nombre, cantidad, restaurante, tipo_comestible, marca, clase_comestible, linea_comestible, unidad_medida})
+  // }
+  // patchComestibles(comestibleId: String, codigo:String, nombre: String, cantidad: Number, restaurante: String, tipo_comestible: String, marca: String, clase_comestible: String, linea_comestible: String, unidad_medida:String){
+  //   return this.webService.patch(`comestible/${comestibleId}`, {codigo:String, nombre: String, cantidad: Number, restaurante: String, tipo_comestible: String, marca: String, clase_comestible: String, linea_comestible: String, unidad_medida:String})
+  // }
+  // deleteComestibles(codigo:String){
+  //   return this.webService.delete(`comestible/${codigo}`)
+  // }
 
 }

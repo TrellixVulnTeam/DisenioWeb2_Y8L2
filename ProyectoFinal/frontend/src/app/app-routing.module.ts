@@ -13,6 +13,7 @@ import { ReportesComponent } from './components/reportes/reportes.component';
 import { RestaurantesComponent } from './components/restaurantes/restaurantes.component';
 import { SeguridadComponent } from './components/seguridad/seguridad.component';
 import { AdminContentComponent } from './components/admin-content/admin-content.component';
+import { EditPaisComponent } from './components/edit-pais/edit-pais.component';
 
 const routes: Routes = [
   {path: 'seguridad', component: SeguridadComponent},
@@ -26,7 +27,8 @@ const routes: Routes = [
   {path: 'mesas', component: MesasComponent},
   {path: 'puestos', component: PuestosComponent},
   {path: 'especiales', component: EspecialesComponent},
-  {path: 'adminCP', component: AdminContentComponent}
+  {path: 'adminCP', component: AdminContentComponent},
+  {path : 'seguridad/:codigo', component: EditPaisComponent}
   // {path: 'entorno-restaurante', component: EntornoRestauranteComponent}
 ];
 

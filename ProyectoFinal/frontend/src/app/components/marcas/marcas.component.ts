@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
 
 export class MarcasComponent implements OnInit {
 
-  displayedColumnsMesas: string[] = ['codigo', 'nombre', 'numero', 'cantidad', 'restaurante'];
+    displayedColumnsMarcas: string[] = ['codigo', 'nombre', 'numero', 'cantidad', 'restaurante'];
 
   dataSource;
 
@@ -36,17 +36,17 @@ export class MarcasComponent implements OnInit {
     .subscribe((mesas : Mesas[]) => { this.dataSource = mesas });
   }
 
-  postMarcas(
-    codigo: string, nombre: string, descripcion: string,
-    nacionalidad: string,
-    nombre_empresa: string, telefono_empresa: number,
-    cedula_juridicaEmpresa: string, detalle_empresa: string) {
-      this.taskService.postMarcas(
-        codigo, nombre, descripcion,
-        nacionalidad, nombre_empresa, telefono_empresa,
-        cedula_juridicaEmpresa, detalle_empresa)
-      .subscribe((marcas : Marcas) => this.router.navigate(['/']));
-  }
+//   postMarcas(
+//     codigo: string, nombre: string, descripcion: string,
+//     nacionalidad: string,
+//     nombre_empresa: string, telefono_empresa: number,
+//     cedula_juridicaEmpresa: string, detalle_empresa: string) {
+//       this.taskService.postMarcas(
+//         codigo, nombre, descripcion,
+//         nacionalidad, nombre_empresa, telefono_empresa,
+//         cedula_juridicaEmpresa, detalle_empresa)
+//       .subscribe((marcas : Marcas) => this.router.navigate(['/']));
+//   }
 
   // viewMarcas() {
   //   this.taskService.getMarcas()

@@ -15,15 +15,6 @@ export class WebService {
     return this.http.get(`${this.ROOT_URL}/${uri}`);
   }
 
-  getTablasAnidadas(uri: string) {
-
-    var data = this.http.get(`${this.ROOT_URL}/${uri}`).subscribe((data) => {
-      return data;
-    });
-
-    return data;
-  }
-
   post(uri: string, payload: Object) {
     return this.http.post(`${this.ROOT_URL}/${uri}`, payload);
   }

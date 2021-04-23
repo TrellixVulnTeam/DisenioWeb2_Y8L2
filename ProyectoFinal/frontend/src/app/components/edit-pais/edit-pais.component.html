@@ -1,0 +1,20 @@
+<mat-form-field>
+    <mat-label>Codigo</mat-label>
+    <input matInput #codigoInput>
+</mat-form-field>
+<mat-form-field>
+    <mat-label>Nombre</mat-label>
+    <input matInput #nombreInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Bandera</mat-label>
+    <input matInput #banderaInput>
+</mat-form-field>
+<br>
+<button class="primarybtn" mat-raised-button color="primary"
+    (click)="editPais(getId, codigoInput.value, nombreInput.value, banderaInput.value)">Agregar</button>
+<button class="warnbtn" mat-raised-button color="warn">Borrar datos</button>
+
+
+<!--  -->

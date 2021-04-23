@@ -15,7 +15,7 @@ export class PaisesComponent implements OnInit {
 
   //d
 
-  displayedColumnsPaises: string[] = ['codigo', 'pais'];
+  displayedColumnsPaises: string[] = ['codigo', 'pais', 'editar', 'eliminar'];
 
   constructor(private taskService: TaskService, private router: Router) { }
 
@@ -34,6 +34,16 @@ export class PaisesComponent implements OnInit {
   addPais(codigo: string, nombre: string, bandera: string) {
     this.taskService.postPais(codigo, nombre, bandera)
     .subscribe((pais : Pais) => this.router.navigate(['/']));
+  }
+
+  deleteBook(codigo) {
+    console.log(codigo);
+    if (window.confirm('¿Desea eliminar el país?')) {
+      this.taskService.deletePais(codigo)
+      .subscribe((pais: Pais) =>{
+        this.pais.filter(t => t._id != pais._id)
+      });
+    }
   }
 
 }

@@ -191,9 +191,7 @@ app.post('/paises', (req, res) => {
 });
 
 app.patch('/paises/:codigo', (req, res) => {
-    Paises.findByIdAndUpdate({
-            '_id': req.params.codigo
-        }, {
+    Paises.findByIdAndUpdate({ '_id': req.params.codigo }, {
             $set: req.body
         })
         .then((paises) => res.send(paises))
