@@ -26,9 +26,21 @@
             <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
           </ng-container>
           <ng-container matColumnDef="telefono">
-            <th mat-header-cell *matHeaderCellDef> Teléfono </th>
+            <th mat-header-cell *matHeaderCellDef> Teléfono2323 </th>
             <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
           </ng-container>
+          <ng-container matColumnDef="update">
+            <th mat-header-cell *matHeaderCellDef> update </th>
+            <td mat-cell *matCellDef="let element"> update </td>
+          </ng-container>
+          <ng-container matColumnDef="a">
+            <th mat-header-cell *matHeaderCellDef> delete </th>
+            <td mat-cell *matCellDef="let element"> delete </td>
+          </ng-container>
+          <!-- <ng-container matColumnDef="update">
+            <th mat-header-cell *matHeaderCellDef> update </th>
+            <td mat-cell *matCellDef="let element"> update </td>
+          </ng-container> -->
           <tr mat-header-row *matHeaderRowDef="displayedColumnsMarca"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumnsMarca;"></tr>
         </table>
@@ -292,8 +304,16 @@
             <th mat-header-cell *matHeaderCellDef> Teléfono </th>
             <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
           </ng-container>
-          <tr mat-header-row *matHeaderRowDef="displayedColumnsMarca"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumnsMarca;"></tr>
+          <ng-container matColumnDef="update">
+            <th mat-header-cell *matHeaderCellDef> update </th>
+            <td mat-cell *matCellDef="let element"> update </td>
+          </ng-container>
+          <ng-container matColumnDef="a">
+            <th mat-header-cell *matHeaderCellDef> delete </th>
+            <td mat-cell *matCellDef="let element"> delete </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumnsProveedores"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumnsProveedores;"></tr>
         </table>
         <mat-accordion>
           <mat-expansion-panel hideToggle>

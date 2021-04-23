@@ -32,7 +32,7 @@ import { FacturacionComponent } from './components/facturacion/facturacion.compo
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { ConsecutivosComponent } from './components/consecutivos/consecutivos.component';
 import { PaisesComponent } from './components/paises/paises.component';
-import { CajasComponent } from './components/cajas/cajas.component';
+// import { CajasComponent } from './components/cajas/cajas.component';
 import { RolesYEventosComponent } from './components/roles-y-eventos/roles-y-eventos.component';
 import { UnidadesDeMedidaComponent } from './components/unidades-de-medida/unidades-de-medida.component';
 import { AdminContentComponent } from './components/admin-content/admin-content.component';
@@ -57,7 +57,7 @@ import { EditPaisComponent } from './components/edit-pais/edit-pais.component';
     UsuariosComponent,
     ConsecutivosComponent,
     PaisesComponent,
-    CajasComponent,
+    // CajasComponent,
     RolesYEventosComponent,
     UnidadesDeMedidaComponent,
     AdminContentComponent,
