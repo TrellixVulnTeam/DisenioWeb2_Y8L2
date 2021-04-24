@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class PuestosComponent implements OnInit {
   puestos : Puestos[] = [];
 
-  displayedColumnsPuestos: string[] = ['codigo', 'nombre', 'rol', 'interno', 'externo'];
+  displayedColumnsPuestos: string[] = ['codigo', 'nombre', 'rol', 'interno', 'externo', 'editar', 'eliminar'];
 
   dataSource;
 
@@ -30,6 +30,16 @@ export class PuestosComponent implements OnInit {
   addPuestos(codigo: String, nombre: String, interno: String, externo: String, rol_restaurante: String) {
     this.taskService.postPuestos(codigo, nombre, interno, externo, rol_restaurante)
     .subscribe((puestos : Puestos) => this.router.navigate(['/']));
+  }
+
+  deletePuestos(codigo) {
+    console.log(codigo);
+    if (window.confirm('¿Desea eliminar el puesto?')) {
+      this.taskService.deletePuestos(codigo)
+      .subscribe((puestos: Puestos) =>{
+        this.puestos.filter(t => t._id != puestos._id)
+      });
+    }
   }
 
   ngOnInit(): void {
