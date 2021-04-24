@@ -14,7 +14,6 @@ import { RestaurantesComponent } from './components/restaurantes/restaurantes.co
 import { SeguridadComponent } from './components/seguridad/seguridad.component';
 import { AdminContentComponent } from './components/admin-content/admin-content.component';
 import { EditPaisComponent } from './components/edit-pais/edit-pais.component';
-import {EditCajasComponent} from './components/editCajas/editCajas.component';
 import {EditConsecutivoComponent} from './components/edit-consecutivo/edit-consecutivo.component';
 import {EditUsuarioComponent} from './components/edit-usuario/edit-usuario.component';
 import {EditaPrivilegioComponent} from './components/edita-privilegio/edita-privilegio.component';
@@ -44,7 +43,6 @@ const routes: Routes = [
   {path: 'especiales', component: EspecialesComponent},
   {path: 'adminCP', component: AdminContentComponent},
   {path : 'seguridad/:codigo', component: EditPaisComponent},
-  {path : 'seguridad/:codigo', component: EditCajasComponent},
   {path : 'seguridad/:codigo', component: EditConsecutivoComponent},
   {path : 'seguridad/:codigo', component: EditUsuarioComponent},
   {path: 'seguridad/:codigo', component: EditaPrivilegioComponent},

@@ -10,14 +10,14 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class EditaPrivilegioComponent implements OnInit {
 getId: any;
-  constructor(private taskService: TaskService, private router: Router) {
+  constructor(private taskService: TaskService, private router: Router, private activatedRoute : ActivatedRoute) {
   this.getId = this.activatedRoute.snapshot.paramMap.get('codigo');
   }
   ngOnInit(): void {
   }
 
   editPrivilegios(privilegioId: string, codigo: string, adminsistema: string, adminseguridad: string, adminrest: string, admincuentas: string){
-    this.taskService.patchPrivilegios(this.getId, codigo, adminsistema, adminseguridad, adminrest, admincuentas);
+    this.taskService.patchPrivilegios(this.getId, codigo, adminsistema, adminseguridad, adminrest, admincuentas)
     .subscribe((privi: Privilegios) => this.router.navigate(['/']));
   }
 }

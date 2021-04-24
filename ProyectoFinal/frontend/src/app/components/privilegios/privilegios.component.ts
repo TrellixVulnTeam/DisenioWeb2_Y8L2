@@ -25,7 +25,7 @@ export class PrivilegiosComponent implements OnInit {
   }
 
   addPrivilegios(codigo: string, adminsistema: string, adminseguridad: string, adminrest: string, admincuentas: string){
-      this.taskService.postPrivilegios(codigo, adminsistema, adminseguridad, adminrest, admincuentas);
+      this.taskService.postPrivilegios(codigo, adminsistema, adminseguridad, adminrest, admincuentas)
       .subscribe((privi: Privilegios) => this.router.navigate(['/seguridad']));
     }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../../services/task.service';
 import Consecutivos from 'src/app/models/consecutivos';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import {MatCheckbox} from '@angular/material/checkbox';
 
 @Component({
@@ -13,6 +13,23 @@ export class EditConsecutivoComponent implements OnInit {
  getId: any;
   constructor(private taskService : TaskService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.getId = this.activatedRoute.snapshot.paramMap.get('codigo');
+   }
+
+   optionsTipoConsecutivo: string[] =
+   [
+     'CLI', 'PE', 'PRO', 'PU', 'EVE', 'USU',
+     'UM', 'P', 'M', 'COM', 'DE', 'EU',
+     'LH', 'TEC', 'RES', 'BUF', 'ESP',
+     'BC', 'BH', 'BG', 'L', 'V',
+     'EMP', 'ME', 'BIT', 'FAC'
+   ];
+
+   falseValue = 'No';
+   trueValue = 'Sí';
+   CheckedBox = false;
+
+   checkboxChange(checkbox: MatCheckbox, checked: boolean) {
+     checkbox.value = checked ? this.trueValue : this.falseValue;
    }
 
   ngOnInit(): void {

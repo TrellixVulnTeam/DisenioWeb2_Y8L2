@@ -10,7 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class EditRolesYEventosComponent implements OnInit {
   getId: any;
-  constructor(private taskService: TaskService, private router: Router) {
+  constructor(private taskService: TaskService, private router: Router, private activatedRoute : ActivatedRoute) {
     this.getId = this.activatedRoute.snapshot.paramMap.get('codigo');
    }
 
