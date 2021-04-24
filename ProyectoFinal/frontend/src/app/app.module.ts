@@ -47,6 +47,16 @@ import { EditaPrivilegioComponent } from './components/edita-privilegio/edita-pr
 import { EditEmpleadosComponent } from './components/edit-empleados/edit-empleados.component';
 import { EditMesasComponent } from './components/edit-mesas/edit-mesas.component';
 import { EditPuestosComponent } from './components/edit-puestos/edit-puestos.component';
+import { EditMarcasComponent } from './components/edit-marcas/edit-marcas.component';
+import { EditProveedoresComponent } from './components/edit-proveedores/edit-proveedores.component';
+import { EditComestiblesComponent } from './components/edit-comestibles/edit-comestibles.component';
+import { EditDesechablesComponent } from './components/edit-desechables/edit-desechables.component';
+import { EditLimpiezaComponent } from './components/edit-limpieza/edit-limpieza.component';
+import { EditTecnologiaComponent } from './components/edit-tecnologia/edit-tecnologia.component';
+import { EditEquiposComponent } from './components/edit-equipos/edit-equipos.component';
+import { SuccessfulInsertComponent } from './components/successful-insert/successful-insert.component';
+import { SuccessfulUpdateComponent } from './components/successful-update/successful-update.component';
+import { SuccessfulDeleteComponent } from './components/successful-delete/successful-delete.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +87,17 @@ import { EditPuestosComponent } from './components/edit-puestos/edit-puestos.com
     EditaPrivilegioComponent,
     EditEmpleadosComponent,
     EditMesasComponent,
-    EditPuestosComponent
+    EditPuestosComponent,
+    EditMarcasComponent,
+    EditProveedoresComponent,
+    EditComestiblesComponent,
+    EditDesechablesComponent,
+    EditLimpiezaComponent,
+    EditTecnologiaComponent,
+    EditEquiposComponent,
+    SuccessfulInsertComponent,
+    SuccessfulUpdateComponent,
+    SuccessfulDeleteComponent
   ],
   imports: [
     HttpClientModule,

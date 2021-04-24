@@ -38,7 +38,7 @@ export class EmpleadosComponent implements OnInit {
   deleteEmpleados(codigo) {
     console.log(codigo);
     if (window.confirm('¿Desea eliminar el empleado?')) {
-      this.taskService.deleteEmpleados(codigo)
+      this.taskService.deleteEmpleadoss(codigo)
       .subscribe((empleado: Empleados) =>{
         this.empleado.filter(t => t._id != empleado._id)
       });

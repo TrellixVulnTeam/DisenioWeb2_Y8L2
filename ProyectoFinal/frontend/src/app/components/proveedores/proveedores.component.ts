@@ -11,32 +11,19 @@ import Marcas from 'src/app/models/marcas';
   styleUrls: ['./proveedores.component.css']
 })
 export class ProveedoresComponent implements OnInit {
-
-  // especialesSelect;
+    
   bufet : Bufet[] = [];
+  marcas : Marcas[] = [];
+  proveedores: Proveedores[] = [];
+
   dataSource;
-  // userInputName: string;
-  // userInputCodigo: string;
+  dataSourceMarcas;
+  dataSourceProveedores;
 
-  // displayedColumns: string[] = ['codigo', 'nombre', 'precio', 'tipo', 'unidad_medida'];
+  displayedColumnsMarca: string[] = ['codigo', 'nombre', 'nacionalidad', 'empresa', 'telefono', 'update', 'a'];
 
-  displayedColumnsMarca: string[] = ['codigo', 'nombre', 'descripcion', 'nacionalidad', 'empresa', 'telefono', 'update', 'a'];
-
-  displayedColumnsProveedores: string[] = ['codigo', 'nombre', 'descripcion', 'nacionalidad', 'empresa', 'telefono', 'update', 'a'];
-
-  // displayedColumnsBebidasGaseosas: string[] = ['codigo', 'nombre', 'precio'];
-
-  // displayedColumnsLicores: string[] = ['codigo', 'nombre', 'cantidad', 'precio', 'nacionalidad'];
-
-  // displayedColumnsVinos: string[] = ['codigo', 'nombre', 'precio', 'nacionalidad', 'anio'];
-
-  // displayedColumnsEspeciales: string[] = ['codigo', 'nombre', 'ingredientes', 'precio', 'detalles'];
-
-  // especiales: Especiales[] = [
-  //   {value: 'bufet', viewValue: 'Bufet'},
-  //   {value: 'bebidas', viewValue: 'Bebidas'},
-  //   {value: 'especiales', viewValue: 'Especiales'}
-  // ];
+  displayedColumnsProveedores: string[] = ['codigo', 'nombre', 'nacionalidad', 'empresa', 'telefono', 'update', 'a'];
+  
 
   constructor(private taskService: TaskService, private router: Router) { }
 
@@ -45,49 +32,44 @@ export class ProveedoresComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.taskService.getBufet()
-    .subscribe((bufet: Bufet[]) =>{ this.dataSource = bufet });
+      this.viewMarcas();
+      this.viewProveedores();
+  }
+  
+  viewMarcas() {
+      this.taskService.getMarcas()
+      .subscribe((marcas: Marcas[]) => { this.dataSourceMarcas = marcas })
+
+  } 
+
+  viewProveedores() {
+      this.taskService.getProveedores()
+      .subscribe((proveedores: Proveedores[]) => { this.dataSourceProveedores = proveedores })
   }
 
-  // addBufet(codigo: string, nombre: string, precio: string, tipo: string, unidad_medida: string) {
-  //   this.taskService.postBufet(codigo, nombre, precio, tipo, unidad_medida)
-  //   .subscribe((bufets : Bufet) => this.router.navigate(['/restaurantes']));
+  addMarcas(codigo, nombre, descripcion, nacionalidad, nombre_empresa, telefono_empresa, cedula_juridicaEmpresa, detalle_empresa) {
+      this.taskService.postMarcas(codigo, nombre, descripcion, nacionalidad, nombre_empresa, telefono_empresa, cedula_juridicaEmpresa, detalle_empresa)
+      .subscribe((marcas: Marcas[]) => this.router.navigate(['successful-insert']));
+  }
 
-  // }
+  deleteMarcas(codigo) {
+    if (window.confirm('¿Desea eliminar el proveedor?')) {
+        this.taskService.deleteMarcas(codigo)
+        .subscribe((marca: Marcas) =>{
+          this.marcas.filter(t => t._id != marca._id)
+          this.router.navigate(['/successful-delete'])
+        });
+      }
+  }
 
-//   postMarcas(
-//     codigo: string, nombre: string, descripcion: string,
-//     nacionalidad: string,
-//     nombre_empresa: string, telefono_empresa: number,
-//     cedula_juridicaEmpresa: string, detalle_empresa: string) {
-//       this.taskService.postMarcas(
-//         codigo, nombre, descripcion,
-//         nacionalidad, nombre_empresa, telefono_empresa,
-//         cedula_juridicaEmpresa)
-//       .subscribe((marcas : Marcas) => this.router.navigate(['/']));
+//   addProvedores(codigo, nombre, primer_apellido, segundo_apellido, telefono_oficina, fax, celular, cedula, fecha_ingreso, nombre_proveedor, correo, direccion, nombre_contactoEmpresa, telefono_contactoEmpresa, direccion_empresa) {
+//       console.log(nombre);
+//       this.taskService.postProveedores(codigo, nombre, primer_apellido, segundo_apellido, telefono_oficina, fax, celular, cedula, fecha_ingreso, nombre_proveedor, correo, direccion, nombre_contactoEmpresa, telefono_contactoEmpresa, direccion_empresa)
+//       .subscribe((proveedores : Proveedores) => this.router.navigate(['/succesful-insert']))
 //   }
 
-//   addProvedores(codigo: String, nombre: String, primer_apellido: String, segundo_apellido: String, telefono_oficina: Number, fax: String, celular: Number, cedula: String, fecha_ingreso: Number, nombre_proveedor: String, correo: String, direccion: String, nombre_contactoEmpresa: String, telefono_contactoEmpresa: Number, direccion_empresa: String) {
-//     this.taskService.postProveedores(codigo, nombre, primer_apellido, segundo_apellido, telefono_oficina, fax, celular, cedula, fecha_ingreso, nombre_proveedor, correo, direccion, nombre_contactoEmpresa, telefono_contactoEmpresa, direccion_empresa)
-//     .subscribe((proveedores: Proveedores) => this.router.navigate[('/')]);
-
-  //     this.dataSource = this.dataSource.filter(res =>{
-  //       return res.codigo.toLocaleLowerCase().match(this.userInputCodigo.toLocaleLowerCase())
-  //     });
-
-  //   } else if (this.userInputCodigo == "") {
-  //     this.ngOnInit();
-  //   }
-  // }
-
-
-  // busquedaNombre() {
-  //   if (this.userInputName !="") {
-  //     this.dataSource = this.dataSource.filter(res =>{
-  //       return res.nombre.toLocaleLowerCase().match(this.userInputName.toLocaleLowerCase());
-  //     });
-  //   } else if (this.userInputName == "" || this.userInputCodigo == "") {
-  //     this.ngOnInit();
-  //   }
-  // }
+//   addProveedores() {
+//       this.taskService.postProveedores()
+//       .subscribe((proveedores: Proveedores) => this.router.navigate(['/successful-insert']));
+//   }
 }

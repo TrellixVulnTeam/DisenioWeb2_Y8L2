@@ -20,6 +20,30 @@ import {EditaPrivilegioComponent} from './components/edita-privilegio/edita-priv
 import { EditEmpleadosComponent } from './components/edit-empleados/edit-empleados.component';
 import { EditMesasComponent } from './components/edit-mesas/edit-mesas.component';
 import { EditPuestosComponent } from './components/edit-puestos/edit-puestos.component';
+import { SuccessfulInsertComponent } from './components/successful-insert/successful-insert.component';
+import { SuccessfulUpdateComponent } from './components/successful-update/successful-update.component';
+import { SuccessfulDeleteComponent } from './components/successful-delete/successful-delete.component';
+import { EditMarcasComponent } from './components/edit-marcas/edit-marcas.component';
+import { EditComestiblesComponent } from './components/edit-comestibles/edit-comestibles.component';
+import { EditDesechablesComponent } from './components/edit-desechables/edit-desechables.component';
+import { EditLimpiezaComponent } from './components/edit-limpieza/edit-limpieza.component';
+import { EditTecnologiaComponent } from './components/edit-tecnologia/edit-tecnologia.component';
+import { EditEquiposComponent } from './components/edit-equipos/edit-equipos.component';
+import { EditProveedoresComponent } from './components/edit-proveedores/edit-proveedores.component';
+// import { EditProveedoresComponent } from './components/edit-proveedores/edit-proveedores.component';
+// import { EditProveedoresComponent } from './components/edit-proveedores/edit-proveedores.component';
+// import { EditProveedoresComponent } from './components/edit-proveedores/edit-proveedores.component';
+// import { EditProveedoresComponent } from './components/edit-proveedores/edit-proveedores.component';
+// import { EditProveedoresComponent } from './components/edit-proveedores/edit-proveedores.component';
+// import { EditProveedoresComponent } from './components/edit-proveedores/edit-proveedores.component';
+// import { EditProveedoresComponent } from './components/edit-proveedores/edit-proveedores.component';
+// import { EditProveedoresComponent } from './components/edit-proveedores/edit-proveedores.component';
+// import { EditProveedoresComponent } from './components/edit-proveedores/edit-proveedores.component';
+// import { EditProveedoresComponent } from './components/edit-proveedores/edit-proveedores.component';
+// import { EditProveedoresComponent } from './components/edit-proveedores/edit-proveedores.component';
+// import { EditProveedoresComponent } from './components/edit-proveedores/edit-proveedores.component';
+// import { EditProveedoresComponent } from './components/edit-proveedores/edit-proveedores.component';
+// import { EditProveedoresComponent } from './components/edit-proveedores/edit-proveedores.component';
 
 // import {EditCajasComponent} from './components/editCajas/editCajas.component'
 
@@ -42,9 +66,17 @@ const routes: Routes = [
   {path: 'seguridad/:codigo', component: EditaPrivilegioComponent},
   {path : 'empleados/:codigo', component: EditEmpleadosComponent},
   {path : 'mesas/:codigo', component: EditMesasComponent},
-  {path : 'puestos/:codigo', component: EditPuestosComponent}
-  // {path : 'seguridad/:codigo', component: EditCajasComponent},
-  // {path: 'entorno-restaurante', component: EntornoRestauranteComponent}
+  {path : 'puestos/:codigo', component: EditPuestosComponent},
+  {path: 'proveedores/marcas/:codigo', component: EditMarcasComponent},
+  {path: 'proveedores/comestibles/:codigo', component: EditComestiblesComponent},
+  {path: 'proveedores/desechables/:codigo', component: EditDesechablesComponent},
+  {path: 'proveedores/limpieza/:codigo', component: EditLimpiezaComponent},
+  {path: 'proveedores/tecnologia/:codigo', component: EditTecnologiaComponent},
+  {path: 'proveedores/equipos/:codigo', component: EditEquiposComponent},
+  {path: 'proveedores/proveedores/:codigo', component: EditProveedoresComponent},
+  {path : 'successful-insert', component: SuccessfulInsertComponent},
+  {path: 'successful-update', component: SuccessfulUpdateComponent},
+  {path: 'successful-delete', component: SuccessfulDeleteComponent}
 ];
 
 @NgModule({
