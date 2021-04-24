@@ -37,4 +37,14 @@ export class MesasComponent implements OnInit {
     .subscribe((mesas : Mesas)  => this.router.navigate(['/']));
   }
 
+  deleteMesas(codigo) {
+    console.log(codigo);
+    if (window.confirm('¿Desea eliminar el país?')) {
+      this.taskService.deletePais(codigo)
+      .subscribe((mesas: Mesas) =>{
+        this.mesas.filter(t => t._id != mesas._id)
+      });
+    }
+  }
+
 }

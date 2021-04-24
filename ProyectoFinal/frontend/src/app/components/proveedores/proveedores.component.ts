@@ -20,7 +20,9 @@ export class ProveedoresComponent implements OnInit {
 
   // displayedColumns: string[] = ['codigo', 'nombre', 'precio', 'tipo', 'unidad_medida'];
 
-  displayedColumnsMarca: string[] = ['codigo', 'nombre', 'descripcion', 'nacionalidad', 'empresa', 'telefono'];
+  displayedColumnsMarca: string[] = ['codigo', 'nombre', 'descripcion', 'nacionalidad', 'empresa', 'telefono', 'update', 'a'];
+
+  displayedColumnsProveedores: string[] = ['codigo', 'nombre', 'descripcion', 'nacionalidad', 'empresa', 'telefono', 'update', 'a'];
 
   // displayedColumnsBebidasGaseosas: string[] = ['codigo', 'nombre', 'precio'];
 

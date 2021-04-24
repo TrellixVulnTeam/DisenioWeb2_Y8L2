@@ -205,11 +205,11 @@ export class TaskService {
     return this.webService.post('empleados', {codigo, cedula, nombre, primer_apellido, segundo_apellido, telefono_1, telefono_2, puesto, nacionalidad});
   }
 
-  patchEmpleados(empleadoId:String, codigo: String, cedula: String, nombre: String, primer_apellido: String, segundo_apellido: String, telefono_1: String, telefono_2: String, puesto: String, nacionalidad: String){
-    return this.webService.patch(`empleados/${empleadoId}`,{codigo, cedula, nombre, primer_apellido, segundo_apellido, telefono_1, telefono_2, puesto, nacionalidad} )
+  patchEmpleados(idEmpleados: String, codigo: String, cedula: String, nombre: String, primer_apellido: String, segundo_apellido: String, telefono_1: String, telefono_2: String, puesto: String, nacionalidad: String){
+    return this.webService.patch(`empleados/${idEmpleados }`,{codigo, cedula, nombre, primer_apellido, segundo_apellido, telefono_1, telefono_2, puesto, nacionalidad} )
   }
 
-  deleteEmpleados(codigo:String){
+  deleteEmpleadoss(codigo:String){
       return this.webService.delete(`empleados/${codigo}`)
   }
 

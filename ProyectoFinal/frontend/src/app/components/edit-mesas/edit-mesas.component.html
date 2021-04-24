@@ -1,0 +1,28 @@
+<mat-form-field>
+    <mat-label>Código</mat-label>
+    <input matInput #codigoInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Nombre</mat-label>
+    <input matInput #nombreInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Número</mat-label>
+    <input matInput #numeroInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Cantidad de sillas</mat-label>
+    <input matInput #cantidad_sillasInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Nombre restaurante</mat-label>
+    <input matInput #nombre_restauranteInput>
+</mat-form-field>
+<br>
+<button class="confirmbtn" mat-raised-button color="primary" style="width: 50%;"
+    (click)="editMesas(getId, codigoInput.value, nombreInput.value, numeroInput.value, cantidad_sillasInput.value, nombre_restauranteInput.value)">Insertar</button>
+<button class="warnbtn" mat-raised-button color="primary" style="width: 50%;">Borrar</button>

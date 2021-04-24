@@ -1,4 +1,5 @@
 export default class Empleados {
+  _id: string;
   codigo: String;
   cedula: String;
   nombre: String;

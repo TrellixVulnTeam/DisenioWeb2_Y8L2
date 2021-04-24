@@ -18,6 +18,10 @@ import {EditCajasComponent} from './components/editCajas/editCajas.component';
 import {EditConsecutivoComponent} from './components/edit-consecutivo/edit-consecutivo.component';
 import {EditUsuarioComponent} from './components/edit-usuario/edit-usuario.component';
 import {EditaPrivilegioComponent} from './components/edita-privilegio/edita-privilegio.component';
+import { EditEmpleadosComponent } from './components/edit-empleados/edit-empleados.component';
+import { EditMesasComponent } from './components/edit-mesas/edit-mesas.component';
+
+// import {EditCajasComponent} from './components/editCajas/editCajas.component'
 
 const routes: Routes = [
   {path: 'seguridad', component: SeguridadComponent},
@@ -36,7 +40,10 @@ const routes: Routes = [
   {path : 'seguridad/:codigo', component: EditCajasComponent},
   {path : 'seguridad/:codigo', component: EditConsecutivoComponent},
   {path : 'seguridad/:codigo', component: EditUsuarioComponent},
-  {path: 'seguridad/:codigo', component: EditaPrivilegioComponent}
+  {path: 'seguridad/:codigo', component: EditaPrivilegioComponent},
+  {path : 'empleados/:codigo', component: EditEmpleadosComponent},
+  {path : 'mesas/:codigo', component: EditMesasComponent}
+  // {path : 'seguridad/:codigo', component: EditCajasComponent},
   // {path: 'entorno-restaurante', component: EntornoRestauranteComponent}
 ];
 
