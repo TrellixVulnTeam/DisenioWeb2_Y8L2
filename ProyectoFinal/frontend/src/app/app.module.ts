@@ -42,6 +42,7 @@ import { EditPaisComponent } from './components/edit-pais/edit-pais.component';
 import { EditEmpleadosComponent } from './components/edit-empleados/edit-empleados.component';
 import { EditMesasComponent } from './components/edit-mesas/edit-mesas.component';
 import { EditPuestosComponent } from './components/edit-puestos/edit-puestos.component';
+import { EditEspecialesComponent } from './components/edit-especiales/edit-especiales.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { EditPuestosComponent } from './components/edit-puestos/edit-puestos.com
     EditPaisComponent,
     EditEmpleadosComponent,
     EditMesasComponent,
-    EditPuestosComponent
+    EditPuestosComponent,
+    EditEspecialesComponent
   ],
   imports: [
     HttpClientModule,

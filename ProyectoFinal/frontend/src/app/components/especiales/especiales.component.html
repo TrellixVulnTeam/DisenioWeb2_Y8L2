@@ -1,656 +1,731 @@
 <div class="row" style="height: auto!important;">
-  <div class="col">
-    <div class="jumbotron">
-      <div class="contentjmb" style="text-align: center; width: 100%; padding: 10px; height: auto!important;">
-        <h1 class="display-4">Especiales</h1>
-        <hr>
-        <br>
-        <mat-form-field appearance="standard">
-          <mat-label>Favorite food</mat-label>
-          <mat-select class="sfdefe" [(ngModel)]="especialesSelect" style="color: teal!important;">
-            <mat-option *ngFor="let opciones of especiales" [value]="opciones.value">
-              {{opciones.viewValue}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-      <div id="bdsfsd" *ngIf="especialesSelect === 'bufet'" class="contentjmb" style="width: 100%; padding: 10px;">
-        <h1>Bufet</h1>
-        <hr>
-        <mat-form-field style="width: 30%;">
-            <mat-label>Buscar por codigo</mat-label>
-            <input matInput #searchinput [(ngModel)]="userInputCodigo" (keyup)="applyFilterCode()">
-        </mat-form-field>
-        <mat-form-field style="width: 30%;">
-            <mat-label>Buscar por nombre</mat-label>
-            <input matInput #searchinput [(ngModel)]="userInputName" (keyup)="busquedaNombre()">
-        </mat-form-field>
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-          <ng-container matColumnDef="codigo">
-            <th mat-header-cell *matHeaderCellDef> Codigo </th>
-            <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
-          </ng-container>
-          <ng-container matColumnDef="nombre">
-            <th mat-header-cell *matHeaderCellDef> Nombre </th>
-            <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
-          </ng-container>
-          <ng-container matColumnDef="precio">
-            <th mat-header-cell *matHeaderCellDef> Precio </th>
-            <td mat-cell *matCellDef="let element"> {{element.precio}} </td>
-          </ng-container>
-          <ng-container matColumnDef="tipo">
-            <th mat-header-cell *matHeaderCellDef> Tipo </th>
-            <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
-          </ng-container>
-          <ng-container matColumnDef="unidad_medida">
-            <th mat-header-cell *matHeaderCellDef> Unidad de medida </th>
-            <td mat-cell *matCellDef="let element"> {{element.unidad_medida}} </td>
-          </ng-container>
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
-        <br>
-        <div class="contentjmb" style="height: auto; width: 100%; text-align: center;">
-          <mat-accordion>
-            <mat-expansion-panel hideToggle>
-              <mat-expansion-panel-header style="text-align: center!important; width: 100%!important;">
-                <mat-panel-title style="width: 100%!important;">
-                  <h1 class="display-4">Agregar Bufet</h1>
-                </mat-panel-title>
-              </mat-expansion-panel-header>
-              <mat-form-field>
-                <mat-label>Codigo</mat-label>
-                <input disabled matInput #codigoInput>
-              </mat-form-field>
-              <br>
-              <mat-form-field>
-                <mat-label>Nombre</mat-label>
-                <input matInput #nombreInput>
-              </mat-form-field>
-              <br>
-              <mat-form-field>
-                <mat-label>Precio</mat-label>
-                <input matInput #precioInput>
-              </mat-form-field>
-              <br>
-              <mat-form-field>
-                <mat-label>Tipo</mat-label>
-                <input matInput #tipoInput>
-              </mat-form-field>
-              <br>
-              <mat-form-field>
-                <mat-label>Unidad de medida</mat-label>
-                <input matInput #unidadmedidaInput>
-              </mat-form-field>
-              <br>
-              <button mat-raised-button color="primary" (click)="addBufet(codigoInput.value, nombreInput.value, precioInput.value, tipoInput.value, unidadmedidaInput.value)">Agregar</button>
-              <button mat-raised-button color="warn">Borrar</button>
-            </mat-expansion-panel>
-          </mat-accordion>
-        </div>
-      </div>
-      <br>
-      <!--  Bebidas -->
-      <div *ngIf="especialesSelect === 'bebidas'" class="contentjmb bebidasjumbo" style="width: 100%; height: auto!important; padding: 10px;">
-        <h1>Bebidas</h1>
-        <hr>
-        <!-- mat-acordionCalientes -->
-        <mat-accordion>
-          <mat-expansion-panel hideToggle>
-            <mat-expansion-panel-header>
-              <mat-panel-description>
-                <b>Bebidas Calientes</b>
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-            <mat-accordion>
-              <mat-expansion-panel hideToggle>
-                <mat-expansion-panel-header>
-                  <mat-panel-description>
-                    <b>Búsqueda</b>
-                  </mat-panel-description>
-                </mat-expansion-panel-header>
-                <table mat-table [dataSource]="dataSourceBebidasCalientes" class="mat-elevation-z8">
-                  <ng-container matColumnDef="codigo">
-                    <th mat-header-cell *matHeaderCellDef> Codigo </th>
-                    <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
-                  </ng-container>
-                  <ng-container matColumnDef="nombre">
-                    <th mat-header-cell *matHeaderCellDef> Nombre </th>
-                    <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
-                  </ng-container>
-                  <ng-container matColumnDef="precio">
-                    <th mat-header-cell *matHeaderCellDef> Precio </th>
-                    <td mat-cell *matCellDef="let element"> {{element.precio}} </td>
-                  </ng-container>
-                  <ng-container matColumnDef="restaurante">
-                    <th mat-header-cell *matHeaderCellDef> Restaurante </th>
-                    <td mat-cell *matCellDef="let element"> {{element.restaurante}} </td>
-                  </ng-container>
-                  <tr mat-header-row *matHeaderRowDef="displayedColumnsBebidasCalientes"></tr>
-                  <tr mat-row *matRowDef="let row; columns: displayedColumnsBebidasCalientes;"></tr>
-                </table>
-              </mat-expansion-panel>
-            </mat-accordion>
-            <br>
-            <mat-accordion>
-              <mat-expansion-panel hideToggle>
-                <mat-expansion-panel-header>
-                  <mat-panel-description>
-                    <b>Insertar</b>
-                  </mat-panel-description>
-                </mat-expansion-panel-header>
-                <p>This is the primary content of the panel.</p>
-                <mat-form-field>
-                  <mat-label>Código</mat-label>
-                  <input matInput #codigoInput>
-                </mat-form-field>
+    <div class="col">
+        <div class="jumbotron">
+            <div class="contentjmb" style="text-align: center; width: 100%; padding: 10px; height: auto!important;">
+                <h1 class="display-4">Especiales</h1>
+                <hr>
                 <br>
-                <mat-form-field>
-                  <mat-label>Nombre</mat-label>
-                  <input matInput #nombreInput>
+                <mat-form-field appearance="standard">
+                    <mat-label>Favorite food</mat-label>
+                    <mat-select class="sfdefe" [(ngModel)]="especialesSelect" style="color: teal!important;">
+                        <mat-option *ngFor="let opciones of especiales" [value]="opciones.value">
+                            {{opciones.viewValue}}
+                        </mat-option>
+                    </mat-select>
                 </mat-form-field>
-                <br>
-                <mat-form-field>
-                  <mat-label>Ingredientes</mat-label>
-                  <input matInput #ingredientesInput>
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                  <mat-label>Precio</mat-label>
-                  <input matInput #precioInput>
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                  <mat-label>Restaurante</mat-label>
-                  <input matInput #restauranteInput>
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                  <mat-label>Descripción</mat-label>
-                  <input matInput #descripcionInput>
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                  <mat-label>Foto</mat-label>
-                  <input matInput>
-                </mat-form-field>
-                <br>
-                <a routerLink="/restaurantes" routerLinkActive="active"><button class="confirmbtn" mat-raised-button color="primary" style="width: 50%;" (click)="addBebidasCalientes(codigoInput.value, nombreInput.value, ingredientesInput.value, precioInput.value, restauranteInput.value, descripcionInput.value)">Insertar</button></a>
-                <a routerLink="/restaurantes" routerLinkActive="active"><button class="warnbtn" mat-raised-button color="primary" style="width: 50%; margin-top: 10px;">Borrar</button></a>
-              </mat-expansion-panel>
-            </mat-accordion>
-          </mat-expansion-panel>
-        </mat-accordion>
-        <br>
-        <!-- mat-acordionFrías -->
-        <mat-accordion>
-          <mat-expansion-panel hideToggle>
-            <mat-expansion-panel-header>
-              <mat-panel-description>
-                <b>Bebidas Frías</b>
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-            <mat-accordion>
-              <mat-expansion-panel hideToggle>
-                <mat-expansion-panel-header>
-                  <mat-panel-description>
-                    <b>Búsqueda</b>
-                  </mat-panel-description>
-                </mat-expansion-panel-header>
-                <table mat-table [dataSource]="dataSourceBebidasFrias" class="mat-elevation-z8">
-                  <ng-container matColumnDef="codigo">
-                    <th mat-header-cell *matHeaderCellDef> Codigo </th>
-                    <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
-                  </ng-container>
-                  <ng-container matColumnDef="nombre">
-                    <th mat-header-cell *matHeaderCellDef> Nombre </th>
-                    <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
-                  </ng-container>
-                  <ng-container matColumnDef="precio">
-                    <th mat-header-cell *matHeaderCellDef> Precio </th>
-                    <td mat-cell *matCellDef="let element"> {{element.precio}} </td>
-                  </ng-container>
-                  <ng-container matColumnDef="restaurante">
-                    <th mat-header-cell *matHeaderCellDef> Restaurante </th>
-                    <td mat-cell *matCellDef="let element"> {{element.restaurante}} </td>
-                  </ng-container>
-                  <tr mat-header-row *matHeaderRowDef="displayedColumnsBebidasCalientes"></tr>
-                  <tr mat-row *matRowDef="let row; columns: displayedColumnsBebidasCalientes;"></tr>
-                </table>
-              </mat-expansion-panel>
-            </mat-accordion>
-            <br>
-            <mat-accordion>
-              <mat-expansion-panel hideToggle>
-                <mat-expansion-panel-header>
-                  <mat-panel-description>
-                    <b>Insertar</b>
-                  </mat-panel-description>
-                </mat-expansion-panel-header>
-                <mat-form-field>
-                  <mat-label>Código</mat-label>
-                  <input matInput #codigoInput>
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                  <mat-label>Nombre</mat-label>
-                  <input matInput #nombreInput>
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                  <mat-label>Ingredientes</mat-label>
-                  <input matInput #ingredientesInput>
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                  <mat-label>Precio</mat-label>
-                  <input matInput #precioInput>
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                  <mat-label>Restaurante</mat-label>
-                  <input matInput #restauranteInput>
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                  <mat-label>Descripción</mat-label>
-                  <input matInput #descripcionInput>
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                  <mat-label>Foto</mat-label>
-                  <input matInput>
-                </mat-form-field>
-                <br>
-                <a routerLink="/restaurantes" routerLinkActive="active"><button class="confirmbtn" mat-raised-button color="primary" style="width: 50%;" (click)="addBebidasFrias(codigoInput.value, nombreInput.value, ingredientesInput.value, precioInput.value, restauranteInput.value, descripcionInput.value)">Insertar</button></a>
-                <a routerLink="/restaurantes" routerLinkActive="active"><button class="warnbtn" mat-raised-button color="primary" style="width: 50%; margin-top: 10px;">Borrar</button></a>
-              </mat-expansion-panel>
-            </mat-accordion>
-          </mat-expansion-panel>
-        </mat-accordion>
-        <br>
-        <!-- mat-acordionGaseosas -->
-        <mat-accordion>
-          <mat-expansion-panel hideToggle>
-            <mat-expansion-panel-header>
-              <mat-panel-description>
-                <b>Bebidas Gaseosas</b>
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-            <mat-accordion>
-              <mat-expansion-panel hideToggle>
-                <mat-expansion-panel-header>
-                  <mat-panel-description>
-                    <b>Búsqueda</b>
-                  </mat-panel-description>
-                </mat-expansion-panel-header>
-                <table mat-table [dataSource]="dataSourceBebidasGaseosas" class="mat-elevation-z8">
-                  <ng-container matColumnDef="codigo">
-                    <th mat-header-cell *matHeaderCellDef> Codigo </th>
-                    <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
-                  </ng-container>
-                  <ng-container matColumnDef="nombre">
-                    <th mat-header-cell *matHeaderCellDef> Nombre </th>
-                    <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
-                  </ng-container>
-                  <ng-container matColumnDef="precio">
-                    <th mat-header-cell *matHeaderCellDef> Precio </th>
-                    <td mat-cell *matCellDef="let element"> {{element.precio}} </td>
-                  </ng-container>
-                  <tr mat-header-row *matHeaderRowDef="displayedColumnsBebidasGaseosas"></tr>
-                  <tr mat-row *matRowDef="let row; columns: displayedColumnsBebidasGaseosas;"></tr>
-                </table>
-              </mat-expansion-panel>
-            </mat-accordion>
-            <br>
-            <mat-accordion>
-              <mat-expansion-panel hideToggle>
-                <mat-expansion-panel-header>
-                  <mat-panel-description>
-                    <b>Insertar</b>
-                  </mat-panel-description>
-                </mat-expansion-panel-header>
-                <mat-form-field>
-                  <mat-label>Código</mat-label>
-                  <input matInput #codigoInput>
-                </mat-form-field>
-                <mat-form-field>
-                  <mat-label>Nombre</mat-label>
-                  <input matInput #nombreInput>
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                  <mat-label>Marca</mat-label>
-                  <input matInput #marcaInput>
-                </mat-form-field>
-                <mat-form-field>
-                  <mat-label>Nacionalidad</mat-label>
-                  <input matInput #nacionalidadInput>
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                  <mat-label>Precio</mat-label>
-                  <input matInput #precioInput>
-                </mat-form-field>
-                <mat-form-field>
-                  <mat-label>Restaurante</mat-label>
-                  <input matInput #restauranteInput>
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                  <mat-label>Cantidad</mat-label>
-                  <input matInput #cantidadInput>
-                </mat-form-field>
-                <mat-form-field>
-                  <mat-label>Descripción</mat-label>
-                  <input matInput #descripcionInput>
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                  <mat-label>Foto</mat-label>
-                  <input matInput>
-                </mat-form-field>
-                <br>
-                <button class="confirmbtn" mat-raised-button color="primary" style="width: 50%;" (click)="addBebidasGaseosas(codigoInput.value, nombreInput.value, marcaInput.value, nacionalidadInput.value, precioInput.value, restauranteInput.value, cantidadInput.value, descripcionInput.value)">Insert3ar</button>
-                <a routerLink="/restaurantes" routerLinkActive="active"><button class="warnbtn" mat-raised-button color="primary" style="width: 50%; margin-top: 10px;">Borrar</button></a>
-              </mat-expansion-panel>
-            </mat-accordion>
-          </mat-expansion-panel>
-        </mat-accordion>
-        <br>
-        <!-- mat-acordionLicores -->
-        <mat-accordion>
-          <mat-expansion-panel hideToggle>
-            <mat-expansion-panel-header>
-              <mat-panel-description>
-                <b>Licores</b>
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-            <mat-accordion>
-              <mat-expansion-panel hideToggle>
-                <mat-expansion-panel-header>
-                  <mat-panel-description>
-                    <b>Búsqueda</b>
-                  </mat-panel-description>
-                </mat-expansion-panel-header>
-                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-                  <ng-container matColumnDef="codigo">
-                    <th mat-header-cell *matHeaderCellDef> Codigo </th>
-                    <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
-                  </ng-container>
-                  <ng-container matColumnDef="nombre">
-                    <th mat-header-cell *matHeaderCellDef> Nombre </th>
-                    <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
-                  </ng-container>
-                  <ng-container matColumnDef="cantidad">
-                    <th mat-header-cell *matHeaderCellDef> Cantidad </th>
-                    <td mat-cell *matCellDef="let element"> {{element.precio}} </td>
-                  </ng-container>
-                  <ng-container matColumnDef="precio">
-                    <th mat-header-cell *matHeaderCellDef> Precio </th>
-                    <td mat-cell *matCellDef="let element"> {{element.precio}} </td>
-                  </ng-container>
-                  <ng-container matColumnDef="nacionalidad">
-                    <th mat-header-cell *matHeaderCellDef> Nacionalidad </th>
-                    <td mat-cell *matCellDef="let element"> {{element.precio}} </td>
-                  </ng-container>
-                  <tr mat-header-row *matHeaderRowDef="displayedColumnsLicores"></tr>
-                  <tr mat-row *matRowDef="let row; columns: displayedColumnsLicores;"></tr>
-                </table>
-              </mat-expansion-panel>
-            </mat-accordion>
-            <br>
-            <mat-accordion>
-              <mat-expansion-panel hideToggle>
-                <mat-expansion-panel-header>
-                  <mat-panel-description>
-                    <b>Insertar</b>
-                  </mat-panel-description>
-                </mat-expansion-panel-header>
-                <mat-form-field>
-                  <mat-label>Código</mat-label>
-                  <input disabled matInput>
-                </mat-form-field>
-                <mat-form-field>
-                  <mat-label>Restaurante</mat-label>
-                  <input matInput>
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                  <mat-label>Nombre</mat-label>
-                  <input matInput>
-                </mat-form-field>
-                <mat-form-field>
-                  <mat-label>Cantidad</mat-label>
-                  <input matInput>
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                  <mat-label>Marca</mat-label>
-                  <input matInput>
-                </mat-form-field>
-                <mat-form-field>
-                  <mat-label>Descripción</mat-label>
-                  <input matInput>
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                  <mat-label>Nacionalidad</mat-label>
-                  <input matInput>
-                </mat-form-field>
-                <mat-form-field>
-                  <mat-label>Precio unitario</mat-label>
-                  <input matInput>
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                  <mat-label>Precio botella</mat-label>
-                  <input matInput>
-                </mat-form-field>
-                <mat-form-field>
-                  <mat-label>Foto</mat-label>
-                  <input matInput>
-                </mat-form-field>
-              </mat-expansion-panel>
-            </mat-accordion>
-          </mat-expansion-panel>
-        </mat-accordion>
-        <br>
-        <!-- mat-acordionVinos -->
-        <mat-accordion>
-          <mat-expansion-panel hideToggle>
-            <mat-expansion-panel-header>
-              <mat-panel-description>
-                <b>Vinos</b>
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-            <mat-accordion>
-              <mat-expansion-panel hideToggle>
-                <mat-expansion-panel-header>
-                  <mat-panel-description>
-                    <b>Búsqueda</b>
-                  </mat-panel-description>
-                </mat-expansion-panel-header>
-                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-                  <ng-container matColumnDef="codigo">
-                    <th mat-header-cell *matHeaderCellDef> Codigo </th>
-                    <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
-                  </ng-container>
-                  <ng-container matColumnDef="nombre">
-                    <th mat-header-cell *matHeaderCellDef> Nombre </th>
-                    <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
-                  </ng-container>
-                  <ng-container matColumnDef="precio">
-                    <th mat-header-cell *matHeaderCellDef> Precio </th>
-                    <td mat-cell *matCellDef="let element"> {{element.precio}} </td>
-                  </ng-container>
-                  <ng-container matColumnDef="nacionalidad">
-                    <th mat-header-cell *matHeaderCellDef> Nacionalidad </th>
-                    <td mat-cell *matCellDef="let element"> {{element.precio}} </td>
-                  </ng-container>
-                  <ng-container matColumnDef="anio">
-                    <th mat-header-cell *matHeaderCellDef> Año </th>
-                    <td mat-cell *matCellDef="let element"> {{element.precio}} </td>
-                  </ng-container>
-                  <tr mat-header-row *matHeaderRowDef="displayedColumnsVinos"></tr>
-                  <tr mat-row *matRowDef="let row; columns: displayedColumnsVinos;"></tr>
-                </table>
-              </mat-expansion-panel>
-            </mat-accordion>
-            <br>
-            <mat-accordion>
-              <mat-expansion-panel hideToggle>
-                <mat-expansion-panel-header>
-                  <mat-panel-description>
-                    <b>Insertar</b>
-                  </mat-panel-description>
-                </mat-expansion-panel-header>
-                <p>This is the primary content of the panel.</p>
+            </div>
+            <div id="bdsfsd" *ngIf="especialesSelect === 'bufet'" class="contentjmb"
+                style="width: 100%; padding: 10px;">
 
-                <mat-form-field>
-                  <mat-label>Código</mat-label>
-                  <input disabled matInput>
+                <!-- BUFET -->
+                <h1>Bufet</h1>
+                <hr>
+                <mat-form-field style="width: 30%;">
+                    <mat-label>Buscar por codigo</mat-label>
+                    <input matInput #searchinput [(ngModel)]="userInputCodigo" (keyup)="applyFilterCode()">
                 </mat-form-field>
-                <mat-form-field>
-                  <mat-label>Restaurante</mat-label>
-                  <input matInput>
+                <mat-form-field style="width: 30%;">
+                    <mat-label>Buscar por nombre</mat-label>
+                    <input matInput #searchinput [(ngModel)]="userInputName" (keyup)="busquedaNombre()">
                 </mat-form-field>
-                <br>
-                <mat-form-field>
-                  <mat-label>Nombre</mat-label>
-                  <input matInput>
-                </mat-form-field>
-                <mat-form-field>
-                  <mat-label>Cantidad</mat-label>
-                  <input matInput>
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                  <mat-label>Marca</mat-label>
-                  <input matInput>
-                </mat-form-field>
-                <mat-form-field>
-                  <mat-label>Descripción</mat-label>
-                  <input matInput>
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                  <mat-label>Nacionalidad</mat-label>
-                  <input matInput>
-                </mat-form-field>
-                <mat-form-field>
-                  <mat-label>Precio unitario</mat-label>
-                  <input matInput>
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                  <mat-label>Precio botella</mat-label>
-                  <input matInput>
-                </mat-form-field>
-                <mat-form-field>
-                  <mat-label>Foto</mat-label>
-                  <input matInput>
-                </mat-form-field>
-              </mat-expansion-panel>
-            </mat-accordion>
-          </mat-expansion-panel>
-        </mat-accordion>
-      </div>
-      <br>
-      <!-- Especiales -->
-      <div *ngIf="especialesSelect === 'especiales'" class="contentjmb bebidasjumbo" style="width: 100%; padding: 10px;">
-        <h1>Especiales</h1>
-        <hr><mat-accordion>
-          <mat-expansion-panel hideToggle>
-            <mat-expansion-panel-header>
-              <mat-panel-description>
-                <b>Especiales</b>
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-            <mat-accordion>
-              <mat-expansion-panel hideToggle>
-                <mat-expansion-panel-header>
-                  <mat-panel-description>
-                    <b>Búsqueda</b>
-                  </mat-panel-description>
-                </mat-expansion-panel-header>
-                <br>
                 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-                  <ng-container matColumnDef="codigo">
-                    <th mat-header-cell *matHeaderCellDef> Codigo </th>
-                    <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
-                  </ng-container>
-                  <ng-container matColumnDef="nombre">
-                    <th mat-header-cell *matHeaderCellDef> Nombre </th>
-                    <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
-                  </ng-container>
-                  <ng-container matColumnDef="ingredientes">
-                    <th mat-header-cell *matHeaderCellDef> Ingredientes </th>
-                    <td mat-cell *matCellDef="let element"> {{element.precio}} </td>
-                  </ng-container>
-                  <ng-container matColumnDef="precio">
-                    <th mat-header-cell *matHeaderCellDef> Precio </th>
-                    <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
-                  </ng-container>
-                  <ng-container matColumnDef="detalles">
-                    <th mat-header-cell *matHeaderCellDef> Detalle </th>
-                    <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
-                  </ng-container>
-                  <tr mat-header-row *matHeaderRowDef="displayedColumnsEspeciales"></tr>
-                  <tr mat-row *matRowDef="let row; columns: displayedColumnsEspeciales;"></tr>
+                    <ng-container matColumnDef="codigo">
+                        <th mat-header-cell *matHeaderCellDef> Codigo </th>
+                        <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="nombre">
+                        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                        <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="precio">
+                        <th mat-header-cell *matHeaderCellDef> Precio </th>
+                        <td mat-cell *matCellDef="let element"> {{element.precio}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="tipo">
+                        <th mat-header-cell *matHeaderCellDef> Tipo </th>
+                        <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="unidad_medida">
+                        <th mat-header-cell *matHeaderCellDef> Unidad de medida </th>
+                        <td mat-cell *matCellDef="let element"> {{element.unidad_medida}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="editar">
+                      <th mat-header-cell *matHeaderCellDef> editar </th>
+                      <td mat-cell *matCellDef="let element"> <a routerLink="/especiales/{{ element._id }}"><button>Editar</button></a> </td>
+                    </ng-container>
+                    <ng-container matColumnDef="eliminar">
+                      <th mat-header-cell *matHeaderCellDef> eliiminar </th>
+                      <td mat-cell *matCellDef="let element"> <button (click)="deleteBufet(element._id)">Eliminar</button> </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                 </table>
-              </mat-expansion-panel>
-            </mat-accordion>
+                <br>
+                <div class="contentjmb" style="height: auto; width: 100%; text-align: center;">
+                    <mat-accordion>
+                        <mat-expansion-panel hideToggle>
+                            <mat-expansion-panel-header style="text-align: center!important; width: 100%!important;">
+                                <mat-panel-title style="width: 100%!important;">
+                                    <h1 class="display-4">Agregar Bufet</h1>
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <mat-form-field>
+                                <mat-label>Codigo</mat-label>
+                                <input disabled matInput #codigoInput>
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field>
+                                <mat-label>Nombre</mat-label>
+                                <input matInput #nombreInput>
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field>
+                                <mat-label>Precio</mat-label>
+                                <input matInput #precioInput>
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field>
+                                <mat-label>Tipo</mat-label>
+                                <input matInput #tipoInput>
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field>
+                                <mat-label>Unidad de medida</mat-label>
+                                <input matInput #unidadmedidaInput>
+                            </mat-form-field>
+                            <br>
+                            <button mat-raised-button color="primary"
+                                (click)="addBufet(codigoInput.value, nombreInput.value, precioInput.value, tipoInput.value, unidadmedidaInput.value)">Agregar</button>
+                            <button mat-raised-button color="warn">Borrar</button>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </div>
+            </div>
             <br>
-            <mat-accordion>
-              <mat-expansion-panel hideToggle>
-                <mat-expansion-panel-header>
-                  <mat-panel-description>
-                    <b>Insertar</b>
-                  </mat-panel-description>
-                </mat-expansion-panel-header>
+            <!--  Bebidas -->
+            <div *ngIf="especialesSelect === 'bebidas'" class="contentjmb bebidasjumbo"
+                style="width: 100%; height: auto!important; padding: 10px;">
+                <h1>Bebidas</h1>
+                <hr>
+                <!-- mat-acordionCalientes -->
+                <mat-accordion>
+                    <mat-expansion-panel hideToggle>
+                        <mat-expansion-panel-header>
+                            <mat-panel-description>
+                                <b>Bebidas Calientes</b>
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <mat-accordion>
+                            <mat-expansion-panel hideToggle>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-description>
+                                        <b>Búsqueda</b>
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+                                <table mat-table [dataSource]="dataSourceBebidasCalientes" class="mat-elevation-z8">
+                                    <ng-container matColumnDef="codigo">
+                                        <th mat-header-cell *matHeaderCellDef> Codigo </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="nombre">
+                                        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="precio">
+                                        <th mat-header-cell *matHeaderCellDef> Precio </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.precio}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="restaurante">
+                                        <th mat-header-cell *matHeaderCellDef> Restaurante </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.restaurante}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="editar">
+                                      <th mat-header-cell *matHeaderCellDef> editar </th>
+                                      <td mat-cell *matCellDef="let element"> <a routerLink="/especiales/{{ element._id }}"><button>Editar</button></a> </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="eliminar">
+                                      <th mat-header-cell *matHeaderCellDef> eliiminar </th>
+                                      <td mat-cell *matCellDef="let element"> <button (click)="deleteBebidas_Clientes(element._id)">Eliminar</button> </td>
+                                    </ng-container>
+                                    <tr mat-header-row *matHeaderRowDef="displayedColumnsBebidasCalientes"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: displayedColumnsBebidasCalientes;"></tr>
+                                </table>
+                            </mat-expansion-panel>
+                        </mat-accordion>
+                        <br>
+                        <mat-accordion>
+                            <mat-expansion-panel hideToggle>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-description>
+                                        <b>Insertar</b>
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+                                <p>This is the primary content of the panel.</p>
+                                <mat-form-field>
+                                    <mat-label>Código</mat-label>
+                                    <input matInput #codigoInput>
+                                </mat-form-field>
+                                <br>
+                                <mat-form-field>
+                                    <mat-label>Nombre</mat-label>
+                                    <input matInput #nombreInput>
+                                </mat-form-field>
+                                <br>
+                                <mat-form-field>
+                                    <mat-label>Ingredientes</mat-label>
+                                    <input matInput #ingredientesInput>
+                                </mat-form-field>
+                                <br>
+                                <mat-form-field>
+                                    <mat-label>Precio</mat-label>
+                                    <input matInput #precioInput>
+                                </mat-form-field>
+                                <br>
+                                <mat-form-field>
+                                    <mat-label>Restaurante</mat-label>
+                                    <input matInput #restauranteInput>
+                                </mat-form-field>
+                                <br>
+                                <mat-form-field>
+                                    <mat-label>Descripción</mat-label>
+                                    <input matInput #descripcionInput>
+                                </mat-form-field>
+                                <br>
+                                <mat-form-field>
+                                    <mat-label>Foto</mat-label>
+                                    <input matInput>
+                                </mat-form-field>
+                                <br>
+                                <button class="primarybtn" mat-raised-button color="primary"
+                                    (click)="addBebidasCalientes(codigoInput.value, nombreInput.value, ingredientesInput.value, precioInput.value,restauranteInput.value, descripcionInput.value )">Agregar</button>
+                                <button class="warnbtn" mat-raised-button color="warn">Borrar datos</button>
+
+                            </mat-expansion-panel>
+                        </mat-accordion>
+                    </mat-expansion-panel>
+                </mat-accordion>
                 <br>
-                <mat-form-field>
-                  <mat-label>Código</mat-label>
-                  <input disabled matInput>
-                </mat-form-field>
+                <!-- mat-acordionFrías -->
+                <mat-accordion>
+                    <mat-expansion-panel hideToggle>
+                        <mat-expansion-panel-header>
+                            <mat-panel-description>
+                                <b>Bebidas Frías</b>
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <mat-accordion>
+                            <mat-expansion-panel hideToggle>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-description>
+                                        <b>Búsqueda</b>
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+                                <table mat-table [dataSource]="dataSourceBebidasFrias" class="mat-elevation-z8">
+                                    <ng-container matColumnDef="codigo">
+                                        <th mat-header-cell *matHeaderCellDef> Codigo </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="nombre">
+                                        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="precio">
+                                        <th mat-header-cell *matHeaderCellDef> Precio </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.precio}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="restaurante">
+                                        <th mat-header-cell *matHeaderCellDef> Restaurante </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.restaurante}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="editar">
+                                      <th mat-header-cell *matHeaderCellDef> editar </th>
+                                      <td mat-cell *matCellDef="let element"> <a routerLink="/especiales/{{ element._id }}"><button>Editar</button></a> </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="eliminar">
+                                      <th mat-header-cell *matHeaderCellDef> eliminar </th>
+                                      <td mat-cell *matCellDef="let element"> <button (click)="deleteBebidas_Frias(element._id)">Eliminar</button> </td>
+                                    </ng-container>
+                                    <tr mat-header-row *matHeaderRowDef="displayedColumnsBebidasCalientes"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: displayedColumnsBebidasCalientes;"></tr>
+                                </table>
+                            </mat-expansion-panel>
+                        </mat-accordion>
+                        <br>
+                        <mat-accordion>
+                            <mat-expansion-panel hideToggle>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-description>
+                                        <b>Insertar</b>
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+                                <mat-form-field>
+                                    <mat-label>Código</mat-label>
+                                    <input matInput #codigoInput>
+                                </mat-form-field>
+                                <br>
+                                <mat-form-field>
+                                    <mat-label>Nombre</mat-label>
+                                    <input matInput #nombreInput>
+                                </mat-form-field>
+                                <br>
+                                <mat-form-field>
+                                    <mat-label>Ingredientes</mat-label>
+                                    <input matInput #ingredientesInput>
+                                </mat-form-field>
+                                <br>
+                                <mat-form-field>
+                                    <mat-label>Precio</mat-label>
+                                    <input matInput #precioInput>
+                                </mat-form-field>
+                                <br>
+                                <mat-form-field>
+                                    <mat-label>Restaurante</mat-label>
+                                    <input matInput #restauranteInput>
+                                </mat-form-field>
+                                <br>
+                                <mat-form-field>
+                                    <mat-label>Descripción</mat-label>
+                                    <input matInput #descripcionInput>
+                                </mat-form-field>
+                                <br>
+                                <mat-form-field>
+                                    <mat-label>Foto</mat-label>
+                                    <input matInput>
+                                </mat-form-field>
+                                <br>
+                                <button class="primarybtn" mat-raised-button color="primary"
+                                    (click)="addBebidasFrias(codigoInput.value, nombreInput.value, ingredientesInput.value, precioInput.value,restauranteInput.value, descripcionInput.value )">Agregar</button>
+                                <button class="warnbtn" mat-raised-button color="warn">Borrar datos</button>
+                            </mat-expansion-panel>
+                        </mat-accordion>
+                    </mat-expansion-panel>
+                </mat-accordion>
                 <br>
-                <mat-form-field>
-                  <mat-label>Nombre</mat-label>
-                  <input matInput>
-                </mat-form-field>
+                <!-- mat-acordionGaseosas -->
+                <mat-accordion>
+                    <mat-expansion-panel hideToggle>
+                        <mat-expansion-panel-header>
+                            <mat-panel-description>
+                                <b>Bebidas Gaseosas</b>
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <mat-accordion>
+                            <mat-expansion-panel hideToggle>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-description>
+                                        <b>Búsqueda</b>
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+                                <table mat-table [dataSource]="dataSourceBebidasGaseosas" class="mat-elevation-z8">
+                                    <ng-container matColumnDef="codigo">
+                                        <th mat-header-cell *matHeaderCellDef> Codigo </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="nombre">
+                                        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="precio">
+                                        <th mat-header-cell *matHeaderCellDef> Precio </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.precio}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="editar">
+                                      <th mat-header-cell *matHeaderCellDef> editar </th>
+                                      <td mat-cell *matCellDef="let element"> <a routerLink="/especiales/{{ element._id }}"><button>Editar</button></a> </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="eliminar">
+                                      <th mat-header-cell *matHeaderCellDef> eliiminar </th>
+                                      <td mat-cell *matCellDef="let element"> <button (click)="deleteBebidas_Gaseosas(element._id)">Eliminar</button> </td>
+                                    </ng-container>
+                                    <tr mat-header-row *matHeaderRowDef="displayedColumnsBebidasGaseosas"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: displayedColumnsBebidasGaseosas;"></tr>
+                                </table>
+                            </mat-expansion-panel>
+                        </mat-accordion>
+                        <br>
+                        <mat-accordion>
+                            <mat-expansion-panel hideToggle>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-description>
+                                        <b>Insertar</b>
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+                                <mat-form-field>
+                                    <mat-label>Código</mat-label>
+                                    <input matInput #codigoInput>
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label>Nombre</mat-label>
+                                    <input matInput #nombreInput>
+                                </mat-form-field>
+                                <br>
+                                <mat-form-field>
+                                    <mat-label>Marca</mat-label>
+                                    <input matInput #marcaInput>
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label>Nacionalidad</mat-label>
+                                    <input matInput #nacionalidadInput>
+                                </mat-form-field>
+                                <br>
+                                <mat-form-field>
+                                    <mat-label>Precio</mat-label>
+                                    <input matInput #precioInput>
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label>Restaurante</mat-label>
+                                    <input matInput #restauranteInput>
+                                </mat-form-field>
+                                <br>
+                                <mat-form-field>
+                                    <mat-label>Cantidad</mat-label>
+                                    <input matInput #cantidadInput>
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label>Descripción</mat-label>
+                                    <input matInput #descripcionInput>
+                                </mat-form-field>
+                                <br>
+                                <mat-form-field>
+                                    <mat-label>Foto</mat-label>
+                                    <input matInput>
+                                </mat-form-field>
+                                <br>
+                                <button class="confirmbtn" mat-raised-button color="primary" style="width: 50%;"
+                                    (click)="addBebidasGaseosas(codigoInput.value, nombreInput.value, marcaInput.value, nacionalidadInput.value, precioInput.value, restauranteInput.value, cantidadInput.value, descripcionInput.value)">Insert3ar</button>
+                                <button class="warnbtn" mat-raised-button color="warn">Borrar datos</button>
+                            </mat-expansion-panel>
+                        </mat-accordion>
+                    </mat-expansion-panel>
+                </mat-accordion>
                 <br>
-                <mat-form-field>
-                  <mat-label>Ingredientes</mat-label>
-                  <input matInput>
-                </mat-form-field>
+                <!-- mat-acordionLicores -->
+                <mat-accordion>
+                    <mat-expansion-panel hideToggle>
+                        <mat-expansion-panel-header>
+                            <mat-panel-description>
+                                <b>Licores</b>
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <mat-accordion>
+                            <mat-expansion-panel hideToggle>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-description>
+                                        <b>Búsqueda</b>
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+                                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                                    <ng-container matColumnDef="codigo">
+                                        <th mat-header-cell *matHeaderCellDef> Codigo </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="nombre">
+                                        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="cantidad">
+                                        <th mat-header-cell *matHeaderCellDef> Cantidad </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.precio}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="precio">
+                                        <th mat-header-cell *matHeaderCellDef> Precio </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.precio}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="nacionalidad">
+                                        <th mat-header-cell *matHeaderCellDef> Nacionalidad </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.precio}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="editar">
+                                      <th mat-header-cell *matHeaderCellDef> editar </th>
+                                      <td mat-cell *matCellDef="let element"> <a routerLink="/especiales/{{ element._id }}"><button>Editar</button></a> </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="eliminar">
+                                      <th mat-header-cell *matHeaderCellDef> eliminar </th>
+                                      <td mat-cell *matCellDef="let element"> <button (click)="deleteLicores(element._id)">Eliminar</button> </td>
+                                    </ng-container>
+                                    <tr mat-header-row *matHeaderRowDef="displayedColumnsLicores"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: displayedColumnsLicores;"></tr>
+                                </table>
+                            </mat-expansion-panel>
+                        </mat-accordion>
+                        <br>
+                        <mat-accordion>
+                            <mat-expansion-panel hideToggle>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-description>
+                                        <b>Insertar</b>
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+                                <mat-form-field>
+                                    <mat-label>Código</mat-label>
+                                    <input matInput #codigoInput>
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label>Restaurante</mat-label>
+                                    <input matInput #restauranteInput>
+                                </mat-form-field>
+                                <br>
+                                <mat-form-field>
+                                    <mat-label>Nombre</mat-label>
+                                    <input matInput #nombreInput>
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label>Cantidad</mat-label>
+                                    <input matInput #cantidadInput>
+                                </mat-form-field>
+                                <br>
+                                <mat-form-field>
+                                    <mat-label>Marca</mat-label>
+                                    <input matInput #marcaInput>
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label>Descripción</mat-label>
+                                    <input matInput #descripcionInput>
+                                </mat-form-field>
+                                <br>
+                                <mat-form-field>
+                                    <mat-label>Nacionalidad</mat-label>
+                                    <input matInput #nacionalidadInput>
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label>Precio unitario</mat-label>
+                                    <input matInput #precio_unitarioInput>
+                                </mat-form-field>
+                                <br>
+                                <mat-form-field>
+                                    <mat-label>Precio botella</mat-label>
+                                    <input matInput #precio_botellaInput>
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label>Foto</mat-label>
+                                    <input matInput>
+                                </mat-form-field>
+                                <button class="primarybtn" mat-raised-button color="primary"
+                                    (click)="addLicores(codigoInput.value, nombreInput.value, cantidadInput.value, marcaInput.value,descripcionInput.value, nacionalidadInput.value, precio_unitarioInput.value,precio_botellaInput.value )">Agregar</button>
+                                <button class="warnbtn" mat-raised-button color="warn">Borrar datos</button>
+                            </mat-expansion-panel>
+                        </mat-accordion>
+                    </mat-expansion-panel>
+                </mat-accordion>
                 <br>
-                <mat-form-field>
-                  <mat-label>Precio</mat-label>
-                  <input matInput>
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                  <mat-label>Detalles</mat-label>
-                  <input matInput>
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                  <mat-label>Foto</mat-label>
-                  <input matInput>
-                </mat-form-field>
-                <br>
-                <a routerLink="/restaurantes" routerLinkActive="active"><button class="confirmbtn" mat-raised-button color="primary" style="width: 50%;">Insertar</button></a>
-                <a routerLink="/restaurantes" routerLinkActive="active"><button class="warnbtn" mat-raised-button color="primary" style="width: 50%; margin-top: 10px;">Borrar</button></a>
-              </mat-expansion-panel>
-            </mat-accordion>
-          </mat-expansion-panel>
-        </mat-accordion>
-      </div>
-      <br>
-      <a routerLink="/restaurantes" routerLinkActive="active"><button class="primarybtn" mat-raised-button color="primary" style="width: 100%;">Atrás</button></a>
+                <!-- mat-acordionVinos -->
+                <mat-accordion>
+                    <mat-expansion-panel hideToggle>
+                        <mat-expansion-panel-header>
+                            <mat-panel-description>
+                                <b>Vinos</b>
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <mat-accordion>
+                            <mat-expansion-panel hideToggle>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-description>
+                                        <b>Búsqueda</b>
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+                                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                                    <ng-container matColumnDef="codigo">
+                                        <th mat-header-cell *matHeaderCellDef> Codigo </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="nombre">
+                                        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="precio">
+                                        <th mat-header-cell *matHeaderCellDef> Precio </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.precio}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="nacionalidad">
+                                        <th mat-header-cell *matHeaderCellDef> Nacionalidad </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.precio}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="anio">
+                                        <th mat-header-cell *matHeaderCellDef> Año </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.precio}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="editar">
+                                      <th mat-header-cell *matHeaderCellDef> editar </th>
+                                      <td mat-cell *matCellDef="let element"> <a routerLink="/especiales/{{ element._id }}"><button>Editar</button></a> </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="eliminar">
+                                      <th mat-header-cell *matHeaderCellDef> eliminar </th>
+                                      <td mat-cell *matCellDef="let element"> <button (click)="deleteVinos(element._id)">Eliminar</button> </td>
+                                    </ng-container>
+                                    <tr mat-header-row *matHeaderRowDef="displayedColumnsVinos"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: displayedColumnsVinos;"></tr>
+                                </table>
+                            </mat-expansion-panel>
+                        </mat-accordion>
+                        <br>
+                        <mat-accordion>
+                            <mat-expansion-panel hideToggle>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-description>
+                                        <b>Insertar</b>
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+                                <p>This is the primary content of the panel.</p>
+
+                                <mat-form-field>
+                                    <mat-label>Código</mat-label>
+                                    <input matInpu #codigoInputt>
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label>Restaurante</mat-label>
+                                    <input matInput #restauranteInput>
+                                </mat-form-field>
+                                <br>
+                                <mat-form-field>
+                                    <mat-label>Nombre</mat-label>
+                                    <input matInput #nombreInput>
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label>Cantidad</mat-label>
+                                    <input matInput #cantidadInput>
+                                </mat-form-field>
+                                <br>
+                                <mat-form-field>
+                                    <mat-label>Marca</mat-label>
+                                    <input matInput #marcaInput>
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label>Descripción</mat-label>
+                                    <input matInput #descripcionInput>
+                                </mat-form-field>
+                                <br>
+                                <mat-form-field>
+                                    <mat-label>Nacionalidad</mat-label>
+                                    <input matInput #nacionalidadInput>
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label>Precio unitario</mat-label>
+                                    <input matInput #precio_unitarioInput>
+                                </mat-form-field>
+                                <br>
+                                <mat-form-field>
+                                    <mat-label>Precio botella</mat-label>
+                                    <input matInput #precio_botellaInput>
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label>Foto</mat-label>
+                                    <input matInput>
+                                </mat-form-field>
+                                <button class="primarybtn" mat-raised-button color="primary"
+                                    (click)="addVinos(codigoInput.value, nombreInput.value, cantidadInput.value, marcaInput.value,descripcionInput.value, nacionalidadInput.value, precio_unitarioInput.value,precio_botellaInput.value )">Agregar</button>
+                                <button class="warnbtn" mat-raised-button color="warn">Borrar datos</button>
+                            </mat-expansion-panel>
+                        </mat-accordion>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+            <br>
+            <!-- Especiales -->
+            <div *ngIf="especialesSelect === 'especiales'" class="contentjmb bebidasjumbo"
+                style="width: 100%; padding: 10px;">
+                <h1>Especiales</h1>
+                <hr>
+                <mat-accordion>
+                    <mat-expansion-panel hideToggle>
+                        <mat-expansion-panel-header>
+                            <mat-panel-description>
+                                <b>Especiales</b>
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <mat-accordion>
+                            <mat-expansion-panel hideToggle>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-description>
+                                        <b>Búsqueda</b>
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+                                <br>
+                                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                                    <ng-container matColumnDef="codigo">
+                                        <th mat-header-cell *matHeaderCellDef> Codigo </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="nombre">
+                                        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="ingredientes">
+                                        <th mat-header-cell *matHeaderCellDef> Ingredientes </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.precio}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="precio">
+                                        <th mat-header-cell *matHeaderCellDef> Precio </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="detalles">
+                                        <th mat-header-cell *matHeaderCellDef> Detalle </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="editar">
+                                      <th mat-header-cell *matHeaderCellDef> editar </th>
+                                      <td mat-cell *matCellDef="let element"> <a routerLink="/especiales/{{ element._id }}"><button>Editar</button></a> </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="eliminar">
+                                      <th mat-header-cell *matHeaderCellDef> eliiminar </th>
+                                      <td mat-cell *matCellDef="let element"> <button (click)="deleteEspeciales(element._id)">Eliminar</button> </td>
+                                    </ng-container>
+                                    <tr mat-header-row *matHeaderRowDef="displayedColumnsEspeciales"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: displayedColumnsEspeciales;"></tr>
+                                </table>
+                            </mat-expansion-panel>
+                        </mat-accordion>
+                        <br>
+                        <mat-accordion>
+                            <mat-expansion-panel hideToggle>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-description>
+                                        <b>Insertar</b>
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+                                <br>
+                                <mat-form-field>
+                                    <mat-label>Código</mat-label>
+                                    <input disabled matInput #codigoInput>
+                                </mat-form-field>
+                                <br>
+                                <mat-form-field>
+                                    <mat-label>Nombre</mat-label>
+                                    <input matInput #nombreInput>
+                                </mat-form-field>
+                                <br>
+                                <mat-form-field>
+                                    <mat-label>Ingredientes</mat-label>
+                                    <input matInput #ingredientesInput>
+                                </mat-form-field>
+                                <br>
+                                <mat-form-field>
+                                    <mat-label>Precio</mat-label>
+                                    <input matInput #precioInput>
+                                </mat-form-field>
+                                <br>
+                                <mat-form-field>
+                                    <mat-label>Detalles</mat-label>
+                                    <input matInput #detallesInput>
+                                </mat-form-field>
+                                <br>
+                                <mat-form-field>
+                                    <mat-label>Foto</mat-label>
+                                    <input matInput>
+                                </mat-form-field>
+                                <br>
+                                <button class="primarybtn" mat-raised-button color="primary"
+                                    (click)="addEspeciales(codigoInput.value, nombreInput.value, ingredientesInput.value, precioInput.value, detallesInput.valu )">Agregar</button>
+                                <button class="warnbtn" mat-raised-button color="warn">Borrar datos</button>
+                            </mat-expansion-panel>
+                        </mat-accordion>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+            <br>
+            <a routerLink="/restaurantes" routerLinkActive="active"><button class="primarybtn" mat-raised-button
+                    color="primary" style="width: 100%;">Atrás</button></a>
+        </div>
     </div>
-  </div>
 </div>
 
 <!--

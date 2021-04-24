@@ -17,6 +17,7 @@ import { EditPaisComponent } from './components/edit-pais/edit-pais.component';
 import { EditEmpleadosComponent } from './components/edit-empleados/edit-empleados.component';
 import { EditMesasComponent } from './components/edit-mesas/edit-mesas.component';
 import { EditPuestosComponent } from './components/edit-puestos/edit-puestos.component';
+import { EditEspecialesComponent } from './components/edit-especiales/edit-especiales.component';
 
 // import {EditCajasComponent} from './components/editCajas/editCajas.component'
 
@@ -36,7 +37,8 @@ const routes: Routes = [
   {path : 'seguridad/:codigo', component: EditPaisComponent},
   {path : 'empleados/:codigo', component: EditEmpleadosComponent},
   {path : 'mesas/:codigo', component: EditMesasComponent},
-  {path : 'puestos/:codigo', component: EditPuestosComponent}
+  {path : 'puestos/:codigo', component: EditPuestosComponent},
+  {path : 'especiales/:codigo', component: EditEspecialesComponent}
   // {path : 'seguridad/:codigo', component: EditCajasComponent},
   // {path: 'entorno-restaurante', component: EntornoRestauranteComponent}
 ];
