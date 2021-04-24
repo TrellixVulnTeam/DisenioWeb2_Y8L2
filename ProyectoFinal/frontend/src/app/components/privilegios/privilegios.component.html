@@ -1,0 +1,82 @@
+<mat-accordion>
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <b>Búsqueda</b>
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="codigo">
+          <th mat-header-cell *matHeaderCellDef> Código </th>
+          <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
+        </ng-container>
+        <ng-container matColumnDef="unidad_medida">
+          <th mat-header-cell *matHeaderCellDef>Admin Sistema</th>
+          <td mat-cell *matCellDef="let element"> {{element.adminsistema}} </td>
+        </ng-container>
+        <ng-container matColumnDef="escala">
+          <th mat-header-cell *matHeaderCellDef> Admin seguridad </th>
+          <td mat-cell *matCellDef="let element"> {{element.adminseguridad}} </td>
+        </ng-container>
+        <ng-container matColumnDef="detalle">
+          <th mat-header-cell *matHeaderCellDef> Admin restaurantes </th>
+          <td mat-cell *matCellDef="let element"> {{element.adminrest}} </td>
+        </ng-container>
+        <ng-container matColumnDef="simbologia">
+          <th mat-header-cell *matHeaderCellDef> Admin Cuentas </th>
+          <td mat-cell *matCellDef="let element"> {{element.admincuentas}} </td>
+        </ng-container>
+        <ng-container matColumnDef="editar">
+          <th mat-header-cell *matHeaderCellDef> editar </th>
+          <td mat-cell *matCellDef="let element"> <a routerLink="/seguridad/{{ element._id }}"><button>Editar</button></a> </td>
+        </ng-container>
+        <ng-container matColumnDef="eliminar">
+          <th mat-header-cell *matHeaderCellDef> eliminar </th>
+          <td mat-cell *matCellDef="let element"> <button (click)="deletePrivi(element._id)">Eliminar</button> </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumnsPrivilegios"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumnsPrivilegios;"></tr>
+      </table>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <mat-accordion>
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <b>Insertar</b>
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-form-field>
+        <mat-label>Código</mat-label>
+        <input matInput #codigoInput>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Admin Sistema</mat-label>
+        <input matInput #adminsisInput>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Admin Seguridad</mat-label>
+        <input matInput #adminsegInput>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Admin Restaurante</mat-label>
+            <input matInput #adminrestInput>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Admin Cuentas</mat-label>
+        <input matInput #admincuentInput>
+      </mat-form-field>
+      <br>
+      <button class="primarybtn" mat-raised-button color="primary" (click)="addPrivilegios(codigoInput.value, adminsisInput.value, adminsegInput.value, adminrestInput.value, admincuentInput.value)">Agregar</button>
+      <button class="warnbtn" mat-raised-button color="warn">Borrar datos</button>
+    </mat-expansion-panel>
+  </mat-accordion>
+  

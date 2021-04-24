@@ -42,6 +42,8 @@ import { EditPaisComponent } from './components/edit-pais/edit-pais.component';
 import { EditConsecutivoComponent } from './components/edit-consecutivo/edit-consecutivo.component';
 import { EditRolesYEventosComponent } from './components/edit-roles-y-eventos/edit-roles-y-eventos.component';
 import { EditUsuarioComponent } from './components/edit-usuario/edit-usuario.component';
+import { PrivilegiosComponent } from './components/privilegios/privilegios.component';
+import { EditaPrivilegioComponent } from './components/edita-privilegio/edita-privilegio.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +69,9 @@ import { EditUsuarioComponent } from './components/edit-usuario/edit-usuario.com
     EditPaisComponent,
     EditConsecutivoComponent,
     EditRolesYEventosComponent,
-    EditUsuarioComponent
+    EditUsuarioComponent,
+    PrivilegiosComponent,
+    EditaPrivilegioComponent
   ],
   imports: [
     HttpClientModule,

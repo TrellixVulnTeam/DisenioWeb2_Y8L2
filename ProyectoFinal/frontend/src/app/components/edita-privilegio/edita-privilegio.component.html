@@ -1,0 +1,39 @@
+<mat-accordion>
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <b>Editar</b>
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-form-field>
+        <mat-label>Código</mat-label>
+        <input matInput #codigoInput>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Admin Sistema</mat-label>
+        <input matInput #adminsisInput>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Admin Seguridad</mat-label>
+        <input matInput #adminsegInput>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Admin Restaurante</mat-label>
+            <input matInput #adminrestInput>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Admin Cuentas</mat-label>
+        <input matInput #admincuentInput>
+      </mat-form-field>
+      <br>
+      <button class="primarybtn" mat-raised-button color="primary" (click)="editPrivilegios(getId, codigoInput.value, adminsisInput.value, adminsegInput.value, adminrestInput.value, admincuentInput.value)">Agregar</button>
+      <button class="warnbtn" mat-raised-button color="warn">Borrar datos</button>
+    </mat-expansion-panel>
+  </mat-accordion>
+  

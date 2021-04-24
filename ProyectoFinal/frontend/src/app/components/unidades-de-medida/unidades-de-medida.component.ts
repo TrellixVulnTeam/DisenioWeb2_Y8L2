@@ -18,9 +18,10 @@ export class UnidadesDeMedidaComponent implements OnInit {
   // aab;
 
   detalles : detalleUDM[] = [];
+  udms: UDM[] = [];
 
   optionsAdmin: string[] = ['Administrador del systema', 'Administrador de seguridad', 'Administrador del restaurante', 'Administrador de cuentas'];
-  displayedColumnsUDM: string[] = ['codigo', 'unidad_medida', 'escala', 'detalle', 'simbologia'];
+  displayedColumnsUDM: string[] = ['codigo', 'unidad_medida', 'escala', 'detalle', 'simbologia', 'editar', 'eliminar'];
 
   constructor(private taskService: TaskService, private router: Router) { }
 
@@ -40,6 +41,15 @@ export class UnidadesDeMedidaComponent implements OnInit {
   addUDM(codigo: string, unidad: string, escala: string, detalle: string, simbolo: string, simologia: string) {
     this.taskService.postUnidadMedida(codigo, unidad, escala, detalle, simbolo, simologia)
     .subscribe((udm: UDM ) => this.router.navigate(['/seguridad']));
+  }
+
+  deleteUDM(codigo){
+    if (window.confirm('¿Desea eliminar la unidad de medida?')) {
+        this.taskService.deleteUnidadMedida(codigo)
+        .subscribe((udm: UDM) =>{
+          this.udms.filter(t => t._id != udm._id)
+        });
+      }
   }
 
   // loadSelector() {
