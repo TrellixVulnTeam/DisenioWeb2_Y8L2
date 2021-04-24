@@ -1,0 +1,37 @@
+<mat-accordion>
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <b>Insertar</b>
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-form-field>
+        <mat-label>Tipo consecutivo</mat-label>
+        <mat-select #tipoInput>
+          <mat-option *ngFor="let tipo of optionsTipoConsecutivo" [value]="tipo"> {{ tipo }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Descripción</mat-label>
+        <input matInput #descInput>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Valor consecutivo</mat-label>
+        <input matInput #valorInput>
+      </mat-form-field>
+      <br>
+      <mat-checkbox [(ngModel)]="CheckedBox" [value]="falseValue" (change)="checkboxChange($event.source, $event.checked)" #posseeInput>Posee prefijo</mat-checkbox>
+      <br>
+      <mat-form-field>
+        <mat-label>Prefijo</mat-label>
+        <input matInput #prefijoInput [disabled]="!CheckedBox">
+      </mat-form-field>
+      <br>
+      <button class="primarybtn" mat-raised-button color="primary" (click)="editConse(getId, tipoInput.value, descInput.value, valorInput.value, posseeInput.value, prefijoInput.value)">Agregar</button>
+      <button class="warnbtn" mat-raised-button color="warn">Borrar datos</button>
+    </mat-expansion-panel>
+  </mat-accordion>

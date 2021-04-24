@@ -14,7 +14,7 @@ export class RolesYEventosComponent implements OnInit {
   dataSource;
 
   optionsAdmin: string[] = ['Administrador del systema', 'Administrador de seguridad', 'Administrador del restaurante', 'Administrador de cuentas'];
-  displayedColumnsRoles: string[] = ['codigo', 'nombre_rol'];
+  displayedColumnsRoles: string[] = ['codigo', 'nombre_rol', 'descripcion', 'editar', 'eliminar'];
 
   constructor(private taskService: TaskService, private router: Router) { }
 
@@ -30,5 +30,14 @@ export class RolesYEventosComponent implements OnInit {
   addRolento(codigo: string, nombre: string, descripcion: string) {
     this.taskService.postRolento(codigo, nombre, descripcion)
     .subscribe((rolento: Rolentos) => this.router.navigate(['/']));
+  }
+
+  deleteRolento(codigo){
+    if (window.confirm('¿Desea eliminar el rol?')) {
+        this.taskService.deleteRolento(codigo)
+        .subscribe((rolento: Rolentos) =>{
+          this.rolentos.filter(t => t._id != rolento._id)
+        });
+      }
   }
 }

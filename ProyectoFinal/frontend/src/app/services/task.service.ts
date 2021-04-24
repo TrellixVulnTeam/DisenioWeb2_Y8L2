@@ -173,8 +173,8 @@ export class TaskService {
     return this.webService.post('bebidas_gaseosas', {codigo, nombre, marca, nacionalidad, precio, restaurante, cantidad, descripcion});
   }
 
-  patchBebidasGaseosas(bebidaGId: String, codigo: string, nombre: string, ingredientes: string, precio: string, restaurante: string, descripcion: string){
-    return this.webService.patch(`bebidas_gaseosas/${bebidaGId}`, {codigo, nombre, ingredientes, precio, restaurante, descripcion})
+  patchBebidasGaseosas(bebidaGId: String, codigo: String, nombre: String, marca: String, nacionalidad: String, precio: String, restaurante: String, cantidad: String, descripcion: Strin){
+    return this.webService.patch(`bebidas_gaseosas/${bebidaGId}`, {codigo, nombre, marca, nacionalidad, precio, restaurante, cantidad, descripcion})
   }
 
   deleteBebidasGaseosas(codigo:String){

@@ -39,6 +39,14 @@ import { AdminContentComponent } from './components/admin-content/admin-content.
 // import { WavesModule, InputsModule, ButtonsModule } from 'angular-bootstrap-md'
 import {HttpClientModule} from '@angular/common/http';
 import { EditPaisComponent } from './components/edit-pais/edit-pais.component';
+import { EditConsecutivoComponent } from './components/edit-consecutivo/edit-consecutivo.component';
+import { EditRolesYEventosComponent } from './components/edit-roles-y-eventos/edit-roles-y-eventos.component';
+import { EditUsuarioComponent } from './components/edit-usuario/edit-usuario.component';
+import { PrivilegiosComponent } from './components/privilegios/privilegios.component';
+import { EditaPrivilegioComponent } from './components/edita-privilegio/edita-privilegio.component';
+import { CajaComponent } from './components/caja/caja.component';
+import { CajasComponent } from './components/cajas/cajas.component';
+import { EditCajasComponent } from './edit-cajas/edit-cajas.component';
 import { EditEmpleadosComponent } from './components/edit-empleados/edit-empleados.component';
 import { EditMesasComponent } from './components/edit-mesas/edit-mesas.component';
 import { EditPuestosComponent } from './components/edit-puestos/edit-puestos.component';
@@ -75,6 +83,14 @@ import { EditEquiposUtensiliosComponent } from './components/edit-equipos-utensi
     UnidadesDeMedidaComponent,
     AdminContentComponent,
     EditPaisComponent,
+    EditConsecutivoComponent,
+    EditRolesYEventosComponent,
+    EditUsuarioComponent,
+    PrivilegiosComponent,
+    EditaPrivilegioComponent,
+    CajaComponent,
+    CajasComponent,
+    EditCajasComponent,
     EditEmpleadosComponent,
     EditMesasComponent,
     EditPuestosComponent,

@@ -21,6 +21,7 @@ export class EspecialesComponent implements OnInit {
   bufet : Bufet[] = [];
   bebidas_calientes : BebidasCalientes[] = [];
   bebidas_frias : BebidasFrias[] = [];
+  bebidas_gaseosas : BebidasGaseosas[] = [];
   dataSource;
   dataSourceBebidasCalientes;
   dataSourceBebidasFrias;
@@ -28,17 +29,17 @@ export class EspecialesComponent implements OnInit {
   userInputName: string;
   userInputCodigo: string;
 
-  displayedColumns: string[] = ['codigo', 'nombre', 'precio', 'tipo', 'unidad_medida'];
+  displayedColumns: string[] = ['codigo', 'nombre', 'precio', 'tipo', 'unidad_medida', 'editar', 'eliminar'];
 
-  displayedColumnsBebidasCalientes: string[] = ['codigo', 'nombre', 'precio', 'restaurante'];
+  displayedColumnsBebidasCalientes: string[] = ['codigo', 'nombre', 'precio', 'restaurante', 'editar', 'eliminar'];
 
-  displayedColumnsBebidasGaseosas: string[] = ['codigo', 'nombre', 'precio'];
+  displayedColumnsBebidasGaseosas: string[] = ['codigo', 'nombre', 'precio', 'editar', 'eliminar'];
 
-  displayedColumnsLicores: string[] = ['codigo', 'nombre', 'cantidad', 'precio', 'nacionalidad'];
+  displayedColumnsLicores: string[] = ['codigo', 'nombre', 'cantidad', 'precio', 'nacionalidad', 'editar', 'eliminar'];
 
-  displayedColumnsVinos: string[] = ['codigo', 'nombre', 'precio', 'nacionalidad', 'anio'];
+  displayedColumnsVinos: string[] = ['codigo', 'nombre', 'precio', 'nacionalidad', 'anio', 'editar', 'eliminar'];
 
-  displayedColumnsEspeciales: string[] = ['codigo', 'nombre', 'ingredientes', 'precio', 'detalles'];
+  displayedColumnsEspeciales: string[] = ['codigo', 'nombre', 'ingredientes', 'precio', 'detalles', 'editar', 'eliminar'];
 
   especiales: Especiales[] = [
     {value: 'bufet', viewValue: 'Bufet'},
@@ -59,9 +60,19 @@ export class EspecialesComponent implements OnInit {
     this.viewBebidasGaseosas();
   }
 
+  /* BUFET */
   addBufet(codigo: string, nombre: string, precio: string, tipo: string, unidad_medida: string) {
     this.taskService.postBufet(codigo, nombre, precio, tipo, unidad_medida)
     .subscribe((bufets : Bufet) => this.router.navigate(['/restaurantes']));
+  }
+  deleteBufet(codigo) {
+    console.log(codigo);
+    if (window.confirm('¿Desea eliminar el bufet?')) {
+      this.taskService.deleteBufet(codigo)
+      .subscribe((bufet: Bufet) =>{
+        this.bufet.filter(t => t._id != bufet._id)
+      });
+    }
   }
 
   viewBufet() {
@@ -69,6 +80,8 @@ export class EspecialesComponent implements OnInit {
     .subscribe((bufet: Bufet[]) =>{ this.dataSource = bufet });
   }
 
+
+  /* BEBIDAS CALIENTES */
   viewBebidasCalientes() {
     this.taskService.getBebidasCalientes()
     .subscribe((bebidas_calientes : BebidasCalientes[]) => { this.dataSourceBebidasCalientes = bebidas_calientes });
@@ -79,6 +92,18 @@ export class EspecialesComponent implements OnInit {
     .subscribe((bebidascalientes: BebidasCalientes) => this.router.navigate(['/']))
   }
 
+  deleteBebidasCalientes(codigo) {
+    console.log(codigo);
+    if (window.confirm('¿Desea eliminar la bebida caliente?')) {
+      this.taskService.deleteBebidasCalientes(codigo)
+      .subscribe((bebidas_calientes: BebidasCalientes) =>{
+        this.bebidas_calientes.filter(t => t._id != bebidas_calientes._id)
+      });
+    }
+  }
+
+
+  /* BEBIDAS FRIAS */
   viewBebidasFrias() {
     this.taskService.getBebidasFrias()
     .subscribe((bebidas_frias : BebidasFrias[]) => { this.dataSourceBebidasFrias = bebidas_frias });
@@ -89,6 +114,18 @@ export class EspecialesComponent implements OnInit {
     .subscribe((bebidas_frias: BebidasFrias) => this.router.navigate(['/']))
   }
 
+  deleteBebidasFrias(codigo) {
+    console.log(codigo);
+    if (window.confirm('¿Desea eliminar la bebida fria?')) {
+      this.taskService.deleteBebidasFrias(codigo)
+      .subscribe((bebidas_frias: BebidasFrias) =>{
+        this.bebidas_frias.filter(t => t._id != bebidas_frias._id)
+      });
+    }
+  }
+
+
+  /* BEBIDAS GASEOSAS */
   viewBebidasGaseosas() {
     this.taskService.getBebidasGaseosas()
     .subscribe((bebidas_gaseosas : BebidasGaseosas[]) => { this.dataSourceBebidasGaseosas = bebidas_gaseosas });
@@ -97,6 +134,15 @@ export class EspecialesComponent implements OnInit {
   addBebidasGaseosas(codigo: String, nombre: String, marca: String, nacionalidad: String, precio: String, restaurante: String, cantidad: String, descripcion: String) {
     this.taskService.postBebidasGaseosas(codigo, nombre, marca, nacionalidad, precio, restaurante, cantidad, descripcion)
     .subscribe((bebidas_gaseosas: BebidasGaseosas) => this.router.navigate(['/']))
+  }
+  deleteBebidasGaseosas(codigo) {
+    console.log(codigo);
+    if (window.confirm('¿Desea eliminar la bebida gaseosa?')) {
+      this.taskService.deleteBebidasGaseosas(codigo)
+      .subscribe((bebidas_gaseosas: BebidasGaseosas) =>{
+        this.bebidas_gaseosas.filter(t => t._id != bebidas_gaseosas._id)
+      });
+    }
   }
 
   busquedaCodigo() {

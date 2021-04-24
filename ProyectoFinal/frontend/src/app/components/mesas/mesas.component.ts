@@ -13,7 +13,7 @@ export class MesasComponent implements OnInit {
   bufet : Bufet[] = [];
   mesas : Mesas[] = [];
 
-  displayedColumnsMesas: string[] = ['codigo', 'nombre', 'numero', 'cantidad', 'restaurante'];
+  displayedColumnsMesas: string[] = ['codigo', 'nombre', 'numero', 'cantidad', 'restaurante', 'editar', 'eliminar'];
 
   dataSource;
 

@@ -1,0 +1,299 @@
+<!-- BUFET -->
+<p>Bufet</p>
+<br>
+<mat-form-field>
+    <mat-label>Codigo</mat-label>
+    <input disabled matInput #codigoInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Nombre</mat-label>
+    <input matInput #nombreInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Precio</mat-label>
+    <input matInput #precioInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Tipo</mat-label>
+    <input matInput #tipoInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Unidad de medida</mat-label>
+    <input matInput #unidadmedidaInput>
+</mat-form-field>
+<br>
+<button mat-raised-button color="primary"
+    (click)="editBufet(codigoInput.value, nombreInput.value, precioInput.value, tipoInput.value, unidadmedidaInput.value)">Agregar</button>
+<button mat-raised-button color="warn">Borrar</button>
+
+<!-- BEBIDAS CALIENTES -->
+<p>Bebidas calientes</p>
+<mat-form-field>
+    <mat-label>Código</mat-label>
+    <input matInput #codigoInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Nombre</mat-label>
+    <input matInput #nombreInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Ingredientes</mat-label>
+    <input matInput #ingredientesInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Precio</mat-label>
+    <input matInput #precioInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Restaurante</mat-label>
+    <input matInput #restauranteInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Descripción</mat-label>
+    <input matInput #descripcionInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Foto</mat-label>
+    <input matInput>
+</mat-form-field>
+<br>
+<button class="confirmbtn" mat-raised-button color="primary" style="width: 50%;"
+    (click)="editBebidasCalientes(codigoInput.value, nombreInput.value, ingredientesInput.value, precioInput.value, restauranteInput.value, descripcionInput.value)">Insertar</button>
+<button class="warnbtn" mat-raised-button color="primary" style="width: 50%; margin-top: 10px;">Borrar</button>
+
+<!-- BEBIDAS FRIAS -->
+<p>Bebidas frias</p>
+<mat-form-field>
+    <mat-label>Código</mat-label>
+    <input matInput #codigoInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Nombre</mat-label>
+    <input matInput #nombreInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Ingredientes</mat-label>
+    <input matInput #ingredientesInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Precio</mat-label>
+    <input matInput #precioInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Restaurante</mat-label>
+    <input matInput #restauranteInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Descripción</mat-label>
+    <input matInput #descripcionInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Foto</mat-label>
+    <input matInput>
+</mat-form-field>
+<br>
+<button class="confirmbtn" mat-raised-button color="primary" style="width: 50%;"
+    (click)="editBebidasFrias(codigoInput.value, nombreInput.value, ingredientesInput.value, precioInput.value, restauranteInput.value, descripcionInput.value)">Insertar</button>
+<button class="warnbtn" mat-raised-button color="primary" style="width: 50%; margin-top: 10px;">Borrar</button>
+
+
+<!-- BEBIDAS GASEOSAS -->
+<p>Bebidas gaseosas</p>
+<mat-form-field>
+    <mat-label>Código</mat-label>
+    <input matInput #codigoInput>
+</mat-form-field>
+<mat-form-field>
+    <mat-label>Nombre</mat-label>
+    <input matInput #nombreInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Marca</mat-label>
+    <input matInput #marcaInput>
+</mat-form-field>
+<mat-form-field>
+    <mat-label>Nacionalidad</mat-label>
+    <input matInput #nacionalidadInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Precio</mat-label>
+    <input matInput #precioInput>
+</mat-form-field>
+<mat-form-field>
+    <mat-label>Restaurante</mat-label>
+    <input matInput #restauranteInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Cantidad</mat-label>
+    <input matInput #cantidadInput>
+</mat-form-field>
+<mat-form-field>
+    <mat-label>Descripción</mat-label>
+    <input matInput #descripcionInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Foto</mat-label>
+    <input matInput>
+</mat-form-field>
+<br>
+<button class="confirmbtn" mat-raised-button color="primary" style="width: 50%;"
+    (click)="editBebidasGaseosas(codigoInput.value, nombreInput.value, marcaInput.value, nacionalidadInput.value, precioInput.value, restauranteInput.value, cantidadInput.value, descripcionInput.value)">Insert3ar</button>
+<button class="warnbtn" mat-raised-button color="warn">Borrar datos</button>
+
+<!-- LICORES -->
+<p>Licores</p>
+<mat-form-field>
+    <mat-label>Código</mat-label>
+    <input matInput #codigoInput>
+</mat-form-field>
+<mat-form-field>
+    <mat-label>Restaurante</mat-label>
+    <input matInput #restauranteInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Nombre</mat-label>
+    <input matInput #nombreInput>
+</mat-form-field>
+<mat-form-field>
+    <mat-label>Cantidad</mat-label>
+    <input matInput #cantidadInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Marca</mat-label>
+    <input matInput #marcaInput>
+</mat-form-field>
+<mat-form-field>
+    <mat-label>Descripción</mat-label>
+    <input matInput #descripcionInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Nacionalidad</mat-label>
+    <input matInput #nacionalidadInput>
+</mat-form-field>
+<mat-form-field>
+    <mat-label>Precio unitario</mat-label>
+    <input matInput #precio_unitarioInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Precio botella</mat-label>
+    <input matInput #precio_botellaInput>
+</mat-form-field>
+<mat-form-field>
+    <mat-label>Foto</mat-label>
+    <input matInput>
+</mat-form-field>
+<button class="primarybtn" mat-raised-button color="primary"
+    (click)="editLicores(codigoInput.value, nombreInput.value, cantidadInput.value, marcaInput.value,descripcionInput.value, nacionalidadInput.value, precio_unitarioInput.value,precio_botellaInput.value )">Agregar</button>
+<button class="warnbtn" mat-raised-button color="warn">Borrar datos</button>
+
+
+<!-- VINOS -->
+<p>Licores</p>
+<mat-form-field>
+    <mat-label>Código</mat-label>
+    <input matInpu #codigoInputt>
+</mat-form-field>
+<mat-form-field>
+    <mat-label>Restaurante</mat-label>
+    <input matInput #restauranteInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Nombre</mat-label>
+    <input matInput #nombreInput>
+</mat-form-field>
+<mat-form-field>
+    <mat-label>Cantidad</mat-label>
+    <input matInput #cantidadInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Marca</mat-label>
+    <input matInput #marcaInput>
+</mat-form-field>
+<mat-form-field>
+    <mat-label>Descripción</mat-label>
+    <input matInput #descripcionInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Nacionalidad</mat-label>
+    <input matInput #nacionalidadInput>
+</mat-form-field>
+<mat-form-field>
+    <mat-label>Precio unitario</mat-label>
+    <input matInput #precio_unitarioInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Precio botella</mat-label>
+    <input matInput #precio_botellaInput>
+</mat-form-field>
+<mat-form-field>
+    <mat-label>Foto</mat-label>
+    <input matInput>
+</mat-form-field>
+<button class="primarybtn" mat-raised-button color="primary"
+    (click)="editVinos(codigoInput.value, nombreInput.value, cantidadInput.value, marcaInput.value,descripcionInput.value, nacionalidadInput.value, precio_unitarioInput.value,precio_botellaInput.value )">Agregar</button>
+<button class="warnbtn" mat-raised-button color="warn">Borrar datos</button>
+
+
+<!-- ESPECIALES -->
+<p>Especiales</p>
+<mat-form-field>
+    <mat-label>Código</mat-label>
+    <input disabled matInput #codigoInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Nombre</mat-label>
+    <input matInput #nombreInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Ingredientes</mat-label>
+    <input matInput #ingredientesInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Precio</mat-label>
+    <input matInput #precioInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Detalles</mat-label>
+    <input matInput #detallesInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Foto</mat-label>
+    <input matInput>
+</mat-form-field>
+<br>
+<button class="primarybtn" mat-raised-button color="primary"
+    (click)="editEspeciales(codigoInput.value, nombreInput.value, ingredientesInput.value, precioInput.value, detallesInput.valu )">Agregar</button>
+<button class="warnbtn" mat-raised-button color="warn">Borrar datos</button>

@@ -30,19 +30,29 @@ export class ConsecutivosComponent implements OnInit {
     'BC', 'BH', 'BG', 'L', 'V',
     'EMP', 'ME', 'BIT', 'FAC'
   ];
-  displayedColumnsConsecutivos: string[] = ['codigo', 'tipo', 'descripcion', 'valor_consecutivo', 'contiene_prefijo'];
+
+  displayedColumnsConsecutivos: string[] = ['codigo', 'tipo', 'descripcion', 'valor_consecutivo', 'contiene_prefijo', 'editar', 'eliminar'];
 
   constructor(private taskService: TaskService, private router: Router) { }
 
   ngOnInit(): void {
     // this.ngAfterViewInit();
     this.taskService.getConsecutivos()
-    .subscribe((consecutivos : Consecutivos) => { this.dataSource = consecutivos})
+    .subscribe((consecutivos: Consecutivos) => { this.dataSource = consecutivos})
   }
 
   addConsecutivo(tipo: string, descripcion: string, valor: string, contiene_prefijo: string, prefijo: string) {
     this.taskService.postConsecutivos(tipo, descripcion, valor, contiene_prefijo, prefijo)
-    .subscribe((consecutivo : Consecutivos) => this.router.navigate(['/']));
+    .subscribe((consecutivo: Consecutivos) => this.router.navigate(['/']));
+  }
+  deleteConse(codigo) {
+    console.log(codigo);
+    if (window.confirm('¿Desea eliminar el consecutivo?')) {
+      this.taskService.deleteConsecutivos(codigo)
+      .subscribe((conse: Consecutivos) =>{
+        this.consecutivos.filter(t => t._id != conse._id)
+      });
+    }
   }
 
 }

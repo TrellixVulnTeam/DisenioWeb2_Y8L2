@@ -1,4 +1,5 @@
 export default class BebidasGaseosas {
+  _id: string;
   codigo: String;
   nombre: String;
   marca: String;
