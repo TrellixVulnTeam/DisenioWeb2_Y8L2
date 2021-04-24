@@ -39,6 +39,7 @@ import { AdminContentComponent } from './components/admin-content/admin-content.
 // import { WavesModule, InputsModule, ButtonsModule } from 'angular-bootstrap-md'
 import {HttpClientModule} from '@angular/common/http';
 import { EditPaisComponent } from './components/edit-pais/edit-pais.component';
+import { EditEmpleadosComponent } from './components/edit-empleados/edit-empleados.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { EditPaisComponent } from './components/edit-pais/edit-pais.component';
     RolesYEventosComponent,
     UnidadesDeMedidaComponent,
     AdminContentComponent,
-    EditPaisComponent
+    EditPaisComponent,
+    EditEmpleadosComponent
   ],
   imports: [
     HttpClientModule,

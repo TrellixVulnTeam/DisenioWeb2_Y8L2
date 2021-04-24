@@ -1,0 +1,47 @@
+<mat-form-field>
+  <mat-label>Código</mat-label>
+  <input matInput #codigoInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+  <mat-label>Cédula</mat-label>
+  <input matInput #cedulaInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+  <mat-label>Nombre</mat-label>
+  <input matInput #nombreInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+  <mat-label>Primer Apellido</mat-label>
+  <input matInput #primer_apellidoInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+  <mat-label>Segundo Apellido</mat-label>
+  <input matInput #segundo_apellidoInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+  <mat-label>Teléfono 1</mat-label>
+  <input matInput #telefono_1Input>
+</mat-form-field>
+<br>
+<mat-form-field>
+  <mat-label>Teléfono 2</mat-label>
+  <input matInput #telefono_2Input>
+</mat-form-field>
+<br>
+<mat-form-field>
+  <mat-label>Puesto</mat-label>
+  <input matInput #puestoInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+  <mat-label>Nacionalidad</mat-label>
+  <input matInput #nacionalidadInput>
+</mat-form-field>
+<br>
+<button class="confirmbtn" mat-raised-button color="primary" style="width: 50%;" (click)="editEmpleados(getId, codigoInput.value, cedulaInput.value, nombreInput.value, primer_apellidoInput.value, segundo_apellidoInput.value, telefono_1Input.value, telefono_2Input.value, puestoInput.value, nacionalidadInput.value)">Insertar</button>
+<button class="warnbtn" mat-raised-button color="primary" style="width: 50%;">Borrar</button>
