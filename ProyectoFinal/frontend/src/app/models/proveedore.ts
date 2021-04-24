@@ -1,4 +1,5 @@
 export default class Proveedores {
+    _id: string;
     codigo: string;
     nombre: string;
     primer_apellido: string;

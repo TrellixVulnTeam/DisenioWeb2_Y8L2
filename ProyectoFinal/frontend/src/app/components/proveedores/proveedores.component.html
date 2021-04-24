@@ -4,7 +4,7 @@
       <div class="jumbotron contentjmb">
         <h1 class="display-4">MARCAS</h1>
         <hr>
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSourceMarcas" class="mat-elevation-z8">
           <ng-container matColumnDef="codigo">
             <th mat-header-cell *matHeaderCellDef> Codigo </th>
             <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
@@ -15,32 +15,28 @@
           </ng-container>
           <ng-container matColumnDef="descripcion">
             <th mat-header-cell *matHeaderCellDef> Descripción </th>
-            <td mat-cell *matCellDef="let element"> {{element.precio}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
           </ng-container>
           <ng-container matColumnDef="nacionalidad">
             <th mat-header-cell *matHeaderCellDef> Nacionalidad </th>
-            <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.nacionalidad}} </td>
           </ng-container>
           <ng-container matColumnDef="empresa">
             <th mat-header-cell *matHeaderCellDef> Empresa </th>
-            <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.nombre_empresa}} </td>
           </ng-container>
           <ng-container matColumnDef="telefono">
-            <th mat-header-cell *matHeaderCellDef> Teléfono2323 </th>
-            <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
+            <th mat-header-cell *matHeaderCellDef> Teléfono </th>
+            <td mat-cell *matCellDef="let element"> {{element.telefono_empresa}} </td>
           </ng-container>
           <ng-container matColumnDef="update">
-            <th mat-header-cell *matHeaderCellDef> update </th>
-            <td mat-cell *matCellDef="let element"> update </td>
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element"> <a routerLink="/proveedores/marcas/{{ element._id}}"><mat-icon>update</mat-icon></a> </td>
           </ng-container>
           <ng-container matColumnDef="a">
-            <th mat-header-cell *matHeaderCellDef> delete </th>
-            <td mat-cell *matCellDef="let element"> delete </td>
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element"> <mat-icon (click)="deleteMarcas(element._id)">delete</mat-icon></td>
           </ng-container>
-          <!-- <ng-container matColumnDef="update">
-            <th mat-header-cell *matHeaderCellDef> update </th>
-            <td mat-cell *matCellDef="let element"> update </td>
-          </ng-container> -->
           <tr mat-header-row *matHeaderRowDef="displayedColumnsMarca"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumnsMarca;"></tr>
         </table>
@@ -112,7 +108,6 @@
               </div>
               <br>
               <button class="confirmbtn" mat-raised-button color="primary" style="width: 50%;">Insertar</button>
-              <button class="warnbtn" mat-raised-button color="primary" style="width: 50%;">Borrar</button>
             </form>
           </mat-expansion-panel>
         </mat-accordion>
@@ -175,111 +170,11 @@
             <app-equipos-utensilios></app-equipos-utensilios>
           </mat-expansion-panel>
         </mat-accordion>
-        <!-- <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-          <ng-container matColumnDef="codigo">
-            <th mat-header-cell *matHeaderCellDef> Codigo </th>
-            <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
-          </ng-container>
-          <ng-container matColumnDef="nombre">
-            <th mat-header-cell *matHeaderCellDef> Nombre </th>
-            <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
-          </ng-container>
-          <ng-container matColumnDef="descripcion">
-            <th mat-header-cell *matHeaderCellDef> Descripción </th>
-            <td mat-cell *matCellDef="let element"> {{element.precio}} </td>
-          </ng-container>
-          <ng-container matColumnDef="nacionalidad">
-            <th mat-header-cell *matHeaderCellDef> Nacionalidad </th>
-            <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
-          </ng-container>
-          <ng-container matColumnDef="empresa">
-            <th mat-header-cell *matHeaderCellDef> Empresa </th>
-            <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
-          </ng-container>
-          <ng-container matColumnDef="telefono">
-            <th mat-header-cell *matHeaderCellDef> Teléfono </th>
-            <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
-          </ng-container>
-          <tr mat-header-row *matHeaderRowDef="displayedColumnsMarca"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumnsMarca;"></tr>
-        </table> -->
-        <!-- <mat-accordion>
-          <mat-expansion-panel hideToggle>
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                <b>Insertar producto</b>
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-            <form>
-              <div class="marcaInfo">
-                <h1 class="lead">Información de la marca</h1>
-                <hr>
-                <br>
-                <mat-form-field>
-                  <mat-label>Código</mat-label>
-                  <input matInput>
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                  <mat-label>Nombre</mat-label>
-                  <input matInput>
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                  <mat-label>Nacionalidad</mat-label>
-                  <input matInput>
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                  <mat-label>Descripción</mat-label>
-                  <input matInput>
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                  <mat-label>Foto</mat-label>
-                  <input matInput>
-                </mat-form-field>
-              </div>
-              <div class="marcaInfo">
-                <h1 class="lead">Información del contacto</h1>
-                <hr>
-                <br>
-                <mat-form-field>
-                  <mat-label>Cédula Jurídia</mat-label>
-                  <input matInput>
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                  <mat-label>Nombre empresa</mat-label>
-                  <input matInput>
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                  <mat-label>Detalle Empresa</mat-label>
-                  <input matInput>
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                  <mat-label>Teléfono</mat-label>
-                  <input matInput>
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                  <mat-label>Foto</mat-label>
-                  <input matInput>
-                </mat-form-field>
-              </div>
-              <br>
-              <button class="confirmbtn" mat-raised-button color="primary" style="width: 50%;">Insertar</button>
-              <button class="warnbtn" mat-raised-button color="primary" style="width: 50%;">Borrar</button>
-            </form>
-          </mat-expansion-panel>
-        </mat-accordion> -->
       </div>
       <div class="jumbotron contentjmb">
         <h1 class="display-4">Proveedores</h1>
         <hr>
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSourceProveedores" class="mat-elevation-z8">
           <ng-container matColumnDef="codigo">
             <th mat-header-cell *matHeaderCellDef> Codigo </th>
             <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
@@ -288,29 +183,25 @@
             <th mat-header-cell *matHeaderCellDef> Nombre </th>
             <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
           </ng-container>
-          <ng-container matColumnDef="descripcion">
-            <th mat-header-cell *matHeaderCellDef> Descripción </th>
-            <td mat-cell *matCellDef="let element"> {{element.precio}} </td>
-          </ng-container>
           <ng-container matColumnDef="nacionalidad">
             <th mat-header-cell *matHeaderCellDef> Nacionalidad </th>
-            <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.direccion_empresa}} </td>
           </ng-container>
           <ng-container matColumnDef="empresa">
             <th mat-header-cell *matHeaderCellDef> Empresa </th>
-            <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.nombre_proveedor}} </td>
           </ng-container>
           <ng-container matColumnDef="telefono">
             <th mat-header-cell *matHeaderCellDef> Teléfono </th>
-            <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.telefono_contactoEmpresa}} </td>
           </ng-container>
           <ng-container matColumnDef="update">
-            <th mat-header-cell *matHeaderCellDef> update </th>
-            <td mat-cell *matCellDef="let element"> update </td>
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element"> <a routerLink="/proveedores/proveedores/{{ element._id }}"><mat-icon>update</mat-icon></a> </td>
           </ng-container>
           <ng-container matColumnDef="a">
-            <th mat-header-cell *matHeaderCellDef> delete </th>
-            <td mat-cell *matCellDef="let element"> delete </td>
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element"> <mat-icon (click)="deleteProveedor(element._id)">delete</mat-icon> </td>
           </ng-container>
           <tr mat-header-row *matHeaderRowDef="displayedColumnsProveedores"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumnsProveedores;"></tr>
@@ -322,68 +213,88 @@
                 <b>Insertar marca</b>
               </mat-panel-title>
             </mat-expansion-panel-header>
-            <form>
+            <form (ngSubmit)="postProveedores(codigo.value, nombre.value, primer_apellido.value, segundo_apellido.value, telefono_oficina.value, fax.value, celular.value, cedula.value, fecha_ingreso.value, nombre_proveedor.value, correo.value, direccion.value, nombre_contactoEmpresa.value, telefono_contactoEmpresa.value, direccion_empresa.value)">
               <div class="marcaInfo">
-                <h1 class="lead">Información de la marca</h1>
+                <h1 class="lead">Información del proveedor</h1>
                 <hr>
                 <br>
                 <mat-form-field>
                   <mat-label>Código</mat-label>
-                  <input matInput>
+                  <input matInput #codigo>
                 </mat-form-field>
                 <br>
                 <mat-form-field>
                   <mat-label>Nombre</mat-label>
-                  <input matInput>
+                  <input matInput #nombre>
                 </mat-form-field>
                 <br>
                 <mat-form-field>
-                  <mat-label>Nacionalidad</mat-label>
-                  <input matInput>
+                  <mat-label>Primer apellido</mat-label>
+                  <input matInput #primer_apellido>
                 </mat-form-field>
                 <br>
                 <mat-form-field>
-                  <mat-label>Descripción</mat-label>
-                  <input matInput>
+                  <mat-label>Segundo apellido</mat-label>
+                  <input matInput #segundo_apellido>
                 </mat-form-field>
                 <br>
                 <mat-form-field>
-                  <mat-label>Foto</mat-label>
-                  <input matInput>
-                </mat-form-field>
-              </div>
-              <div class="marcaInfo">
-                <h1 class="lead">Información del contacto</h1>
-                <hr>
-                <br>
-                <mat-form-field>
-                  <mat-label>Cédula Jurídia</mat-label>
-                  <input matInput>
+                  <mat-label>Telefono oficina</mat-label>
+                  <input matInput #telefono_oficina>
                 </mat-form-field>
                 <br>
                 <mat-form-field>
-                  <mat-label>Nombre empresa</mat-label>
-                  <input matInput>
+                  <mat-label>Fax</mat-label>
+                  <input matInput #fax>
                 </mat-form-field>
                 <br>
                 <mat-form-field>
-                  <mat-label>Detalle Empresa</mat-label>
-                  <input matInput>
+                  <mat-label>Celular</mat-label>
+                  <input matInput #celular>
                 </mat-form-field>
                 <br>
                 <mat-form-field>
-                  <mat-label>Teléfono</mat-label>
-                  <input matInput>
+                  <mat-label>Cedula</mat-label>
+                  <input matInput #cedula>
                 </mat-form-field>
                 <br>
                 <mat-form-field>
-                  <mat-label>Foto</mat-label>
-                  <input matInput>
+                  <mat-label>Fecha ingreso</mat-label>
+                  <input matInput #fecha_ingreso> 
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                  <mat-label>Nombre proveedor</mat-label>
+                  <input matInput #nombre_proveedor>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                  <mat-label>Correo</mat-label>
+                  <input matInput #correo>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                  <mat-label>Dirección</mat-label>
+                  <input matInput #direccion>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                  <mat-label>Nombre del contacto</mat-label>
+                  <input matInput #nombre_contactoEmpresa>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                  <mat-label>Teléfono del contacto</mat-label>
+                  <input matInput #telefono_contactoEmpresa>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                  <mat-label>Dirección de la empresa</mat-label>
+                  <input matInput #direccion_empresa>
                 </mat-form-field>
               </div>
               <br>
               <button class="confirmbtn" mat-raised-button color="primary" style="width: 50%;">Insertar</button>
-              <button class="warnbtn" mat-raised-button color="primary" style="width: 50%;">Borrar</button>
             </form>
           </mat-expansion-panel>
         </mat-accordion>

@@ -1,0 +1,8 @@
+.jumbotron  {
+    position: absolute!important;
+    top: 0!important;
+    left: 0!important;
+    z-index: 3!important;
+    height: 88vh;
+    width: 100vw;
+}

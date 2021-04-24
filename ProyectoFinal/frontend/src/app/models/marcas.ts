@@ -1,4 +1,5 @@
 export default class Marcas {
+    _id: string;
     codigo: string;
     nombre: string;
     descripcion: string;

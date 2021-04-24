@@ -23,7 +23,7 @@ export class EditPuestosComponent implements OnInit {
     console.log(this.getId);
   }
 
-  editsPuestos(puestoId: String, codigo: String, nombre: String, interno: String, externo: String, rol_restaurante: String) {
+  editPuestos(puestoId: String, codigo: String, nombre: String, interno: String, externo: String, rol_restaurante: String) {
     this.taskService.patchPuestos(this.getId, codigo, nombre, interno, externo, rol_restaurante)
       .subscribe((puestos: Puestos) => this.router.navigate(['/']));
   }

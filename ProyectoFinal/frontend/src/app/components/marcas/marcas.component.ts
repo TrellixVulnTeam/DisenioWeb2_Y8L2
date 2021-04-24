@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import Mesas from 'src/app/models/marcas';
+import Marcas from 'src/app/models/marcas';
 import { TaskService } from '../../services/task.service';
 import { Router } from '@angular/router';
 
@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
 })
 
 export class MarcasComponent implements OnInit {
+    marcas: Marcas[] = [];
 
     displayedColumnsMarcas: string[] = ['codigo', 'nombre', 'numero', 'cantidad', 'restaurante'];
 
@@ -24,17 +25,17 @@ export class MarcasComponent implements OnInit {
   constructor(private taskService: TaskService, private router: Router) { }
 
   ngAfterViewInit() {
-    this.viewMesas();
+    // this.viewMarcas();
   }
 
   ngOnInit(): void {
     this.ngAfterViewInit();
   }
 
-  viewMesas() {
-    this.taskService.getMesas()
-    .subscribe((mesas : Mesas[]) => { this.dataSource = mesas });
-  }
+//   viewMarcas() {
+//     this.taskService.getMesas()
+//     .subscribe((marcas : Marcas[]) => { this.dataSource = marcas });
+//   }
 
 //   postMarcas(
 //     codigo: string, nombre: string, descripcion: string,
@@ -53,8 +54,8 @@ export class MarcasComponent implements OnInit {
   //   .subscribe((marcas: Marcas[]) => this.dataSource = marcas);
   // }
 
-  postMesas(codigo: String, nombre: String, numero: Number, cantidad_sillas: Number, nombre_restaurante: String) {
-    this.taskService.postMesas(codigo, nombre, numero, cantidad_sillas, nombre_restaurante)
-    .subscribe((mesas : Mesas)  => this.router.navigate(['/']));
-  }
+//   postMesas(codigo: String, nombre: String, numero: Number, cantidad_sillas: Number, nombre_restaurante: String) {
+//     this.taskService.postMesas(codigo, nombre, numero, cantidad_sillas, nombre_restaurante)
+//     .subscribe((mesas : Mesas)  => this.router.navigate(['/']));
+//   }
 }

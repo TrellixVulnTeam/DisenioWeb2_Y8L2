@@ -1,26 +1,28 @@
-<mat-label>Código</mat-label>
-        <input matInput #codigoInput>
-      </mat-form-field>
-      <br>
-      <mat-form-field>
-        <mat-label>Nombre</mat-label>
-        <input matInput #nombreInput>
-      </mat-form-field>
-      <br>
-      <mat-form-field>
-        <mat-label>Interno</mat-label>
-        <input matInput #internoInput>
-      </mat-form-field>
-      <br>
-      <mat-form-field>
-        <mat-label>Externo</mat-label>
-        <input matInput #externoInput>
-      </mat-form-field>
-      <br>
-      <mat-form-field>
-        <mat-label>Rol en el restaurante</mat-label>
-        <input matInput #rolInput>
-      </mat-form-field>
-      <br>
-      <button class="confirmbtn" mat-raised-button color="primary" style="width: 50%;" (click)="editPuestos(getId, codigoInput.value, nombreInput.value, internoInput.value, externoInput.value, rolInput.value)">Insertar</button>
-      <button class="warnbtn" mat-raised-button color="primary" style="width: 50%;">Borrar</button>
+<mat-form-field>
+    <mat-label>Código</mat-label>
+    <input matInput #codigoInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Nombre</mat-label>
+    <input matInput #nombreInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Interno</mat-label>
+    <input matInput #internoInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Externo</mat-label>
+    <input matInput #externoInput>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Rol en el restaurante</mat-label>
+    <input matInput #rolInput>
+</mat-form-field>
+<br>
+<button class="confirmbtn" mat-raised-button color="primary" style="width: 50%;"
+    (click)="editPuestos(getId, codigoInput.value, nombreInput.value, internoInput.value, externoInput.value, rolInput.value)">Insertar</button>
+<button class="warnbtn" mat-raised-button color="primary" style="width: 50%;">Borrar</button>

@@ -14,29 +14,14 @@ export class ProveedoresComponent implements OnInit {
 
   // especialesSelect;
   bufet : Bufet[] = [];
-  dataSource;
-  // userInputName: string;
-  // userInputCodigo: string;
-
-  // displayedColumns: string[] = ['codigo', 'nombre', 'precio', 'tipo', 'unidad_medida'];
+  marca : Marcas[] = [];
+  provedoores : Proveedores[] = [];
+  dataSourceProveedores;
+  dataSourceMarcas;
 
   displayedColumnsMarca: string[] = ['codigo', 'nombre', 'descripcion', 'nacionalidad', 'empresa', 'telefono', 'update', 'a'];
 
-  displayedColumnsProveedores: string[] = ['codigo', 'nombre', 'descripcion', 'nacionalidad', 'empresa', 'telefono', 'update', 'a'];
-
-  // displayedColumnsBebidasGaseosas: string[] = ['codigo', 'nombre', 'precio'];
-
-  // displayedColumnsLicores: string[] = ['codigo', 'nombre', 'cantidad', 'precio', 'nacionalidad'];
-
-  // displayedColumnsVinos: string[] = ['codigo', 'nombre', 'precio', 'nacionalidad', 'anio'];
-
-  // displayedColumnsEspeciales: string[] = ['codigo', 'nombre', 'ingredientes', 'precio', 'detalles'];
-
-  // especiales: Especiales[] = [
-  //   {value: 'bufet', viewValue: 'Bufet'},
-  //   {value: 'bebidas', viewValue: 'Bebidas'},
-  //   {value: 'especiales', viewValue: 'Especiales'}
-  // ];
+  displayedColumnsProveedores: string[] = ['codigo', 'nombre', 'nacionalidad', 'empresa', 'telefono', 'update', 'a'];
 
   constructor(private taskService: TaskService, private router: Router) { }
 
@@ -45,49 +30,42 @@ export class ProveedoresComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.taskService.getBufet()
-    .subscribe((bufet: Bufet[]) =>{ this.dataSource = bufet });
+    this.viewMarcas();
+    this.viewProveedores();
   }
 
-  // addBufet(codigo: string, nombre: string, precio: string, tipo: string, unidad_medida: string) {
-  //   this.taskService.postBufet(codigo, nombre, precio, tipo, unidad_medida)
-  //   .subscribe((bufets : Bufet) => this.router.navigate(['/restaurantes']));
+  viewMarcas() {
+      this.taskService.getMarcas()
+      .subscribe((marcas: Marcas[]) => {this.dataSourceMarcas = marcas});
+  }
 
-  // }
+  deleteMarcas(codigo) {
+    if (window.confirm('¿Desea eliminar la marca?')) {
+      this.taskService.deleteMarcas(codigo)
+      .subscribe((marca: Marcas) =>{
+        this.marca.filter(t => t._id != marca._id)
+        this.router.navigate(['/success-delete'])
+      });
+    }
+  }
 
-//   postMarcas(
-//     codigo: string, nombre: string, descripcion: string,
-//     nacionalidad: string,
-//     nombre_empresa: string, telefono_empresa: number,
-//     cedula_juridicaEmpresa: string, detalle_empresa: string) {
-//       this.taskService.postMarcas(
-//         codigo, nombre, descripcion,
-//         nacionalidad, nombre_empresa, telefono_empresa,
-//         cedula_juridicaEmpresa)
-//       .subscribe((marcas : Marcas) => this.router.navigate(['/']));
-//   }
+  viewProveedores() {
+      this.taskService.getProveedores()
+      .subscribe((provedoores : Proveedores[]) => {this.dataSourceProveedores = provedoores})
+  }
 
-//   addProvedores(codigo: String, nombre: String, primer_apellido: String, segundo_apellido: String, telefono_oficina: Number, fax: String, celular: Number, cedula: String, fecha_ingreso: Number, nombre_proveedor: String, correo: String, direccion: String, nombre_contactoEmpresa: String, telefono_contactoEmpresa: Number, direccion_empresa: String) {
-//     this.taskService.postProveedores(codigo, nombre, primer_apellido, segundo_apellido, telefono_oficina, fax, celular, cedula, fecha_ingreso, nombre_proveedor, correo, direccion, nombre_contactoEmpresa, telefono_contactoEmpresa, direccion_empresa)
-//     .subscribe((proveedores: Proveedores) => this.router.navigate[('/')]);
+  postProveedores(codigo, nombre, primer_apellido, segundo_apellido, telefono_oficina, fax, celular, cedula, fecha_ingreso, nombre_proveedor, correo, direccion, nombre_contactoEmpresa, telefono_contactoEmpresa, direccion_empresa) {
+      this.taskService.postProveedores(codigo, nombre, primer_apellido, segundo_apellido, telefono_oficina, fax, celular, cedula, fecha_ingreso, nombre_proveedor, correo, direccion, nombre_contactoEmpresa, telefono_contactoEmpresa, direccion_empresa)
+      .subscribe((proveedores: Proveedores) => this.router.navigate(['/success-insert']));
+  }
 
-  //     this.dataSource = this.dataSource.filter(res =>{
-  //       return res.codigo.toLocaleLowerCase().match(this.userInputCodigo.toLocaleLowerCase())
-  //     });
-
-  //   } else if (this.userInputCodigo == "") {
-  //     this.ngOnInit();
-  //   }
-  // }
-
-
-  // busquedaNombre() {
-  //   if (this.userInputName !="") {
-  //     this.dataSource = this.dataSource.filter(res =>{
-  //       return res.nombre.toLocaleLowerCase().match(this.userInputName.toLocaleLowerCase());
-  //     });
-  //   } else if (this.userInputName == "" || this.userInputCodigo == "") {
-  //     this.ngOnInit();
-  //   }
-  // }
+  deleteProveedor(codigo) {
+    if (window.confirm('¿Desea eliminar el proveedor?')) {
+      this.taskService.deleteProveedores(codigo)
+      .subscribe((provedoores: Proveedores) =>{
+        this.provedoores.filter(t => t._id != provedoores._id)
+        this.router.navigate(['/success-delete'])
+      });
+    }
+  }
 }
