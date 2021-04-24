@@ -40,6 +40,7 @@ import { AdminContentComponent } from './components/admin-content/admin-content.
 import {HttpClientModule} from '@angular/common/http';
 import { EditPaisComponent } from './components/edit-pais/edit-pais.component';
 import { EditEmpleadosComponent } from './components/edit-empleados/edit-empleados.component';
+import { EditMesasComponent } from './components/edit-mesas/edit-mesas.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { EditEmpleadosComponent } from './components/edit-empleados/edit-emplead
     UnidadesDeMedidaComponent,
     AdminContentComponent,
     EditPaisComponent,
-    EditEmpleadosComponent
+    EditEmpleadosComponent,
+    EditMesasComponent
   ],
   imports: [
     HttpClientModule,

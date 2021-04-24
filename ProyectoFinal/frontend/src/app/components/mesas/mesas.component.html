@@ -22,6 +22,14 @@
           <th mat-header-cell *matHeaderCellDef> Restaurante </th>
           <td mat-cell *matCellDef="let element"> {{element.nombre_restaurante}} </td>
         </ng-container>
+        <ng-container matColumnDef="editar">
+          <th mat-header-cell *matHeaderCellDef> editar </th>
+          <td mat-cell *matCellDef="let element"> <a routerLink="/mesas/{{ element._id }}"><button>Editar</button></a> </td>
+        </ng-container>
+        <ng-container matColumnDef="eliminar">
+          <th mat-header-cell *matHeaderCellDef> eliiminar </th>
+          <td mat-cell *matCellDef="let element"> <button (click)="deleteMesas(element._id)">Eliminar</button> </td>
+        </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumnsMesas"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumnsMesas;"></tr>
       </table>

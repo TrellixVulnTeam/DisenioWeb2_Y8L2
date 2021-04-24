@@ -1,4 +1,5 @@
 export default class Mesas {
+  _id: string;
   codigo: String;
   nombre: String;
   numero: Number;
