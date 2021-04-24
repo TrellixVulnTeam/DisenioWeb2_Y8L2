@@ -32,6 +32,16 @@ export class PuestosComponent implements OnInit {
     .subscribe((puestos : Puestos) => this.router.navigate(['/']));
   }
 
+  deletePuestos(codigo) {
+    console.log(codigo);
+    if (window.confirm('¿Desea eliminar el puesto?')) {
+      this.taskService.deletePuestos(codigo)
+      .subscribe((puestos: Puestos) =>{
+        this.puestos.filter(t => t._id != puestos._id)
+      });
+    }
+  }
+
   ngOnInit(): void {
     this.ngAfterViewInit();
   }
