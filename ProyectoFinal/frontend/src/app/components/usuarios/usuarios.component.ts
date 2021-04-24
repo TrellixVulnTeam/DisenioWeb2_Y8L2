@@ -45,6 +45,24 @@ export class UsuariosComponent implements OnInit {
   }
 
   ngAfterViewInit() {
+    // this.taskService.getBufet()
+    // .subscribe((bufet: Bufet[]) =>{ this.dataSource = bufet });
+
+
+    // this.taskService.getUsuarios().
+    // subscribe((data : any) => {
+    //   var lista = [];
+    //   var lista2 = [];
+    //   lista = data;
+    //   for (let i = 0; i < lista.length; i++) {
+    //     lista2.push(lista[0]);
+    //   }
+    //    this.dataSource = data;
+
+    //    return this.dataSource;
+    //   // console.log(lista2);
+    // });
+
     this.taskService.getUsuarios()
     .subscribe((usuario: Usuarios[]) => {this.dataSource = usuario});
   }

@@ -20,12 +20,6 @@ import {EditaPrivilegioComponent} from './components/edita-privilegio/edita-priv
 import { EditEmpleadosComponent } from './components/edit-empleados/edit-empleados.component';
 import { EditMesasComponent } from './components/edit-mesas/edit-mesas.component';
 import { EditPuestosComponent } from './components/edit-puestos/edit-puestos.component';
-import { EditMarcasComponent } from './components/edit-marcas/edit-marcas.component';
-import { EditProveedoresComponent } from './components/edit-proveedores/edit-proveedores.component';
-import { InformationUpdatedComponent } from './components/information-updated/information-updated.component';
-import { InformationDeletedComponent } from './components/information-deleted/information-deleted.component';
-import { InformationInsertedComponent } from './components/information-inserted/information-inserted.component';
-import { EditComestiblesComponent } from './components/edit-comestibles/edit-comestibles.component';
 
 // import {EditCajasComponent} from './components/editCajas/editCajas.component'
 
@@ -48,17 +42,7 @@ const routes: Routes = [
   {path: 'seguridad/:codigo', component: EditaPrivilegioComponent},
   {path : 'empleados/:codigo', component: EditEmpleadosComponent},
   {path : 'mesas/:codigo', component: EditMesasComponent},
-  {path : 'puestos/:codigo', component: EditPuestosComponent},
-  {path: 'proveedores/marcas/:codigo', component: EditMarcasComponent},
-  {path: 'proveedores/proveedores/:codigo', component: EditProveedoresComponent},
-  {path: 'success-update', component: InformationUpdatedComponent},
-  {path: 'success-delete', component: InformationDeletedComponent},
-  {path: 'success-insert', component: InformationInsertedComponent},
-  {path: 'proveedores/comestibles/:codigo', component: EditComestiblesComponent},
-  {path: 'proveedores/desechables-empaques/:codigo', component: EditComestiblesComponent},
-  {path: 'proveedores/limpieza-higiene/:codigo', component: EditComestiblesComponent},
-  {path: 'proveedores/tecnologia/:codigo', component: EditComestiblesComponent},
-  {path: 'proveedores/equipos-utensilios/:codigo', component: EditComestiblesComponent}
+  {path : 'puestos/:codigo', component: EditPuestosComponent}
   // {path : 'seguridad/:codigo', component: EditCajasComponent},
   // {path: 'entorno-restaurante', component: EntornoRestauranteComponent}
 ];

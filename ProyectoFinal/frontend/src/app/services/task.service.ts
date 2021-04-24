@@ -209,7 +209,7 @@ export class TaskService {
     return this.webService.patch(`empleados/${idEmpleados }`,{codigo, cedula, nombre, primer_apellido, segundo_apellido, telefono_1, telefono_2, puesto, nacionalidad} )
   }
 
-  deleteEmpleados(codigo:String){
+  deleteEmpleadoss(codigo:String){
       return this.webService.delete(`empleados/${codigo}`)
   }
 
@@ -393,8 +393,8 @@ export class TaskService {
   getProveedores() {
     return this.webService.get('proveedores');
   }
-  postProveedores(codigo, nombre, primer_apellido, segundo_apellido, telefono_oficina, fax, celular, cedula, fecha_ingreso, nombre_proveedor, correo, direccion, nombre_contactoEmpresa, telefono_contactoEmpresa, direccion_empresa) {
-    return this.webService.post('proveedores', {codigo, nombre, primer_apellido, segundo_apellido, telefono_oficina, fax, celular, cedula, fecha_ingreso, nombre_proveedor, correo, direccion, nombre_contactoEmpresa, telefono_contactoEmpresa, direccion_empresa})
+  postProveedores(nombre : string, primer_apellido : string, segundo_apellido : string, telefono_oficina : number, fax : string, celular : number, cedula : string, fecha_ingreso : string, nombre_proveedor : string, correo : string, direccion : string, nombre_contactoEmpresa : number, telefono_contactoEmpresa : number, direccion_empresa : string) {
+    return this.webService.post('proveedores', {nombre, primer_apellido, segundo_apellido, telefono_oficina, fax, celular, cedula, fecha_ingreso, nombre_proveedor, correo, direccion, nombre_contactoEmpresa, telefono_contactoEmpresa, direccion_empresa})
   }
   patchProveedores(codigo: string, nombre : string, primer_apellido : string, segundo_apellido : string, telefono_oficina : number, fax : string, celular : number, cedula : string, fecha_ingreso : string, nombre_proveedor : string, correo : string, direccion : string, nombre_contactoEmpresa : number, telefono_contactoEmpresa : number, direccion_empresa : string){
     return this.webService.patch(`proveedores/${codigo}`,{codigo, nombre, primer_apellido, segundo_apellido, telefono_oficina, fax, celular, cedula, fecha_ingreso, nombre_proveedor, correo, direccion, nombre_contactoEmpresa, telefono_contactoEmpresa, direccion_empresa} )

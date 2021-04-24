@@ -47,16 +47,6 @@ import { EditaPrivilegioComponent } from './components/edita-privilegio/edita-pr
 import { EditEmpleadosComponent } from './components/edit-empleados/edit-empleados.component';
 import { EditMesasComponent } from './components/edit-mesas/edit-mesas.component';
 import { EditPuestosComponent } from './components/edit-puestos/edit-puestos.component';
-import { EditMarcasComponent } from './components/edit-marcas/edit-marcas.component';
-import { InformationUpdatedComponent } from './components/information-updated/information-updated.component';
-import { InformationInsertedComponent } from './components/information-inserted/information-inserted.component';
-import { InformationDeletedComponent } from './components/information-deleted/information-deleted.component';
-import { EditProveedoresComponent } from './components/edit-proveedores/edit-proveedores.component';
-import { EditComestiblesComponent } from './components/edit-comestibles/edit-comestibles.component';
-import { EditDesechablesEmpaquesComponent } from './components/edit-desechables-empaques/edit-desechables-empaques.component';
-import { EditLimpiezaHigieneComponent } from './components/edit-limpieza-higiene/edit-limpieza-higiene.component';
-import { EditTecnologiaComponent } from './components/edit-tecnologia/edit-tecnologia.component';
-import { EditEquiposUtensiliosComponent } from './components/edit-equipos-utensilios/edit-equipos-utensilios.component';
 
 @NgModule({
   declarations: [
@@ -87,17 +77,7 @@ import { EditEquiposUtensiliosComponent } from './components/edit-equipos-utensi
     EditaPrivilegioComponent,
     EditEmpleadosComponent,
     EditMesasComponent,
-    EditPuestosComponent,
-    EditMarcasComponent,
-    InformationUpdatedComponent,
-    InformationInsertedComponent,
-    InformationDeletedComponent,
-    EditProveedoresComponent,
-    EditComestiblesComponent,
-    EditDesechablesEmpaquesComponent,
-    EditLimpiezaHigieneComponent,
-    EditTecnologiaComponent,
-    EditEquiposUtensiliosComponent
+    EditPuestosComponent
   ],
   imports: [
     HttpClientModule,

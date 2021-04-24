@@ -48,7 +48,7 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
     <!-- <form (ngSubmit)="addUsuario(codigo.value, nombre.value, primer_apellido.value, segundo_apellido.value, telefono_1.value, telefono_2.value, login.value, contrasena.value, tipo_privilegio)"> -->
-    <form (ngSubmit)="addUsuario(codigo?.value, nombre?.value, primer_apellido?.value, segundo_apellido?.value, telefono_1?.value, telefono_2?.value, login?.value, contrasena?.value, tipo_privilegio?.value)">
+    <form (ngSubmit)="test()">
       <div>
         <h1 class="display-4">Datos personales</h1>
         <hr>
@@ -104,16 +104,34 @@
         <h1 class="display-4">Privilegios</h1>
         <hr>
         <mat-form-field appearance="standard" style="width: 250px!important; text-align: center;">
-          <mat-select #tipo_privilegio>
+          <mat-select>
             <mat-option *ngFor="let option of optionsAdmin" [value]="option.value">
               {{option.viewValue}}
             </mat-option>
           </mat-select>
         </mat-form-field>
+        <!-- <section class="example-section" *ngFor="let item of optionsAdmin;  let i = index">
+          <mat-checkbox class="example-margin" [checked]="selected === i" (change)="selected = i" ng-checked="all"> {{ item }}</mat-checkbox>
+        </section> -->
+        <!-- <div  #tipo_privilegio>
+        </div> -->
       </div>
+      <!-- <div>
+        <h1 class="display-4">Privilegios</h1>
+        <hr>
+        <mat-form-field appearance="standard" style="width: 250px!important; text-align: center;">
+          <mat-select>
+            <mat-option *ngFor="let option of optionsAdmin" [value]="option.value">
+              {{option.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div> -->
       <br>
-      <button class="confirmbtn" mat-raised-button color="primary" style="width: 50%;">Insertar</button>
     </form>
     <br>
+    <a routerLink="/restaurantes" routerLinkActive="active"><button class="confirmbtn" mat-raised-button color="primary" style="width: 50%;">Insertar</button></a>
+    <br>
+    <a routerLink="/restaurantes" routerLinkActive="active"><button class="warnbtn" mat-raised-button color="primary" style="width: 50%; margin-top: 10px;">Borrar</button></a>
   </mat-expansion-panel>
 </mat-accordion>
